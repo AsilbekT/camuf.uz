@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+
+{% block link  %}{% endblock %}
+
+{% block content  %}
+
+
+<section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bg_of_uni.jpg' %}">
+    <div class="parallax-content section-30 section-sm-70">
+        <div class="shell">
+            <h2 class="veil reveal-sm-block">Search Results</h2>
+            <div class="offset-sm-top-35">
+                <ul class="list-inline list-inline-lg list-inline-dashed p">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>Search</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section novi-background bg-cover section-70 section-sm-114 bg-default">
+    <div class="shell">
+        <div class="range range-xs-center">
+            <div class="cell-sm-8">
+                <!-- RD Search Form-->
+                <form class="form-search rd-search" action="search-results.html" method="GET">
+                    <div class="form-group"><input class="form-search-input form-control" type="text" name="s" autocomplete="off"></div><button class="form-search-submit" type="submit"><span class="icon fa-search"></span></button>
+                </form>
+                <div class="offset-top-60">
+                    <div class="rd-search-results"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- Page Footers-->
+
+{% endblock %}
+{% block link_js  %}{% endblock %}

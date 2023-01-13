@@ -1,0 +1,405 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}Central Asian Medical University
+{% endblock %} 
+{% block link %} {% endblock %} 
+{% block content %}
+<section class="section">
+  <div
+    class="swiper-container swiper-slider swiper-slider-modern swiper-slider-2"
+    data-loop="true"
+    data-dragable="false"
+    data-slide-effect="fade"
+  >
+    <div class="swiper-wrapper">
+      <div
+        class="swiper-slide"
+        data-slide-bg="{% static 'images/background.jpg' %}"
+        style="background-position: 100% top"
+      >
+        <div class="swiper-slide-caption section-70">
+          <div class="container">
+            <div class="range range-xs-center">
+              <div class="cell-md-9 cell-xs-10">
+                <div data-caption-animate="fadeInUp" data-caption-delay="100">
+                  <h1 class="text-bold">Oliy ta'limni ta'minlash</h1>
+                </div>
+                <div
+                  class="offset-top-20 offset-xs-top-40 offset-xl-top-15"
+                  data-caption-animate="fadeInUp"
+                  data-caption-delay="150"
+                >
+                  {% comment %} <h6 class="">
+                    <span data-novi-id="1"
+                      >Maʼlumki, mamlakatimizda soʼnggi yillarda barcha
+                      sohalardagi keng koʼlamli islohotlar xalq bilan muloqot
+                      printsipiga uygʼun va hamohanglikda amalga oshirilayapti.
+                      Nodavlat taʼlim xizmatlari koʼrsatish, sohaga
+                      davlat-xususiy sherikchilikning samarali mexanizmlarini
+                      joriy etish, bu borada ilgʼor xorijiy tajribalarni
+                      oʼrganish boʼyicha qator yangiliklarga qoʼl urildi.
+                      Prezidentimizning 2017 yil 15 sentyabrdagi “Nodavlat
+                      taʼlim xizmatlarini koʼrsatish faoliyatini yanada
+                      rivojlantirish chora-tadbirlari toʼgʼrisida”gi qarori
+                      muhim dasturilamalga aylandi.
+                    </span>
+                  </h6> {% endcomment %}
+                </div>
+                <div
+                  class="offset-top-20 offset-xl-top-30"
+                  data-caption-animate="fadeInUp"
+                  data-caption-delay="400"
+                >
+                  <div class="group-xl group-middle">
+                    <a class="btn btn-default" href="{% url 'about' %}">
+                      <span data-novi-id="3">Biz haqimizda</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="swiper-slide"
+        data-slide-bg="{% static 'images/background_2.jpg' %}"
+        style="background-position: 80% center"
+      >
+        <div class="swiper-slide-caption section-70">
+          <div class="container">
+            <div class="range range-xs-center">
+              <div class="cell-md-9 cell-xs-10">
+                <div data-caption-animate="fadeInUp" data-caption-delay="100">
+                  <h1 class="text-bold">Oliy ta'limni ta'minlash</h1>
+                </div>
+                <div
+                  class="offset-top-20 offset-xs-top-40 offset-xl-top-15"
+                  data-caption-animate="fadeInUp"
+                  data-caption-delay="150"
+                >
+                  {% comment %} <h6 class="">
+                    <span data-novi-id="1"
+                      >Bajarilgan islohatlar davomi sifatida Farg'ona shahrida
+                      Central Asian Medical University tibbiyot universitetinig
+                      ochilishini muxim hodisa deb bilishimiz mumkin. Bugun
+                      universitet rektori N.Mamasadikov boshchiligida dars
+                      jarayonlarini boshlanishi tantanali marosim bo'lib o'tdi.
+                      Unda universitet administratsiyasi,
+                      professor-o'qituvchilar, xorijiy shifokorlar , talabalar
+                      va ularning ota-onasi ishtirok etdi.
+                    </span>
+                  </h6> {% endcomment %}
+                </div>
+                <div
+                  class="offset-top-20 offset-xl-top-30"
+                  data-caption-animate="fadeInUp"
+                  data-caption-delay="400"
+                >
+                  <div class="group-xl group-middle">
+                    <a class="btn btn-default" href="#">
+                      <span data-novi-id="3">Biz haqimizda</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev fa-arrow-left"></div>
+    <div class="swiper-button-next fa-arrow-right"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+<section
+  class="section novi-background bg-cover section-70 section-md-114 bg-default"
+>
+  <div class="shell">
+    <div class="range range-50">
+      <div class="cell-sm-4 cell-sm-push-2 text-sm-left">
+        <div class="inset-sm-left-50">
+          <img
+            class="img-responsive reveal-inline-block img-rounded"
+            src="{% static '' %}images/users/user-christopher-smith-340x300.jpg"
+            alt=""
+            width="340"
+            height="300"
+          />
+          <div class="offset-top-20">
+            <h6 class="text-primary text-bold">Universitet raxbari</h6>
+          </div>
+          <p>Universitet raxbari</p>
+        </div>
+      </div>
+      <div class="cell-sm-8 cell-sm-push-1 text-sm-left">
+        <h2 class="text-bold">Universitet haqida</h2>
+        <hr class="divider bg-madison hr-sm-left-0" />
+          {{ status.about_university_title |safe }}
+
+          {% comment %} button {% endcomment %}
+          <div class="offset-top-30"><a class="btn btn-icon btn-icon-right btn-default" href="{% url 'about' %}"><span class="icon fa-arrow-right"></span><span>Ko'proq bilish</span></a></div>
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+<section
+  class="section novi-background bg-cover section-70 section-md-114 bg-default"
+>
+  <div class="shell">
+    <h2 class="text-bold">Statistika</h2>
+    <hr class="divider bg-madison" />
+    <div
+      class="range range-65 range-xs-center range-md-left offset-top-55 counters"
+    >
+      <div class="cell-sm-6 cell-md-3">
+        <div class="counter-type-1">
+          <span
+            class="icon novi-icon icon-lg icon-outlined text-madison mdi mdi-school"
+          ></span>
+          <div class="h3 text-bold text-primary offset-top-15">
+            <span class="counter">{{ status.percent_of_graduations }}</span
+            ><span class="symbol">%</span>
+          </div>
+          <hr class="divider bg-gray-light divider-sm" />
+          <div class="offset-top-10">
+            <h6 class="text-black font-accent">Bitiruvchilar</h6>
+          </div>
+        </div>
+      </div>
+      <div class="cell-sm-6 cell-md-3">
+        <div class="counter-type-1">
+          <span
+            class="icon novi-icon icon-lg icon-outlined text-madison mdi mdi-wallet-travel"
+          ></span>
+          <div class="h3 text-bold text-primary offset-top-15">
+            <span class="counter">{{ status.number_of_professors }}</span
+            ><span class="symbol">+</span>
+          </div>
+          <hr class="divider bg-gray-light divider-sm" />
+          <div class="offset-top-10">
+            <h6 class="text-black font-accent">Professor o`qituvchilar</h6>
+          </div>
+        </div>
+      </div>
+      <div class="cell-sm-6 cell-md-3">
+        <div class="counter-type-1">
+          <span
+            class="icon novi-icon icon-lg icon-outlined text-madison mdi mdi-domain"
+          ></span>
+          <div class="h3 text-bold text-primary offset-top-15">
+            <span class="counter">{{ status.number_of_housing }}</span
+            ><span class="symbol"></span>
+          </div>
+          <hr class="divider bg-gray-light divider-sm" />
+          <div class="offset-top-10">
+            <h6 class="text-black font-accent">Talabalar shaharchalari</h6>
+          </div>
+        </div>
+      </div>
+      <div class="cell-sm-6 cell-md-3">
+        <div class="counter-type-1">
+          <span
+            class="icon novi-icon icon-lg icon-outlined text-madison mdi mdi-account-multiple-outline"
+          ></span>
+          <div class="h3 text-bold text-primary offset-top-15">
+            <span class="counter">{{ status.number_of_students }}</span
+            ><span class="symbol"></span>
+          </div>
+          <hr class="divider bg-gray-light divider-sm" />
+          <div class="offset-top-10">
+            <h6 class="text-black font-accent">Talabalar</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section
+  class="section novi-background bg-cover section-70 section-md-114 bg-catskill"
+>
+  <div class="shell-wide">
+    <h2 class="text-bold">E'lonlar</h2>
+    <hr class="divider bg-madison" />
+    <div class="range range-50 offset-top-50 range-xs-center">
+      {% for i in events %}
+      <div class="cell-sm-6 cell-md-5 cell-xl-3">
+        <article class="post-event">
+          <div class="post-event-img-overlay">
+            <img
+              class="img-responsive events-img__auto"
+              src="/{{ i.image }}"
+              alt=""
+              width="420"
+              height="420"
+            />
+            <div class="post-event-overlay context-dark">
+              <div class="offset-top-20">
+                <a
+                  class="btn btn-default"
+                  href="{% url 'event_details' slug=i.slug %}"
+                  >Batafsil</a
+                >
+              </div>
+            </div>
+            <div class="post-event-meta text-center">
+              <div
+                class="h5 text-bold reveal-inline-block reveal-lg-block"
+                style="color: white"
+              >
+                {{ i.date_created.date }}
+              </div>
+              <span
+                class="text-bold reveal-inline-block reveal-lg-block inset-left-10 inset-lg-left-0"
+                >{{ i.date_created.time }}</span
+              >
+            </div>
+          </div>
+          <div class="unit unit-lg unit-lg-horizontal">
+            <div class="unit-body">
+              <div class="post-event-body text-lg-left">
+                <h6>
+                  <a href="{% url 'event_details' slug=i.slug %}"
+                    >{{ i.title }}</a
+                  >
+                </h6>
+                <ul class="list-inline list-inline-xs">
+                  <li>
+                    <a href="{% url 'member_details' catagory=i.in_charge.catagory slug=i.in_charge.slug %}"
+                      ><span
+                        class="icon novi-icon icon-xxs mdi mdi-account-outline text-middle"
+                      ></span
+                      ><span class="inset-left-10 text-dark text-middle"
+                        >{{ i.in_charge.fullname }}</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="offset-top-50 offset-lg-top-56">
+      <a class="btn btn-icon btn-icon-right btn-primary" href="{% url 'events' %}"
+        ><span class="icon fa-arrow-right"></span
+        ><span>Voqealar taqvimini ko'rish</span></a
+      >
+    </div>
+  </div>
+</section>
+<section
+  class="section novi-background bg-cover section-70 section-xl-100 section-xl-bottom-114 bg-madison context-dark position-relative"
+>
+  <div
+    class="owl-carousel owl-carousel-default veil-xl-owl-dots veil-owl-nav reveal-xl-owl-nav"
+    data-items="1"
+    data-nav="true"
+    data-dots="true"
+    data-nav-class='["owl-prev fa-angle-left", "owl-next fa-angle-right"]'
+  >
+    <div>
+      <div class="shell">
+        <div class="range range-xs-center range-xs-middle">
+          <div class="cell-sm-9 cell-sm-push-1">
+            <div class="quote-classic-boxed text-center">
+              <div class="quote-body">
+                <q
+                  >When you work full-time while studying, you need to sacrifice
+                  personal time, which meant that I took my studies seriously.
+                  My ambition was not only to complete my degree successfully
+                  but to make the best out of the time spent studying.</q
+                >
+                <div class="offset-top-30 text-center">
+                  <cite class="font-accent">Debra Banks</cite>
+                  <div class="offset-top-5">
+                    <p class="text-dark text-italic">
+                      Diploma for Graduates in Art, USA
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="shell">
+        <div class="range range-xs-center range-xs-middle">
+          <div class="cell-sm-9 cell-sm-push-1">
+            <div class="quote-classic-boxed text-center">
+              <div class="quote-body">
+                <q
+                  >When I researched the programmes available I realized that
+                  the University was offering exactly the type of programme in
+                  international development that interested me.</q
+                >
+                <div class="offset-top-30 text-center">
+                  <cite class="font-accent">Steven Alvarez</cite>
+                  <div class="offset-top-5">
+                    <p class="text-dark text-italic">
+                      Diploma for Graduates in International Development, USA
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section
+  class="section novi-background bg-cover section-70 section-md-114 bg-catskill"
+>
+  <div class="shell isotope-wrap">
+    <h2 class="text-bold">So'ngi yangiliklar</h2>
+    <hr class="divider bg-madison" />
+    <div class="row range-30 isotope offset-top-50 text-left">
+      {% for i in news %}
+      <div class="col-xs-12 col-sm-6 col-md-4 isotope-item">
+        <article class="post-news">
+          <div class="post-news__img">
+            <a href="{% url 'news_details' slug=i.slug %}"
+              ><img
+                class="img-responsive"
+                src="/{{ i.image }}"
+                alt="post-image"
+            /></a>
+          </div>
+          <div class="post-news-body">
+            <h6>
+              <a href="{% url 'news_details' slug=i.slug %}">{{ i.title }}</a>
+            </h6>
+            <div class="offset-top-20">
+              <p>{{ i.subtitle }}</p>
+            </div>
+            <div class="post-news-meta offset-top-20">
+              <span
+                class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"
+              ></span
+              ><span class="text-middle inset-left-10 text-italic text-black"
+                >{{ i.date_created }}</span
+              >
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="offset-top-50">
+      <a class="btn btn-primary" href="{% url 'news' %}"
+        >Barcha yangiliklarni ko'rish</a
+      >
+    </div>
+  </div>
+</section>
+
+{% endblock %} {% block link_js %}{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+
+{% block link  %}{% endblock %}
+
+{% block content  %}
+
+
+<section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bg_of_uni.jpg' %}">
+    <div class="parallax-content section-30 section-sm-70">
+        <div class="shell">
+            <h2 class="veil reveal-sm-block">Course</h2>
+            <div class="offset-sm-top-35">
+                <ul class="list-inline list-inline-lg list-inline-dashed p">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>Course</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section novi-background bg-cover section-70 section-md-114 bg-catskill">
+    <div class="shell isotope-wrap">
+        <h2 class="text-bold">Our&nbsp;Course</h2>
+        <hr class="divider bg-madison">
+        <div class="row range-30 isotope offset-top-60 text-left">
+            {% for course in courses %}
+            <div class="col-xs-12 col-sm-6 col-md-4 isotope-item">
+                <article class="post-course"><a href="{% url 'course_details' catagory=course.catagory slug=course.slug %}">
+                    <div class="post-news__img">
+                    <img class="img-responsive" src="/{{course.image}}" width="370" height="240" alt=""></a>
+                    </div>
+                    <div class="post-news-body post-news__relative">
+                        <h6><a href="{% url 'course_details' catagory=course.catagory  slug=course.slug %}">{{ course.title }}</a></h6>
+                        <div class="post_meta">
+                            <ul>
+                                <li>
+                                    <p>O‘qish davomiyligi: {{ course.duration }} yil</p>
+                                </li>
+                                <li><a href="#">{{ course.course_type }}</a></li>
+                            </ul>
+                        </div>
+                        <div class="offset-top-10">
+                            <p>{{ course.subtitle }}</p>
+                        </div>
+                        <div class="post-course-meta offset-top-20 post-news__absolute"><span class="text-middle text-black"> <a class="courses-details__button" href="{% url 'course_details'  catagory=course.catagory  slug=course.slug %}">Batafsil</span><span class="icon inset-left-10 novi-icon icon-xs text-middle text-madison mdi-arrow-right mdi"></span></a></div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="offset-top-50"><a class="btn btn-primary" href="grid-news.html">View All Courses</a></div>
+    </div>
+</section>
+{% endblock %}
+{% block link_js  %}{% endblock %}

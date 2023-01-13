@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+{% block link  %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block content  %}
+
+<section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bg_of_uni.jpg' %}">
+    <div class="parallax-content section-30 section-sm-70">
+        <div class="shell">
+            <h2 class="veil reveal-sm-block">Team Member Profile</h2>
+            <div class="offset-sm-top-35">
+                <ul class="list-inline list-inline-lg list-inline-dashed p">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>Member Profile</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section novi-background bg-cover section-70 section-md-114 bg-default">
+    <div class="shell">
+        <div class="range range-30 range-xs-center">
+            <div class="cell-sm-4 text-sm-left">
+                <div class="inset-sm-right-30"><img class="img-responsive reveal-inline-block" src="/{{ team_member.image }}" width="340" height="340" alt="">
+                    <div class="offset-top-15 offset-sm-top-30"><a class="btn btn-primary btn-block" href="tel:{{ team_member.number|safe }}" style="max-width: 340px; margin-left:auto; margin-right:auto">Get in Touch</a></div>
+                </div>
+            </div>
+            <div class="cell-sm-8 text-left">
+                <div>
+                    <h3 class="text-bold">{{ team_member.fullname|safe }}</h3>
+                </div>
+                <p class="offset-top-10">{{ team_member.position }}</p>
+                <div class="offset-top-15 offset-sm-top-30">
+                    <hr class="divider bg-madison hr-left-0">
+                </div>
+                <div class="offset-top-30 offset-sm-top-30">
+                    <h6 class="text-bold">About</h6>
+                    <div class="text-subline"></div>
+                </div>
+                <div class="offset-top-20">
+                    <p>{{ team_member.about|safe }}</p>
+                </div>
+                <div class="offset-top-30 offset-sm-top-30">
+                    <h6 class="text-bold">Certificates and Awards</h6>
+                    <div class="text-subline"></div>
+                </div>
+                <div class="offset-top-15 offset-sm-top-30">
+                    <ul class="list list-unstyled">
+                        <li><span class="icon novi-icon icon-xs mdi mdi-phone text-middle text-madison"></span><a class="reveal-inline-block text-dark inset-left-10" href="tel:{{ team_member.number|safe }}">{{ team_member.number|safe }}</a></li>
+                        <li><span class="icon novi-icon icon-xs mdi mdi-email-open text-middle text-madison"></span><a class="reveal-inline-block inset-left-10" href="mailto:{{ team_member.email }}">{{ team_member.email|safe }}</a></li>
+                    </ul>
+                </div>
+                <div class="offset-top-15 offset-sm-top-30">
+                    <ul class="list-inline list-inline-xs list-inline-madison">
+                        <li><a class="icon novi-icon icon-xxs fa-facebook icon-circle icon-gray-light-filled" href="https://www.facebook.com/{{ team_member.facebook }}"></a></li>
+                        <li><a class="icon novi-icon icon-xxs fa-telegram icon-circle icon-gray-light-filled" href="https://t.me/{{ team_member.telegram }}"></a></li>
+                        <li><a class="icon novi-icon icon-xxs fa-google icon-circle icon-gray-light-filled" href="mailto:{{ team_member.email }}"></a></li>
+                        <li><a class="icon novi-icon icon-xxs fa-instagram icon-circle icon-gray-light-filled" href="https://www.instagram.com/{{ team_member.instagram }}"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+{% block link_js  %}{% endblock %}
