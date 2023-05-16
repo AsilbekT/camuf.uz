@@ -1,8 +1,34 @@
-import uuid
 from django.db import models
 from django.template.defaultfilters import slugify
 from tinymce.models import HTMLField
 # Create your models here.
+
+
+class UniPhone(models.Model):
+    phone = models.CharField(max_length=100)
+
+
+class EmailAddress(models.Model):
+    email = models.EmailField()
+
+
+class Status(models.Model):
+    percent_of_graduations = models.IntegerField()
+    number_of_professors = models.IntegerField()
+    number_of_housing = models.IntegerField()
+    number_of_students = models.IntegerField()
+    about_university_title = HTMLField()
+    about_university_body = HTMLField()
+    about_university_image = models.ImageField(
+        upload_to="static/db/about_university/")
+
+    university_location = models.CharField(
+        max_length=300, blank=True, null=True)
+    university_email = models.ManyToManyField(EmailAddress)
+    phone_number = models.ManyToManyField(UniPhone)
+
+    def __str__(self):
+        return "Universitetni umumiy ma'lumotlari"
 
 
 class Gallery(models.Model):
@@ -42,20 +68,6 @@ class New(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Status(models.Model):
-    percent_of_graduations = models.IntegerField()
-    number_of_professors = models.IntegerField()
-    number_of_housing = models.IntegerField()
-    number_of_students = models.IntegerField()
-    about_university_title = HTMLField()
-    about_university_body = HTMLField()
-    about_university_image = models.ImageField(
-        upload_to="static/db/about_university/")
-
-    def __str__(self):
-        return "Universitetni umumiy ma'lumotlari"
 
 
 class Workers(models.Model):

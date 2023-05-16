@@ -20,24 +20,43 @@ def index(request):
     events = Event.objects.all()
     try:
         status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
     except:
         status = None
 
-    context = {"news": news, "status": status, "events": events}
+    context = {
+        "news": news, 
+        "status": status, 
+        "events": events, 
+        'phones': phones,
+        'emails': emails
+        }
     return render(request, "index.html", context)
 
 
 def about(request):
     try:
         status = Status.objects.get(id=1)
-    except ObjectDoesNotExist:
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
         status = None
 
-    context = {"status": status}
+    context = {"status": status, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "about-us.html", context)
 
 
 def contact(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -54,11 +73,20 @@ def contact(request):
     else:
         form = ContactForm()
 
-    context = {"form": form}
+    context = {"form": form, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "contacts.html", context)
 
 
 def news(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+
     if request.method == "POST":
         search = request.POST['search']
         news = New.objects.filter(title__contains=search)
@@ -69,7 +97,9 @@ def news(request):
 
     news_catagory = NewsCatagory.objects.all()
     context = {"news": news, "gallery": gallery,
-               'news_catagory': news_catagory}
+               'news_catagory': news_catagory, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "grid-news.html", context)
 
 
@@ -78,7 +108,12 @@ def news_search(request, **kwarg):
 
     months = {'jan': 1, 'feb': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6,
               'july': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12}
-    
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
     if search in months.keys():
         news = New.objects.filter(date_created__month=months[search])
     else:
@@ -88,11 +123,19 @@ def news_search(request, **kwarg):
     gallery = Gallery.objects.all().order_by('-id')[:10]
     news_catagory = NewsCatagory.objects.all()
     context = {"news": news, "gallery": gallery,
-               'news_catagory': news_catagory}
+               'news_catagory': news_catagory, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "grid-news.html", context)
 
 
 def news_details(request, slug):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
     try:
         news = New.objects.get(slug=slug)
     except ObjectDoesNotExist:
@@ -101,11 +144,19 @@ def news_details(request, slug):
     news_catagory = NewsCatagory.objects.all()
 
     context = {"news": news, "gallery": gallery,
-               'news_catagory': news_catagory}
+               'news_catagory': news_catagory, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "news-post-page.html", context)
 
 
 def courses(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
     url = request.path.split('/')
     if 'undergraduate' in url:
         courses = UndergraduateCourse.objects.all()
@@ -115,62 +166,128 @@ def courses(request):
         courses = list(chain(UndergraduateCourse.objects.all(),
                        GraduateCourse.objects.all()))
 
-    context = {"courses": courses}
+    context = {"courses": courses, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "course-grid.html", context)
 
 
 def course_details(request, **kwargs):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+        
     slug = kwargs['slug']
     catagory = kwargs['catagory']
     if catagory == "undergraduate":
         course = UndergraduateCourse.objects.get(slug=slug)
     else:
         course = GraduateCourse.objects.get(slug=slug)
-    context = {"course": course}
+    context = {"course": course, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "course-details.html", context)
 
 
 def gallery(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
     gallery = Gallery.objects.all()
 
-    context = {"gallery": gallery}
+    context = {"gallery": gallery, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "gallery.html", context)
 
 
 def history(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
     return render(request, "history.html")
 
 
 def events(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
     events = Event.objects.all()
 
-    context = {"events": events}
+    context = {"events": events, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "events.html", context)
 
 
 def event_details(request, slug):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
     event = Event.objects.get(slug=slug)
     other_events = Event.objects.filter(~Q(slug=slug))
-    context = {"event": event, "other_events": other_events}
+    context = {"event": event, "other_events": other_events, 
+        'phones': phones,
+        'emails': emails}
 
     return render(request, "event-page.html", context)
 
 
 def team(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+
     members = Workers.objects.all()
 
-    context = {"members": members}
+    context = {"members": members, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "team.html", context)
 
 
 def leader(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+
     members = Leaders.objects.all()
 
-    context = {"members": members}
+    context = {"members": members, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "team.html", context)
 
 
 def member_details(request, **kwargs):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+
     if kwargs['catagory'] == "staff":
         try:
             team_member = Workers.objects.get(slug=kwargs['slug'])
@@ -182,11 +299,20 @@ def member_details(request, **kwargs):
         except ObjectDoesNotExist:
             team_member = None
 
-    context = {"team_member": team_member}
+    context = {"team_member": team_member, 
+        'phones': phones,
+        'emails': emails}
     return render(request, "team-member-profile.html", context)
 
 
 def search_result(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+
     return render(request, "search-results.html")
 
 
