@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*", "https://centralasianmedical.com", "camuf.uz"]
 CSRF_TRUSTED_ORIGINS = [
-    'https://centralasianmedical.com', "camuf.uz", 'https://*.127.0.0.1']
+    'https://centralasianmedical.com', "https://camuf.uz", 'https://*.127.0.0.1']
 
 
 RECAPTCHA_PUBLIC_KEY = "6LfCkZMjAAAAAMexycEsa00fS08h9YRU16xsaFg8"
