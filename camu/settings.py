@@ -27,15 +27,12 @@ SECRET_KEY = 'django-insecure-35iax%cfmx-h&m4*k^gzl((_jlv=af29!irv+kz-ry&$5j=*zm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ["*", "camuf.uz"]
 CSRF_TRUSTED_ORIGINS = ['https://camuf.uz',
                         "https://camuf.uz", 'http://*.127.0.0.1']
-=======
 ALLOWED_HOSTS = ["*", "https://centralasianmedical.com", "camuf.uz"]
 CSRF_TRUSTED_ORIGINS = [
     'https://centralasianmedical.com', "https://camuf.uz", 'https://*.127.0.0.1']
->>>>>>> origin
 
 
 RECAPTCHA_PUBLIC_KEY = "6LfCkZMjAAAAAMexycEsa00fS08h9YRU16xsaFg8"
