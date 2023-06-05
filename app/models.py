@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 from django.core.mail import send_mail
+from .choices import COUNTRY_CHOICES, SCHOOL_CHOICES, SOCIAL_STATUS
 # Create your models here.
 
 
@@ -21,6 +22,9 @@ class EmailAddress(models.Model):
     class Meta:
         verbose_name = "University email"
         verbose_name_plural = "University emails"
+
+
+
 
 class Status(models.Model):
     percent_of_graduations = models.IntegerField()
@@ -269,6 +273,30 @@ class InterestedPeople(models.Model):
         verbose_name_plural = "Interested People"
 
 
+class AppliedStudents(models.Model):
+    surname = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    fathers_name = models.CharField(max_length=200)
+    passport_number = models.CharField(max_length=200)
+    passport_pdf = models.FileField(upload_to="static/users/passports")
+    country = models.CharField(max_length=2, choices=COUNTRY_CHOICES)
+    region = models.CharField(max_length=200)
+    district = models.CharField(max_length=200)
+    district = models.CharField(max_length=200)
+    schooling = models.CharField(max_length=2, choices=SCHOOL_CHOICES)
+    diploma = models.FileField(upload_to="static/users/diplomas")
+    social_status = models.CharField(max_length=2, choices=SOCIAL_STATUS)
+    social_status_file = models.FileField(upload_to="static/users/social_statuses")
+    phone_number = models.CharField(max_length=200)
+    email = models.EmailField()
+    accepted = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return self.surname  + ", " + self.name
+
+    class Meta:
+        verbose_name = "Applied Student"
+        verbose_name_plural = "Applied Students"
 
 
 @receiver(post_save, sender=ArticleCatagory)

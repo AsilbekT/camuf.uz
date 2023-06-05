@@ -8,25 +8,26 @@
                     <div class="rd-navbar-top-panel">
                         <div class="shell">
                             <div class="range range-10 range-md-center range-md-middle range-lg-around">
+                                <div class="cell-md-3 text-center">
+                                    <div class="rd-navbar-brand"><a class="reveal-inline-block" href="{% url 'home' %}"><img style="width: 100px" src="{% static 'images/logo.png' %}" alt="" width="" height="80"></a></div>
+                                </div>
                                 <div class="cell-md-3">
+                                    
+                                </div>
+                                <div class="cell-md-3">
+                                    <div style="margin-bottom: 10px">
+                                        <div class="unit unit-horizontal unit-top unit-spacing-xs text-left">
+                                            <div class="unit-left"><span class="icon novi-icon mdi mdi-map-marker text-middle"></span></div>
+                                            <div class="unit-body"><a href="#">Central Asian Medical University
+                                            </a></div>
+                                        </div>
+                                    </div>
                                     <div class="unit unit-horizontal unit-top unit-spacing-xs">
                                         <div class="unit-left"><span class="icon novi-icon mdi mdi-phone text-middle"></span></div>
                                         <div class="unit-body">
                                             {% for phone in phones %}
                                                 <a href="tel:{{ phone.phone }}">{{ phone.phone }}</a>
                                             {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cell-md-3 text-center">
-                                    <div class="rd-navbar-brand"><a class="reveal-inline-block" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="" width="" height="80"></a></div>
-                                </div>
-                                <div class="cell-md-3">
-                                    <div class="inset-md-left-50">
-                                        <div class="unit unit-horizontal unit-top unit-spacing-xs text-left">
-                                            <div class="unit-left"><span class="icon novi-icon mdi mdi-map-marker text-middle"></span></div>
-                                            <div class="unit-body"><a href="#">Central Asian Medical University
-                                            </a></div>
                                         </div>
                                     </div>
                                 </div>

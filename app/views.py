@@ -34,6 +34,11 @@ def index(request):
         }
     return render(request, "index.html", context)
 
+def admission(request):
+    
+
+    context = {}
+    return render(request, "about-us.html", context)
 
 def about(request):
     try:
