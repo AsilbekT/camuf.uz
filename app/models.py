@@ -1,16 +1,26 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from tinymce.models import HTMLField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your models here.
 
 
 class UniPhone(models.Model):
     phone = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = "University Number"
+        verbose_name_plural = "University Numbers"
 
 class EmailAddress(models.Model):
     email = models.EmailField()
 
+    class Meta:
+        verbose_name = "University email"
+        verbose_name_plural = "University emails"
 
 class Status(models.Model):
     percent_of_graduations = models.IntegerField()
@@ -30,13 +40,19 @@ class Status(models.Model):
     def __str__(self):
         return "Universitetni umumiy ma'lumotlari"
 
+    class Meta:
+        verbose_name = "Status"
+        verbose_name_plural = "Statues"
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="static/db/gallery/")
 
     def __str__(self) -> str:
         return f"Gallery -> {self.id}"
-
+    
+    class Meta:
+        verbose_name = "Gallery"
+        verbose_name_plural = "Galleries"
 
 class NewsCatagory(models.Model):
     catagory_name = models.CharField(max_length=200)
@@ -50,10 +66,13 @@ class NewsCatagory(models.Model):
     def __str__(self) -> str:
         return self.catagory_name
 
+    class Meta:
+        verbose_name = "News Category"
+        verbose_name_plural = "New Categories"
 
 class New(models.Model):
     news_catagory = models.ForeignKey(
-        NewsCatagory, on_delete=models.CASCADE, blank=True, null=True)
+        NewsCatagory, on_delete=models.CASCADE, blank=True, null=True, related_name='news_catagory')
     title = models.CharField(max_length=200, blank=True, null=True)
     subtitle = models.CharField(max_length=200, blank=True, null=True)
     body = HTMLField()
@@ -69,50 +88,109 @@ class New(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "News"
+        verbose_name_plural = "News"
 
-class Workers(models.Model):
-    fullname = models.CharField(max_length=200)
-    position = models.CharField(max_length=200)
-    number = models.CharField(max_length=200, default='')
-    email = models.EmailField()
-    telegram = models.CharField(max_length=200, default='')
-    instagram = models.CharField(max_length=200, default='')
-    facebook = models.CharField(max_length=200, default='')
-    about = HTMLField(blank=True, null=True)
-    image = models.ImageField(upload_to="static/db/workers/")
-    catagory = models.CharField(max_length=200, default="staff")
+class ArticleCatagory(models.Model):
+    catagory_name = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.catagory_name)
+        return super().save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return self.catagory_name
+
+    class Meta:
+        verbose_name = "Article Category"
+        verbose_name_plural = "Article Categories"
+
+class Article(models.Model):
+    article_catagory = models.ForeignKey(
+        ArticleCatagory, on_delete=models.CASCADE, blank=True, null=True, related_name='article_catagory')
+    title = models.CharField(max_length=200, blank=True, null=True)
+    subtitle = models.CharField(max_length=200, blank=True, null=True)
+    body = HTMLField()
+    date_created = models.DateField()
+    image = models.ImageField(upload_to="static/db/article/")
     slug = models.SlugField(blank=True, null=False, unique=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.fullname)
+            self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.fullname
+        return self.title
 
+    class Meta:
+        verbose_name = "Article"
+        verbose_name_plural = "Articles"
 
-class Leaders(models.Model):
-    fullname = models.CharField(max_length=200)
-    position = models.CharField(max_length=200)
+class Workers(models.Model):
+    fullname_uz = models.CharField(max_length=200, default='')
+    fullname_en = models.CharField(max_length=200, default='')
+    fullname_ru = models.CharField(max_length=200, default='')
+    position_uz = models.CharField(max_length=200, default='')
+    position_en = models.CharField(max_length=200, default='')
+    position_ru = models.CharField(max_length=200, default='')
     number = models.CharField(max_length=200, default='')
     email = models.EmailField()
     telegram = models.CharField(max_length=200, default='')
     instagram = models.CharField(max_length=200, default='')
     facebook = models.CharField(max_length=200, default='')
-    about = HTMLField(blank=True, null=True)
+    about_uz = HTMLField(blank=True, null=True)
+    about_en = HTMLField(blank=True, null=True)
+    about_ru = HTMLField(blank=True, null=True)
     image = models.ImageField(upload_to="static/db/workers/")
     catagory = models.CharField(max_length=200, default="leaders")
     slug = models.SlugField(blank=True, null=False, unique=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.fullname)
+            self.slug = slugify(self.fullname_uz)
         return super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.fullname
+        return self.fullname_uz
+    
+    class Meta:
+        verbose_name = "Worker"
+        verbose_name_plural = "Workers"
 
+class Leaders(models.Model):
+    fullname_uz = models.CharField(max_length=200, default='')
+    fullname_en = models.CharField(max_length=200, default='')
+    fullname_ru = models.CharField(max_length=200, default='')
+    position_uz = models.CharField(max_length=200, default='')
+    position_en = models.CharField(max_length=200, default='')
+    position_ru = models.CharField(max_length=200, default='')
+    number = models.CharField(max_length=200, default='')
+    email = models.EmailField()
+    telegram = models.CharField(max_length=200, default='')
+    instagram = models.CharField(max_length=200, default='')
+    facebook = models.CharField(max_length=200, default='')
+    about_uz = HTMLField(blank=True, null=True)
+    about_en = HTMLField(blank=True, null=True)
+    about_ru = HTMLField(blank=True, null=True)
+    image = models.ImageField(upload_to="static/db/workers/")
+    catagory = models.CharField(max_length=200, default="leaders")
+    slug = models.SlugField(blank=True, null=False, unique=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.fullname_uz)
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.fullname_uz
+
+    class Meta:
+        verbose_name = "Leader"
+        verbose_name_plural = "Leaders"
 
 class Event(models.Model):
     in_charge = models.ForeignKey(
@@ -132,6 +210,9 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
 
 class UndergraduateCourse(models.Model):
     image = models.ImageField(upload_to="static/db/news/")
@@ -151,6 +232,9 @@ class UndergraduateCourse(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Undergraduate Course"
+        verbose_name_plural = "Undergraduate Courses"
 
 class GraduateCourse(models.Model):
     image = models.ImageField(upload_to="static/db/news/")
@@ -169,10 +253,29 @@ class GraduateCourse(models.Model):
 
     def __str__(self):
         return self.title
-
+    
+    class Meta:
+        verbose_name = "Graduate Course"
+        verbose_name_plural = "Graduate Courses"
 
 class InterestedPeople(models.Model):
     saved_email = models.EmailField()
 
     def __str__(self) -> str:
         return self.saved_email
+
+    class Meta:
+        verbose_name = "Interested People"
+        verbose_name_plural = "Interested People"
+
+
+
+
+@receiver(post_save, sender=ArticleCatagory)
+def send_email_to_addresses(sender, instance, created, **kwargs):
+    if created:
+        subject = 'New Model Created test'
+        message = 'A new model instance has been created. and now testing it one more time'
+        from_email = settings.DEFAULT_FROM_EMAIL
+        recipient_list = ['asilbek20010211@gmail.com']  # Add your desired email addresses here
+        send_mail(subject, message, from_email, recipient_list)

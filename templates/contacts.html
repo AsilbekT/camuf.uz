@@ -82,7 +82,11 @@
                         </div>
                         <div class="offset-top-15">
                             <ul class="list list-unstyled">
-                                <li><span class="icon novi-icon icon-xs text-madison mdi mdi-phone text-middle"></span><a class="text-middle inset-left-10 text-dark" href="tel:1-800-1234-567">1-800-1234-567</a></li>
+                                <li><span class="icon novi-icon icon-xs text-madison mdi mdi-phone text-middle"></span>
+                                    {% for i in status.phone_number.all %}
+                                        <a class="text-middle inset-left-10 text-dark" href="tel:{{ i.phone }}">{{ i.phone }}</a>
+                                    {% endfor %}
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -93,7 +97,12 @@
                         </div>
                         <div class="offset-top-15">
                             <ul class="list list-unstyled">
-                                <li><span class="icon novi-icon icon-xs text-madison mdi mdi-email-outline text-middle"></span><a class="text-primary text-middle inset-left-10" href="mailto:info@demolink.org">info@demolink.org</a></li>
+                                <li>
+                                    <span class="icon novi-icon icon-xs text-madison mdi mdi-email-outline text-middle"></span>
+                                    {% for i in status.university_email.all %}
+                                        <a class="text-primary text-middle inset-left-10" href="mailto:{{ i.email }}">{{ i.email }}</a>
+                                    {% endfor %}
+                                </li>
                             </ul>
                         </div>
                     </div>

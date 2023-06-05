@@ -9,11 +9,11 @@
 <section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bac_news.jpeg' %}">
     <div class="parallax-content section-30 section-sm-70">
         <div class="shell">
-            <h2 class="veil reveal-sm-block">Grid News</h2>
+            <h2 class="veil reveal-sm-block">Maqolalar</h2>
             <div class="offset-sm-top-35">
                 <ul class="list-inline list-inline-lg list-inline-dashed p">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li>Yangiliklar</li>
+                    <li>Maqolalar</li>
                 </ul>
             </div>
         </div>
@@ -27,12 +27,12 @@
                 <div class="range range-30 text-sm-left range-xs-center">
                     {% for i in data %}
                         <div class="cell-sm-6">
-                            <article class="post-news"><a href="{% url 'news_details' slug=i.slug %}">
+                            <article class="post-news"><a href="{% url 'article_details' slug=i.slug %}">
                                 <div class="post-news__img">
                                 <img class="img-responsive" src="/{{i.image}}" width="500" height="600" alt=""></a>
                                 </div>
                                 <div class="post-news-body">
-                                    <h6><a href="{% url 'news_details' slug=i.slug %}">{{ i.title }}</a></h6>
+                                    <h6><a href="{% url 'article_details' slug=i.slug %}">{{ i.title }}</a></h6>
                                     <div class="offset-top-20">
                                         <p>{{ i.subtitle }}</p>
                                     </div>
@@ -49,7 +49,7 @@
                         <h6 class="text-bold">Search</h6>
                         <div class="text-subline"></div>
                         <div class="offset-top-30">
-                            <form class="form-search rd-search form-search-widget" action="{% url 'news' %}" method="post">
+                            <form class="form-search rd-search form-search-widget" action="{% url 'articles' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <div class="input-group">
@@ -70,22 +70,22 @@
                         <div class="row offset-top-20">
                             <div class="col-xs-6">
                                 <ul class="list list-marked list-marked-primary">
-                                    <li><a href="{% url 'data_search' search='jan' model='news'%}">Jan</a></li>
-                                    <li><a href="{% url 'data_search' search='feb' model='news'%}">Feb</a></li>
-                                    <li><a href="{% url 'data_search' search='march' model='news'%}">March</a></li>
-                                    <li><a href="{% url 'data_search' search='april' model='news'%}">April</a></li>
-                                    <li><a href="{% url 'data_search' search='may' model='news'%}">May</a></li>
-                                    <li><a href="{% url 'data_search' search='june' model='news'%}">June</a></li>
+                                    <li><a href="{% url 'data_search' search='jan' model='article' %}">Jan</a></li>
+                                    <li><a href="{% url 'data_search' search='feb'  model='article'  %}">Feb</a></li>
+                                    <li><a href="{% url 'data_search' search='march'  model='article'  %}">March</a></li>
+                                    <li><a href="{% url 'data_search' search='april'   model='article' %}">April</a></li>
+                                    <li><a href="{% url 'data_search' search='may'   model='article' %}">May</a></li>
+                                    <li><a href="{% url 'data_search' search='june'  model='article'  %}">June</a></li>
                                 </ul>
                             </div>
                             <div class="col-xs-6">
                                 <ul class="list list-marked list-marked-primary">
-                                    <li><a href="{% url 'data_search' search='july' model='news'%}">July</a></li>
-                                    <li><a href="{% url 'data_search' search='aug' model='news'%}">Aug</a></li>
-                                    <li><a href="{% url 'data_search' search='sep' model='news'%}">Sep</a></li>
-                                    <li><a href="{% url 'data_search' search='oct' model='news'%}">Oct</a></li>
-                                    <li><a href="{% url 'data_search' search='nov' model='news'%}">Nov</a></li>
-                                    <li><a href="{% url 'data_search' search='dec' model='news'%}">Dec</a></li>
+                                    <li><a href="{% url 'data_search' search='july' model='article' %}">July</a></li>
+                                    <li><a href="{% url 'data_search' search='aug' model='article'  %}">Aug</a></li>
+                                    <li><a href="{% url 'data_search' search='sep' model='article' %}">Sep</a></li>
+                                    <li><a href="{% url 'data_search' search='oct' model='article'  %}">Oct</a></li>
+                                    <li><a href="{% url 'data_search' search='nov' model='article' %}">Nov</a></li>
+                                    <li><a href="{% url 'data_search' search='dec'  model='article' %}">Dec</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                         <div class="offset-top-20">
                             <ul class="list list-marked list-marked-primary">
                                {% for catagory in catagories %}
-                                <li><a href="{% url 'data_search' search=catagory.slug model='news'%}">{{ catagory.catagory_name }}</a></li>
+                                <li><a href="{% url 'data_search' search=catagory.slug  model='article' %}">{{ catagory.catagory_name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>

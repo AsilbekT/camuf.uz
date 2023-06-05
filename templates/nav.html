@@ -67,6 +67,7 @@
                                 </li> {% endcomment %}
                                 <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="{% url 'news' %}">Universitet yangiliklari</a>
                                     <ul class="rd-navbar-dropdown rd-navbar-open-right" style="">
+                                        <li><a href="{% url 'articles' %}">Maqolalar</a></li>
                                         <li><a href="{% url 'news' %}">Yangiliklari</a></li>
                                         <li><a href="{% url 'events' %}">Hodisalar</a></li>
                                         {% comment %} <li><a href="gallery.html">Fotografiya</a></li>
@@ -74,6 +75,13 @@
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'contact' %}">Aloqa</a></li>
+                                <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="{% url 'news' %}">Tillar</a>
+                                    <ul class="rd-navbar-dropdown rd-navbar-open-right" style="">
+                                        <li><a href="{% url 'articles' %}">Uz</a></li>
+                                        <li><a href="{% url 'news' %}">En</a></li>
+                                        <li><a href="{% url 'events' %}">Ru</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                             <div class="rd-navbar-search-mobile" id="rd-navbar-search-mobile">
                                 <form class="rd-navbar-search-form search-form-icon-right rd-search" action="{% url 'search_result' %}" method="GET">

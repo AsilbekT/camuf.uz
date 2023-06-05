@@ -40,6 +40,8 @@ RECAPTCHA_PRIVATE_KEY = "6LfCkZMjAAAAAEi3YsKb4le8oPxgRUQrAp2KEH1E"
 # Application definition
 
 INSTALLED_APPS = [
+    'adminlte3',
+    'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -92,8 +94,13 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
+DEFAULT_FROM_EMAIL = 'info@camuf.uz'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+EMAIL_HOST = 'webmail.camuf.uz'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'info@camuf.uz'
+EMAIL_HOST_PASSWORD = 'admin_camuf1'
+EMAIL_USE_TLS = True 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

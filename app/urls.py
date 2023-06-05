@@ -8,9 +8,14 @@ urlpatterns = [
     path('about/', views.about, name="about"),
     path('contact/', views.contact, name="contact"),
     path('save_email/', views.save_email, name="save_email"),
+
     path('news/', views.news, name="news"),
-    path('news/search?q=<str:search>/', views.news_search, name="news_search"),
+    path('news/search?q=<str:search>&k=<str:model>/', views.data_search, name="data_search"),
     path('news/<slug:slug>/', views.news_details, name="news_details"),
+
+    path('articles/', views.articles, name="articles"),
+    path('articles/<slug:slug>/', views.article_details, name="article_details"),
+
     path('courses/', views.courses, name="courses"),
     path('courses/undergraduate/', views.courses, name="undergraduate"),
     path('courses/graduate/', views.courses, name="graduate"),

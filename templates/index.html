@@ -29,21 +29,6 @@
                   data-caption-animate="fadeInUp"
                   data-caption-delay="150"
                 >
-                  {% comment %} <h6 class="">
-                    <span data-novi-id="1"
-                      >Maʼlumki, mamlakatimizda soʼnggi yillarda barcha
-                      sohalardagi keng koʼlamli islohotlar xalq bilan muloqot
-                      printsipiga uygʼun va hamohanglikda amalga oshirilayapti.
-                      Nodavlat taʼlim xizmatlari koʼrsatish, sohaga
-                      davlat-xususiy sherikchilikning samarali mexanizmlarini
-                      joriy etish, bu borada ilgʼor xorijiy tajribalarni
-                      oʼrganish boʼyicha qator yangiliklarga qoʼl urildi.
-                      Prezidentimizning 2017 yil 15 sentyabrdagi “Nodavlat
-                      taʼlim xizmatlarini koʼrsatish faoliyatini yanada
-                      rivojlantirish chora-tadbirlari toʼgʼrisida”gi qarori
-                      muhim dasturilamalga aylandi.
-                    </span>
-                  </h6> {% endcomment %}
                 </div>
                 <div
                   class="offset-top-20 offset-xl-top-30"
@@ -78,18 +63,7 @@
                   data-caption-animate="fadeInUp"
                   data-caption-delay="150"
                 >
-                  {% comment %} <h6 class="">
-                    <span data-novi-id="1"
-                      >Bajarilgan islohatlar davomi sifatida Farg'ona shahrida
-                      Central Asian Medical University tibbiyot universitetinig
-                      ochilishini muxim hodisa deb bilishimiz mumkin. Bugun
-                      universitet rektori N.Mamasadikov boshchiligida dars
-                      jarayonlarini boshlanishi tantanali marosim bo'lib o'tdi.
-                      Unda universitet administratsiyasi,
-                      professor-o'qituvchilar, xorijiy shifokorlar , talabalar
-                      va ularning ota-onasi ishtirok etdi.
-                    </span>
-                  </h6> {% endcomment %}
+
                 </div>
                 <div
                   class="offset-top-20 offset-xl-top-30"
@@ -122,13 +96,13 @@
         <div class="inset-sm-left-50">
           <img
             class="img-responsive reveal-inline-block img-rounded"
-            src="{% static '' %}images/users/user-christopher-smith-340x300.jpg"
-            alt=""
+            src="{% static 'db/workers/rector.jpg' %}"
+            alt="#"
             width="340"
             height="300"
           />
           <div class="offset-top-20">
-            <h6 class="text-primary text-bold">Universitet raxbari</h6>
+            <h6 class="text-primary text-bold">MAMASADIKOV NURILLO SHUKRULLAEVICH</h6>
           </div>
           <p>Universitet raxbari</p>
         </div>
@@ -138,7 +112,6 @@
         <hr class="divider bg-madison hr-sm-left-0" />
           {{ status.about_university_title |safe }}
 
-          {% comment %} button {% endcomment %}
           <div class="offset-top-30"><a class="btn btn-icon btn-icon-right btn-default" href="{% url 'about' %}"><span class="icon fa-arrow-right"></span><span>Ko'proq bilish</span></a></div>
         </div>
       

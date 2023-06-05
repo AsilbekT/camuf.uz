@@ -1,4 +1,4 @@
-#!/var/www/vhosts/camuf.uz/httpdocs/camuf.uz/venv/bin/python
+#!/Users/asilbekturgunboev/Desktop/camuf.uz/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

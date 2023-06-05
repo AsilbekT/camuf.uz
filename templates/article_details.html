@@ -6,7 +6,7 @@
 
 {% block content  %}
 
-<section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bac_news.jpeg' %}">
+<section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bac_data.jpeg' %}">
     <div class="parallax-content section-30 section-sm-70">
         <div class="shell">
             <h2 class="veil reveal-sm-block">To'liq ma'lumot</h2>
@@ -24,18 +24,18 @@
     <div class="shell">
         <div class="range range-50 range-xs-center">
             <div class="cell-sm-8 cell-md-8 text-md-left">
-                <h3 class="text-bold">{{ news.title }}</h3>
+                <h3 class="text-bold">{{ data.title }}</h3>
                 <hr class="divider bg-madison hr-md-left-0">
                 <div class="offset-md-top-20 offset-top-10">
                     <ul class="post-news-meta list list-inline list-inline-xl">
-                        <li><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ news.date_created }}</span></li>
+                        <li><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ data.date_created }}</span></li>
                     </ul>
                 </div>
-                <div class="offset-top-30"><img class="img-responsive" src="/{{ news.image }}" width="770" height="500" alt="">
+                <div class="offset-top-30"><img class="img-responsive" src="/{{ data.image }}" width="770" height="500" alt="">
                     <div class="offset-top-30">
-                        <p>{{ news.subtitle|safe }}</p>
+                        <p>{{ data.subtitle|safe }}</p>
                     </div>
-                    <p>{{ news.body |safe}}</p>
+                    <p>{{ data.body |safe}}</p>
                 </div>
 
             </div>
@@ -60,7 +60,7 @@
                         <div class="offset-top-20">
                             <ul class="list list-marked list-marked-primary">
                                {% for catagory in news_catagory %}
-                                <li><a href="{% url 'data_search' search=catagory.slug model='news' %}">{{ catagory.catagory_name }}</a></li>
+                                <li><a href="{% url 'data_search' search=catagory.slug model='article'%}">{{ catagory.catagory_name }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
