@@ -9,7 +9,7 @@ from django.utils.translation import get_language, activate, gettext
 from django.db.models import Q
 import requests
 from itertools import chain
-from bot.credentials import URL
+from bot.credentials import BOT_API
 from .forms import AppliedStudentsForm
 # Create your views here.
 
@@ -552,7 +552,7 @@ def success(request):
     return render(request, 'success.html')
 
 def bot_request(method, data):
-    requests.post(URL + method, data)
+    requests.post(BOT_API + method, data)
     # https://api.telegram.org/bot5838898419:AAETJYe3S96ZeMRFNv6MzkfsTDdrNu-3Qts/sendMessage?chat_id=-1001566478762&text=salom
 
 

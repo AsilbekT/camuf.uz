@@ -2,12 +2,15 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 from django.core.exceptions import ObjectDoesNotExist
+
+from app.choices import SCHOOL_CHOICES, SOCIAL_STATUS
 from .models import BotUsers
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .credetials import URL, BOT_API
+from .credentials import URL, BOT_API
 # Create your views here.
 from django.views.decorators.http import require_http_methods
+from app.models import UndergraduateCourse, AppliedStudents
 
 
 def index(request):
@@ -33,8 +36,38 @@ def translate(message=None, user=None, text=None):
 
     if lang == 'uz':
         words = {
+            'setting': '⚙️ Sozlash',
+            "contactni kiriting": "Quyidagi tugma orqali telefon raqamingizni kiriting",
+            "apply to uni": "📄 Qabul",
+            "phone": "Telefon raqam",
+            "contact": "📞 Telefon raqam",
+            "biz haqimizda": "🎓 Universitetimiz haqida®",
             "choose language": "tilni tanlang",
-            "please enter your name":'iltimos ismizni kiriting'
+            "please enter your name":'Iltimos ismizni kiriting',
+            "home page": "Sizga qanday yordam berishimiz haqida bizga xabar berish uchun quyidagi variantlardan birini tanlang!",
+            "Til": "Tillar 🇺🇿 🇺🇸",
+            "quyidagilardan birini tanlang": "Quyidagilardan birini tanlang",
+            "Muloqot tili": "Joriy til",
+            "O'zbekcha": "🇺🇿 O'zbek",
+            "English": "🇺🇸 Ingliz",
+            "about_us_text": "Central Asian Medical University nodavlat ta‘lim muassasasiga 2022-yil 6- sentabr sanasida O‘zbekiston Respublikasi Vazirlar Maxkamasi huzuridagi Ta’lim sifatini nazorat qilish davlat inspeksiyasi tomonidan №037700 raqamli litsensiya berildi. Shu hujjat asosida universitet o‘z faoliyatini boshladi.",
+            "admission_text": "'Central Asian Medical University'ga xush kelibsiz!\nBiz sizni universitetimizga kelgusi oʻquv yili uchun taklif qilishdan mamnunmiz. 'Central Asian Medical University'da biz sizga jahon andozalari darajasidagi ta’lim berish hamda tanlagan sohangizda muvaffaqiyatga erishish uchun zarur bo‘lgan bilim va ko‘nikmalar bilan ta’minlash uchun mo‘ljallangan turli xil dasturlarni taklif etamiz.",
+            "Stomatologiya": "🦷 Stomatologiya",
+            "Davolash ishi": "💊 Davolash ishi",
+            "Pediatriya": "💉️️ Pediatriya",
+
+            "iltimos ismizni kiriting": "Iltimos, ismizni kiriting",
+            "iltimos famliyezni kiriting": "Iltimos, familiyangizni kiriting",
+            "iltimos otezni ismini kiriting": "Iltimos, otezni ismini kiriting",
+            "iltimos pasport raqamini kiriting": "Iltimos, pasport raqamini kiriting",
+            "iltimos davlatizni kiriting": "Iltimos, mamlakatingizga kiring",
+            "iltimos viloyatni kiriting": "Iltimos, viloyatingizni kiring",
+            "iltimos tumanni kiriting": "Iltimos, tumaningizni kiriting",
+            "iltimos bitirgan bilim yurtini kiriting": "Iltimos, bitirgan bilim yurtingizni kiriting",
+            "iltimos ijtimoiy holatni kiriting": "Iltimos, ijtimoiy holatingizni kiriting",
+            "iltimos tel nomerni kiriting": "Iltimos, telefon raqamingizni kiriting",
+            "qabul qilindi": "Sizni so'rovingiz qabul qilindi, javobini tez orada xabar qilamiz. Iltimos bizni ijtimoiy tarmoqlarda kuzatib boring."
+
         }
         if text in words.keys():
             return words[text]
@@ -44,10 +77,40 @@ def translate(message=None, user=None, text=None):
 
     elif lang == 'en':
         words = {
+            
             "tarjima tilini kiritish":"enter translating languages",
-            'setting':'setting',
-            'biz haqimizda': 'about us',
-            "tilni tanlang": "choose language"
+            'setting':'⚙️ Setting',
+            "contact": "📞 Phone number",
+            "phone": "Phone number",
+            "apply to uni": "📄 Admission",
+            'biz haqimizda': '🎓 About us®',
+            "tilni tanlang": "Choose language",
+            "please enter your name":'Please enter your name',
+            "contactni kiriting": "Please enter your phone number via the button bellow!",
+            "home page": "Please select an option below to let us know how we can assist you!",
+
+            "Til": "Languages 🇺🇿 🇺🇸",
+            "quyidagilardan birini tanlang": "Choose one of the following",
+            "Muloqot tili": "Current language",
+            "O'zbekcha": "🇺🇿 Uzbek",
+            "English": "🇺🇸 English",
+            "about_us_text": "Central Asian University's non-state educational medicine program obtained License No. 037700 from the State Inspectorate for Quality Control of Education under the Cabinet of Ministers of the Republic of Uzbekistan on September 6, 2022. The university was established based on this license.",
+            "admission_text": "Welcome to Central Asian University!\nWe are delighted to invite you to join our esteemed institution for the upcoming academic year. At Central Asian University, we offer a diverse range of programs designed to provide you with a world-class education and equip you with the knowledge and skills necessary for success in your chosen field.",
+            "Stomatologiya": "🦷 Dentistry",
+            "Davolash ishi": "💊 General Medicine",
+            "Pediatriya": "💉️️ Pediatrics",
+            "iltimos ismizni kiriting": "Please enter your name",
+            "iltimos famliyezni kiriting": "Please enter your surname",
+            "iltimos otezni ismini kiriting": "Please enter your father's name",
+            "iltimos pasport raqamini kiriting": "Please enter your passport number",
+            "iltimos davlatizni kiriting": "Please enter your country",
+            "iltimos viloyatni kiriting": "Please enter your region",
+            "iltimos tumanni kiriting": "Please enter your district",
+            "iltimos bitirgan bilim yurtini kiriting": "Please choose your schooling",
+            "iltimos ijtimoiy holatni kiriting": "Please choose your social status",
+            "iltimos tel nomerni kiriting": "Please enter your phone number",
+            "qabul qilindi": "Your application has been received, we will inform you about the answer soon. Please follow us on social media."
+
         }
         if text in words.keys():
             return words[text]
@@ -61,36 +124,53 @@ def translate(message=None, user=None, text=None):
 def getpost(request):
     if request.method == 'POST':
         telegram_message = json.loads(request.body)
+        private = True
+        if 'callback_query' in telegram_message.keys():
+            message = telegram_message["callback_query"]['message']
+            callbackHandler(telegram_message['callback_query'])
 
-        if "message" in telegram_message.keys():
+        elif 'message' in telegram_message.keys():
+
             message = telegram_message['message']
+            if "chat" in message.keys():
+                if message['chat']['type'] == 'private':
+                    private = True
+        elif 'edited_message' in telegram_message.keys():
+            message = telegram_message['edited_message']
+            if "chat" in message.keys():
+                if message['chat']['type'] == 'private':
+                    private = True
 
-        try:
-            user = BotUsers.objects.get(user_id=message['from']['id'])
+        else:
+            message = {}
 
-            if 'text' in message.keys():
-                messageHandler(message, user)
+        if private:
+            try:
+                user = BotUsers.objects.get(user_id=message['from']['id'])
 
-        except ObjectDoesNotExist:
-            if message['text'] == translate(text="register"):
-                    user = BotUsers.objects.create(user_id=message['from']['id'], user_step='get_lang')
-                    user.save()
-                    stepHandler(user, message)
+                if 'text' in message.keys():
+                    messageHandler(message, user)
+                if 'contact' in message.keys():
+                    contactHandler(message)
+            except ObjectDoesNotExist:
+                if "text" in message.keys():
+                    if message['text'] == translate(text="📂 Register/ A'zo bo'lish"):
+                            user = BotUsers.objects.create(user_id=message['from']['id'], user_step='get_lang')
+                            user.save()
+                            stepHandler(user, message)
 
-            else:
-                bot_request("sendMessage", {
-                    'chat_id': message['from']['id'],
-                    'text': "Botimizni ishlatish uchun registratsiyadan oting/ In order to use our bot please register!",
-                    "reply_markup": json.dumps({
-                        "keyboard": [[
-                            'register',
-                        ]],
-                        'resize_keyboard': True
-                    })
-                })
-        if 'contact' in message.keys():
-            print(message)
-            setHandler(message, user)
+                    else:
+                        bot_request("sendMessage", {
+                            'chat_id': message['from']['id'],
+                            'text': "Botimizni ishlatish uchun registratsiyadan o'ting/ In order to use our bot please register!",
+                            "reply_markup": json.dumps({
+                                "keyboard": [[
+                                    "📂 Register/ A'zo bo'lish",
+                                ]],
+                                'resize_keyboard': True
+                            })
+                        })
+            
 
 
     return HttpResponse("getpost")
@@ -107,17 +187,118 @@ def bot_request(method, data):
 
 
 def messageHandler(message, user):
-    # print(message)
     user = BotUsers.objects.get(user_id=message['from']['id'])
     if user.user_step:
         setHandler(message, user)
+    elif message['text'] == translate(message=message, text="setting"):
+        settingHandler(message)
+    elif message['text'] == translate(message=message, text="apply to uni"):
+        admissionHandler(message)
+    elif message['text'] == translate(message=message, text='biz haqimizda'):
+        bot_request("sendPhoto", {
+            "chat_id": user.user_id,
+            "photo": 'https://camuf.uz/static/images/logo.png',
+            'parse_mode': 'html',
+            'caption': translate(user=user, text="about_us_text"),
+        })
+    # 
     else:
         redirectToHomePage(message)
 
 
 def setHandler(message, user):
+    print(user.user_step )
     if user.user_step:
-        if user.user_step == "get_lang":
+        if user.user_step == "get_admission_name":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.name = message['text']
+            user.user_step = 'get_admission_surname'
+            applied_student.save()
+            user.save()
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_surname":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.surname = message['text']
+            user.user_step = 'get_admission_fathers_name'
+            applied_student.save()
+            user.save()
+
+            stepHandler(user, message)
+        
+        elif user.user_step == "get_admission_fathers_name":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.fathers_name = message['text']
+            user.user_step = 'get_admission_passport_number'
+            applied_student.save()
+            user.save()
+
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_passport_number":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.passport_number = message['text']
+            user.user_step = 'get_admission_country'
+            applied_student.save()
+            user.save()
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_country":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.country = message['text']
+            user.user_step = 'get_admission_region'
+            applied_student.save()
+            user.save()
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_region":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.region = message['text']
+            user.user_step = 'get_admission_district'
+            applied_student.save()
+            user.save()
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_district":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.district = message['text']
+            user.user_step = 'get_admission_schooling'
+            applied_student.save()
+            user.save()
+            stepHandler(user, message)
+        
+        elif user.user_step == "get_admission_schooling":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.schooling = message['text']
+            user.user_step = 'get_admission_social_status'
+            applied_student.save()
+            user.save()
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_social_status":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.social_status = message['text']
+            user.user_step = 'get_admission_phone_number'
+            applied_student.save()
+            user.save()
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_phone_number":
+            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            applied_student.phone_number = message['text']
+            user.user_step = ''
+            applied_student.save()
+            user.save()
+
+            bot_request('sendMessage', {
+                'chat_id': user.user_id,
+                'parse_mode': 'html',
+                'text': translate(user=user, text="qabul qilindi")
+                })
+            stepHandler(user, message)
+
+        elif user.user_step == 'get_lang':
+            print("here")
             user.user_lang = message['text']
             user.user_step = 'get_name'
             user.save()
@@ -130,14 +311,102 @@ def setHandler(message, user):
             stepHandler(user, message)
 
         elif user.user_step == 'get_contact':
-            user.user_contact = message['contact']['phone_number']
-            user.user_step = ''
-            user.save()
-            stepHandler(user, message)
+            if "contact" not in message.keys():
+                stepHandler(user, message)
+            else:
+                user.user_contact = message['contact']['phone_number']
+                user.user_step = ''
+                user.save()
+                stepHandler(user, message)
 
 
 def stepHandler(user, message):
-    if user.user_step == "get_lang":
+    if user.user_step == "get_admission_name":
+        print("here")
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos ismizni kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+
+    elif user.user_step == "get_admission_surname":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos famliyezni kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+
+    elif user.user_step == "get_admission_fathers_name":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos otezni ismini kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+
+    elif user.user_step == "get_admission_passport_number":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos pasport raqamini kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+
+    elif user.user_step == "get_admission_country":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos davlatizni kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+
+    elif user.user_step == "get_admission_region":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos viloyatni kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+    
+    elif user.user_step == "get_admission_district":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos tumanni kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+
+    elif user.user_step == "get_admission_schooling":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos bitirgan bilim yurtini kiriting'),
+             "reply_markup": json.dumps({
+                'keyboard': [[choice[1] for choice in SCHOOL_CHOICES[1:]]],
+                'resize_keyboard': True
+                })
+        })
+
+    elif user.user_step == "get_admission_social_status":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(message=message, text='iltimos ijtimoiy holatni kiriting'),
+            "reply_markup": json.dumps({
+                'keyboard': [[choice[1] for choice in SOCIAL_STATUS[1:]]],
+                'resize_keyboard': True
+            })
+        })
+
+    elif user.user_step == "get_admission_phone_number":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos tel nomerni kiriting'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+
+    elif user.user_step == "get_lang":
         bot_request("sendMessage", {
             "chat_id": user.user_id,
             'text': 'Tilni tanlang / Choose the language',
@@ -154,13 +423,12 @@ def stepHandler(user, message):
                 'remove_keyboard': True})
         })
     elif user.user_step == "get_contact":
-        print('con')
         bot_request("sendMessage", {
             "chat_id": user.user_id,
-            'text': "contactni kiriting",
+            'text': translate(user=user, text="contactni kiriting"),
             "reply_markup": json.dumps({
                 "keyboard": [[{
-                    'text': "contact",
+                    'text': translate(user=user, text="contact"),
                     'request_contact': True
                 }]],
                 'remove_keyboard': True
@@ -175,11 +443,11 @@ def redirectToHomePage(message):
     user_id = message['from']['id']
     bot_request("sendMessage", {
         "chat_id": user_id,
-        'text': "home page",
+        'text': translate(message=message, text="home page"),
         "reply_markup": json.dumps({
             "keyboard": [
                 [
-                    translate(message=message, text="tarjima tilini kiritish"), translate(message=message, text='setting')
+                    translate(message=message, text="apply to uni"), translate(message=message, text='setting')
                 ], [
                     translate(message=message, text='biz haqimizda')
                 ]
@@ -187,3 +455,154 @@ def redirectToHomePage(message):
             'resize_keyboard': True
         })
     })
+
+
+def settingHandler(message):
+    user_id = message['from']['id']
+    userModel = BotUsers.objects.get(user_id=user_id)
+    muloqot_tili = translate(text="O'zbekcha", message=message) if userModel.user_lang == 'uz' else translate(message=message, text='English')
+    text = f"<b>{translate(text='Muloqot tili', message=message)}:</b> {muloqot_tili}\n" \
+           f"<b>{translate(text='phone', message=message)}:</b> {userModel.user_contact}\n\n" \
+           f'{translate(text="quyidagilardan birini tanlang", message=message)}'
+
+    bot_request('sendMessage', {
+        'chat_id': user_id,
+        'parse_mode': 'html',
+        'text': text,
+        'reply_markup': json.dumps(
+            {
+                "inline_keyboard": [
+                    [
+                        {'text': translate(text="Til", message=message), 'callback_data': 'tilni_ozgartir'},
+                        {'text': translate(text="contact", message=message), 'callback_data': 'nomerni_ozgartir'}
+                    ]
+                ]
+            }
+        )
+    }
+                )
+    
+
+
+
+
+def callbackHandler(message):
+    if message['data']:
+        user = BotUsers.objects.get(user_id=message['from']['id'])
+        if user.user_step:
+            setHandler(message, user)
+        # admission_
+        elif message['data'].split("_")[0] == 'admission':
+            message_id = message['message']['message_id']
+            delete_message(user.user_id, message_id)
+            apply_to_uni(message)
+        elif message['data'] == 'ozbekchaga_ozgartir' or message['data'] == 'inglizchaga_ozgartir':
+            changeSettingHandler(message)
+
+        elif message['data'] == 'tilni_ozgartir' or message['data'] == 'nomerni_ozgartir':
+            changeSettingHandler(message)
+
+     
+
+
+def changeSettingHandler(message):
+    user_id = message['from']['id']
+    message_id = message['message']['message_id']
+    userModel = BotUsers.objects.get(user_id=user_id)
+    if message['data'] == 'tilni_ozgartir':
+        bot_request('editMessageReplyMarkup', {
+            'chat_id': user_id,
+            'message_id': message_id,
+            'parse_mode': 'html',
+            'text': translate(text='tilni tanlang', message=message),
+            'reply_markup': json.dumps(
+                {
+                    "inline_keyboard": [
+                        [
+                            {'text': translate(text="O'zbekcha", message=message), 'callback_data': 'ozbekchaga_ozgartir'},
+                            {'text': translate(text="English", message=message), 'callback_data': 'inglizchaga_ozgartir'}
+                        ]
+                    ]
+                }
+            )
+        }
+                    )
+    elif message['data'] == "nomerni_ozgartir":
+        delete_message(user_id, message_id)
+
+        userModel.user_step = 'get_contact'
+        userModel.save()
+        setHandler(message, userModel)
+
+    elif message['data'] == 'ozbekchaga_ozgartir':
+        delete_message(user_id, message_id)
+        userModel.user_lang = 'uz'
+        userModel.save()
+        redirectToHomePage(message)
+    elif message['data'] == 'inglizchaga_ozgartir':
+        delete_message(user_id, message_id)
+        userModel.user_lang = 'en'
+        userModel.save()
+        redirectToHomePage(message)
+
+
+def delete_message(chat_id, message_id):
+    bot_request('deleteMessage', {
+        'chat_id': chat_id,
+        'message_id': message_id
+    })
+
+
+
+def contactHandler(message):
+    user_id = message['from']['id']
+    user = BotUsers.objects.get(user_id=user_id)
+    if user.user_step == "get_contact":
+        user.phone = message['contact']['phone_number']
+        user.user_step = ''
+        user.save()
+        redirectToHomePage(message)
+
+
+
+
+def admissionHandler(message):
+    user_id = message['from']['id']
+    courses = UndergraduateCourse.objects.all()
+
+    keyboards = [{'text': translate(text=f"{i.title}", message=message), 'callback_data': f"admission_{i.id}"} for i in courses]
+    bot_request('sendPhoto', {
+        'chat_id': user_id,
+        'parse_mode': 'html',
+        "photo": 'https://camuf.uz/static/images/logo.png',
+        'caption': translate(message=message, text="admission_text"),
+        'reply_markup': json.dumps(
+            {
+                "inline_keyboard": [
+                    keyboards
+                ]
+            }
+        )
+    })
+
+def apply_to_uni(message):
+    user_id = message['from']['id']
+    course_id = message['data'].split("_")[1]
+    userModel = BotUsers.objects.get(user_id=user_id)
+
+    try:
+        selected_course = UndergraduateCourse.objects.get(id=course_id)
+        try:
+            student = AppliedStudents.objects.get(bot_id=userModel.user_id)
+            student.program = selected_course
+            student.save()
+        except ObjectDoesNotExist:
+            student = AppliedStudents.objects.create(program=selected_course, bot_id=userModel.user_id)
+
+        userModel.user_step = "get_admission_name"
+        userModel.save()
+
+        stepHandler(userModel, message)
+
+    except ObjectDoesNotExist:
+        redirectToHomePage(message)
