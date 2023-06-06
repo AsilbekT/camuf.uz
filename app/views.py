@@ -533,7 +533,6 @@ def apply_form(request, slug):
                 'parse_mode': 'html',
                 "text": text
             })
-            
             return redirect("success")
 
 
