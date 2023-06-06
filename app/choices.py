@@ -1,5 +1,5 @@
 COUNTRY_CHOICES = (
-    ('', 'Choose Your Country'),
+    ('', 'Davlatizni tanlang'),
     ("AF", "Afghanistan"),
     ("AX", "Aland Islands"),
     ("AL", "Albania"),
@@ -252,7 +252,7 @@ COUNTRY_CHOICES = (
 
 
 SCHOOL_CHOICES = (
-    ("", "Select Your schooling"),
+    ("", "Tamomlagan bilim yurtini tastiqlovchi xujjat"),
     ("O'rta maktab", "O'rta maktab"),
     ("Litsey", "Litsey"),
     ("Bilim yurti", "Bilim yurti"),
@@ -260,7 +260,7 @@ SCHOOL_CHOICES = (
 )
 
 SOCIAL_STATUS = (
-    ("", "Social Status"),
+    ("", "Ijtimoiy xolat"),
     ("Yoshlar daftari", "Yoshlar daftari"),
     ("Ayollar daftari", "Ayollar daftari"),
     ("Temir daftar", "Temir daftar"),

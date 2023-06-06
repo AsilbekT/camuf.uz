@@ -66,14 +66,14 @@ class AppliedStudentsForm(forms.ModelForm):
         widget=forms.TextInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
             'id': 'passport','placeholder': 
-            'Passport Seriya raqami'
+            'Pasport Seriya raqami'
             })
         )
     passport_pdf = forms.FileField(
         widget=forms.FileInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
             'id': 'passport',
-            'placeholder': 'Passport PDF',
+            'placeholder': 'Pasport nusxasi',
         })
     )
     country = forms.ChoiceField(
@@ -107,7 +107,7 @@ class AppliedStudentsForm(forms.ModelForm):
         widget=forms.FileInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
             'id': 'diploma',
-            'placeholder': 'Submit your diploma',
+            'placeholder': 'Diplom nusxasi',
         })
     )
     social_status = forms.ChoiceField(
@@ -126,13 +126,13 @@ class AppliedStudentsForm(forms.ModelForm):
     phone_number = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
-            'placeholder': 'Phone number'
+            'placeholder': 'Telefon raqam'
             })
         )
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
-            'placeholder': 'Email',
+            'placeholder': 'Elektron manzil',
         })
     )
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
