@@ -1,10 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Success</title>
+  <title>Success Page</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    
+    .container {
+      text-align: center;
+    }
+    
+    .icon {
+      width: 80px;
+      height: 80px;
+      background-color: #4CAF50;
+      color: #fff;
+      font-size: 48px;
+      line-height: 80px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    
+    .message {
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+  <script>
+    setTimeout(function() {
+      window.location.href = "{% url 'home' %}";
+    }, 3000);
+  </script>
 </head>
 <body>
-    <h1>Application Submitted Successfully!</h1>
-    <p>Thank you for applying.</p>
+  <div class="container">
+    <div class="icon">&#10003;</div>
+    <div class="message">Sizni so'rovingiz muvaffaqqiyatli qabul qilindi, sizga elektron pochta orqali javob beramiz!</div>
+  </div>
 </body>
 </html>

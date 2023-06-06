@@ -291,6 +291,7 @@ class InterestedPeople(models.Model):
 
 
 class AppliedStudents(models.Model):
+    program = models.ForeignKey(UndergraduateCourse, on_delete=models.CASCADE, blank=True, null=True)
     surname = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
     fathers_name = models.CharField(max_length=200)

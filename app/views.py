@@ -507,9 +507,14 @@ def apply_form(request, slug):
 
     if request.method == 'POST':
         form = AppliedStudentsForm(request.POST, request.FILES)
+
         if form.is_valid():
             instance = form.save()
+            instance.program = course
+            instance.save()
+
             text = f"<b>Yangi arizachi</b>\n"
+            text += f"<b>Yo'nalish:</b> {course.title}\n"
             text += f"<b>Familiyasi:</b> {form.cleaned_data['surname']}\n"
             text += f"<b>Ismi:</b> {form.cleaned_data['name']}\n"
             text += f"<b>Otasining ismi:</b> {form.cleaned_data['fathers_name']}\n"
@@ -529,7 +534,7 @@ def apply_form(request, slug):
                 "text": text
             })
             
-        form = AppliedStudentsForm()
+            return redirect("success")
 
 
     else:
@@ -538,7 +543,8 @@ def apply_form(request, slug):
         "status": status, 
         'phones': phones,
         'emails': emails,
-        'form': form
+        'form': form,
+        'slug': slug
         }
     return render(request, 'admission.html', context)
 
