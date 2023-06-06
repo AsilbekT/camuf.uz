@@ -6,12 +6,11 @@ from app.models import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import gettext as _
 from django.utils.translation import get_language, activate, gettext
-from django.utils import translation
-from django.http import HttpResponseRedirect
 from django.db.models import Q
 import requests
 from itertools import chain
-from .credentials import URL
+from bot.credentials import URL
+from .forms import AppliedStudentsForm
 # Create your views here.
 
 
@@ -34,11 +33,6 @@ def index(request):
         }
     return render(request, "index.html", context)
 
-def admission(request):
-    
-
-    context = {}
-    return render(request, "about-us.html", context)
 
 def about(request):
     try:
@@ -456,57 +450,105 @@ def save_email(request):
 
 
 def change_lang(request):
-    LANGUAGE_SESSION_KEY = '_language'
     if request.method == "POST":
-        sent_url = request.POST['next']
+        next_url = request.POST.get('next', '/')
         old_lang = request.LANGUAGE_CODE
-        changed_lang = request.POST['language']
-        translation.activate(changed_lang)
-        request.session[LANGUAGE_SESSION_KEY] = changed_lang
-        url_details = sent_url.split('/')[1:-1]
+        changed_lang = request.POST.get('language')
 
-        # # I use HTTP_REFERER to direct them back to previous path
-        if "en/" in sent_url:
-            if changed_lang != 'uz':
-                new_url = sent_url[0:4].replace('en', changed_lang)
-                if len(url_details) > 2:
-                    new_url += url_details[1] + "/" + url_details[2] + "/"
-                elif len(url_details) > 1:
-                    new_url += url_details[1] + "/"
+        if changed_lang and changed_lang != old_lang:
+            activate(changed_lang)
+            request.session['_language'] = changed_lang
+            url_parts = next_url.split('/')
 
-                return HttpResponseRedirect(new_url)
-            elif changed_lang == 'uz':
-                new_url1 = sent_url[0:4].replace('en', '')
-                new_url = new_url1[1:]
-                if len(url_details) > 2:
-                    new_url += url_details[1] + "/" + url_details[2] + "/"
-                elif len(url_details) > 1:
-                    new_url += url_details[1] + "/"
-                return HttpResponseRedirect(new_url)
-        elif "ru/" in sent_url:
-            if changed_lang != 'uz':
-                new_url = sent_url[0:4].replace('ru', changed_lang)
-                if len(url_details) > 2:
-                    new_url += url_details[1] + "/" + url_details[2] + "/"
-                elif len(url_details) > 1:
-                    new_url += url_details[1] + "/"
-                return HttpResponseRedirect(new_url)
-            elif changed_lang == 'uz':
-                new_url1 = sent_url[0:4].replace('ru', '')
-                new_url = new_url1[1:]
-                if len(url_details) > 2:
-                    new_url += url_details[1] + "/" + url_details[2] + "/"
-                elif len(url_details) > 1:
-                    new_url += url_details[1] + "/"
-                return HttpResponseRedirect(new_url)
-        elif old_lang == "uz" and changed_lang != 'uz':
-            new_url = f"/{changed_lang}" + sent_url
+            if changed_lang == 'ru':
+                url_parts.pop(1)
 
-            return HttpResponseRedirect(new_url)
+            if old_lang == "ru" and changed_lang != "ru":
+                url_parts.insert(1, changed_lang)
 
-        return HttpResponseRedirect(sent_url)
+            if changed_lang in ['en', 'uz']:
+                url_parts[1] = url_parts[1].replace(old_lang, changed_lang)
 
+            new_url = '/'.join(url_parts)
+
+            return redirect(new_url)
+
+    return redirect(next_url)
+
+
+
+def admission(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+    gallery = UniversityGallery.objects.all()
+    courses = UndergraduateCourse.objects.all()
+    context = {
+        "status": status, 
+        'phones': phones,
+        'emails': emails,
+        'courses': courses,
+        'gallery': gallery
+        }
+    return render(request, "yonalishlar.html", context)
+
+def apply_form(request, slug):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+    
+    course = UndergraduateCourse.objects.get(slug=slug)
+
+    if request.method == 'POST':
+        form = AppliedStudentsForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save()
+            text = f"<b>Yangi arizachi</b>\n"
+            text += f"<b>Familiyasi:</b> {form.cleaned_data['surname']}\n"
+            text += f"<b>Ismi:</b> {form.cleaned_data['name']}\n"
+            text += f"<b>Otasining ismi:</b> {form.cleaned_data['fathers_name']}\n"
+            text += f"<b>Passport raqami:</b> {form.cleaned_data['passport_number']}\n"
+            text += f"<b>Passport PDF:</b> \nhttp://127.0.0.1:8000{instance.get_passport_pdf_url()}\n"
+            text += f"<b>Region:</b> {form.cleaned_data['region']}\n"
+            text += f"<b>O'qish:</b> {form.cleaned_data['schooling']}\n"
+            text += f"<b>Diplom raqami:</b> \nhttp://127.0.0.1:8000/{instance.get_diploma_url()}\n"
+            text += f"<b>Ijtimoiy holati:</b> {form.cleaned_data['social_status']}\n"
+            text += f"<b>Ijtimoiy holat fayli:</b> \nhttp://127.0.0.1:8000/{instance.get_social_status_file_url()}\n"
+            text += f"<b>Telefon raqami:</b> {form.cleaned_data['phone_number']}\n"
+            text += f"<b>Email:</b> {form.cleaned_data['email']}\n"
+
+            bot_request("sendMessage", {
+                "chat_id": -1001566478762,
+                'parse_mode': 'html',
+                "text": text
+            })
+            
+        form = AppliedStudentsForm()
+
+
+    else:
+        form = AppliedStudentsForm()
+    context = {
+        "status": status, 
+        'phones': phones,
+        'emails': emails,
+        'form': form
+        }
+    return render(request, 'admission.html', context)
+
+
+def success(request):
+    return render(request, 'success.html')
 
 def bot_request(method, data):
     requests.post(URL + method, data)
     # https://api.telegram.org/bot5838898419:AAETJYe3S96ZeMRFNv6MzkfsTDdrNu-3Qts/sendMessage?chat_id=-1001566478762&text=salom
+
+
+

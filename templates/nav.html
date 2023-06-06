@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <header class="page-head">
     <div class="rd-navbar-wrap">
         <nav class="rd-navbar novi-background rd-navbar-center" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="220px" data-xl-stick-up-offset="220px" data-xxl-stick-up-offset="220px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
@@ -45,7 +47,7 @@
                                 <li><a href="{% url 'home' %}">Universitet</a></li>
                                 <li><a href="{% url 'about' %}">Universitet haqida</a>
                                     <ul class="rd-navbar-dropdown">
-                                        <!-- <li><a href="{% url 'history' %}">Universitet tarixi</a></li> -->
+                                         <li><a href="{% url 'history' %}">Universitet tarixi</a></li>
                                         <li><a href="{% url 'leaders' %}">Rahbariyat</a></li>
                                         <li><a href="{% url 'team' %}">Bizni jamoamiz</a></li>
                                     </ul>
@@ -57,32 +59,34 @@
                                     </ul>
                                 </li>
                                 
-                                {% comment %} <li><a href="#">Pages</a>
-                                    <ul class="rd-navbar-dropdown">
-                                        <li><a href="404.html">404</a></li>
-                                        <li><a href="privacy.html">Terms of Use</a></li>
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        <li><a href="{% url 'search_result' %}">Qidiruv natijalari</a></li>
-                                        <li><a href="team-member-profile.html">Universitet kengashi</a></li>
-                                    </ul>
-                                </li> {% endcomment %}
                                 <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="{% url 'news' %}">Universitet yangiliklari</a>
                                     <ul class="rd-navbar-dropdown rd-navbar-open-right" style="">
                                         <li><a href="{% url 'articles' %}">Maqolalar</a></li>
                                         <li><a href="{% url 'news' %}">Yangiliklari</a></li>
                                         <li><a href="{% url 'events' %}">Hodisalar</a></li>
-                                        {% comment %} <li><a href="gallery.html">Fotografiya</a></li>
-                                        <li><a href="news-post-page.html">News Post Page</a></li> {% endcomment %}
                                     </ul>
                                 </li>
+                                <li><a href="{% url 'gallery' %}">Fotografiyalar</a></li>
                                 <li><a href="{% url 'contact' %}">Aloqa</a></li>
+                                <li><a href="{% url 'admission' %}">Qabul</a></li>
                                 <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="{% url 'news' %}">Tillar</a>
                                     <ul class="rd-navbar-dropdown rd-navbar-open-right" style="">
-                                        <li><a href="{% url 'articles' %}">Uz</a></li>
-                                        <li><a href="{% url 'news' %}">En</a></li>
-                                        <li><a href="{% url 'events' %}">Ru</a></li>
-                                    </ul>
-                                </li>
+                                        <form class="hero__lang--form" action="{% url 'change_lang' %}" method="post">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ request.get_full_path}}" />
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
+                                    {% for language in languages %}
+                                        <li>
+                                            <button type="submit" name="language" value="{{ language.code }}" class="lang-btn">
+                                                {{ language.code }}
+                                            </button>
+                                        </li>
+                                    {% endfor %}
+                                </form>
+                            </ul>
+                        </li>
                             </ul>
                             <div class="rd-navbar-search-mobile" id="rd-navbar-search-mobile">
                                 <form class="rd-navbar-search-form search-form-icon-right rd-search" action="{% url 'search_result' %}" method="GET">

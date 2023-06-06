@@ -1,0 +1,126 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %}Central Asian Medical University
+{% endblock %} 
+{% block link  %}
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="section breadcrumb-modern context-dark parallax-container bg-[url('/images/Contact.jpg')]">
+        <div class="parallax-content section-30 section-sm-70">
+            <div class="shell text-center">
+                <h2 class="veil reveal-sm-block mb-3">Admission</h2>
+                <div class="offset-sm-top-35">
+                    <ul class="list-inline list-inline-lg list-inline-dashed p">
+                        <li><a href="index.html">Bosh Sahifa</a></li>
+                        <li>Contact Page</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section novi-background bg-cover section-70 section-md-114 bg-default">
+        <div class="shell">
+            <h2> Universitet Rasmlari</h2>
+            <hr class="divider bg-madison">
+            <div class="offset-top-60">
+                <div class="range range-30 range-xs-center" data-lightgallery="group">
+                    {% for image in gallery %}
+    
+                            <div class="cell-xs-10 cell-sm-6 cell-md-4">
+                                <figure class="thumbnail-classic thumbnail-md">
+                                    <div class="thumbnail-classic-img-wrap">
+                                        <img src="/{{ image.image }}" alt="" width="370" height="370"> </div>
+                                    <figcaption class="thumbnail-classic-caption text-center">
+    
+    
+                                        <div class="offset-top-20 veil reveal-lg-block">
+                                            <a class="thumbnail-classic-link icon novi-icon icon-xxs fa-search-plus" href="/{{ image.image }}" data-lightgallery="item">
+                                                <img src="/{{ image.image }}" alt="" width="370" height="370"></a></div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                    {% endfor %}
+        
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="shell">
+            <h1 class="mx-auto text-3xl mb-4 md:w-2/3 mb-4 pt-4 font-black">
+                Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili uchun qabul boshlanganligini ma'lum qiladi.
+            </h1>
+            <div class="list mb-6">
+                <h2 class="text-2xl mb-6 font-extrabold" style="text-align: left;">Universitetimizning afzalliklari:</h2>
+                <ul class="list-decimal" style="text-align: left;">
+                    <li class="ml-6 mb-2" >Dual ta'lim tizimida tahsil olish</li>
+                    <li class="ml-6 mb-2">5 kunlik o‘qish tizimi</li>
+                    <li class="ml-6 mb-2">Nazariya va amaliyotning hamohang olib borilishi</li>
+                    <li class="ml-6 mb-2">Work&Travel dasturi bo‘yicha sayohatlar</li>
+                    <li class="ml-6 mb-2">Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi</li>
+                    <li class="ml-6 mb-2">Zamonaviy kampus va simulyasiya markazi</li>
+                    <li class="ml-6 mb-2">Butun dunyo kutubxonalari tarmog‘iga to‘g‘ridan-to‘g‘ri chiqish imkoniyati</li>
+                </ul>
+            </div>
+            <div class="list mb-6" style="text-align: left;">
+                <h2 class="text-2xl mb-6 font-extrabold">2023/2024 o‘quv yilida universitetga quyidagi yo‘nalishlarga talabalar qabul qilinadi:</h2>
+                <ul class="list-decimal">
+                    <li class="ml-6 mb-2">Davolash ishi – o‘qish muddati 6 yil (200 nafar)</li>
+                    <li class="ml-6 mb-2">Pediatriya ishi -  o‘qish muddati 6 yil (100 nafar)</li>
+                    <li class="ml-6 mb-2">Stomatologiya - o‘qish muddati 5 yil (200 nafar)</li>
+                </ul>
+            </div>
+            <div class="list mb-6" style="text-align: left;">
+                <h2 class="text-2xl mb-6 font-extrabold" >Qanday hujjatlar talab qilinadi?</h2>
+                <ul class="list-decimal">
+                    <li class="ml-6 mb-2">Pasport nusxasi</li>
+                    <li class="ml-6 mb-2">Attestat yoki diplom</li>
+                    <li class="ml-6 mb-2">Rasm (3.5X4.5) – 6 dona</li>
+                </ul>
+            </div>
+            <div class="list mb-6" style="text-align: left;">
+                <h2 class="text-2xl mb-6 font-extrabold" >Qanday hujjat topshiriladi?</h2>
+                <ul class="list-decimal">
+                    <li class="ml-6 mb-2">Bizni web sahifamiz orqali</li>
+                    <li class="ml-6 mb-2">Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="courses py-6">
+        <div class="container">
+            <h1 class="text-center text-3xl mb-4">Yo'nalishlar</h1>
+            <div class="shell">
+                {% for i in courses %}
+                    <div class="p-6 bg-gray-50 border border-gray-200 rounded-lg shadow mb-4"  style="text-align: left;">
+                        <img class="w-24 h-24 object-cover mb-4" src="/{{ i.image }}" alt="">
+                        <a href="{% url 'apply_form' slug=i.slug %}">
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{{ i.title |safe}}</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 md:w-2/3"> {{ i.subtitle|safe }} </p>
+                        <a href="{% url 'apply_form' slug=i.slug %}" class="inline-flex items-center text-blue-600 hover:underline">
+                            Ariza qoldirish
+                            <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z">
+                                </path>
+                                <path
+                                    d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock %} 
+    {% block link_js %}
+    <script src="{% static 'js/script.js' %}"></script>
+    
+    {% endblock %}

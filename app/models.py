@@ -6,6 +6,9 @@ from django.dispatch import receiver
 from django.conf import settings
 from django.core.mail import send_mail
 from .choices import COUNTRY_CHOICES, SCHOOL_CHOICES, SOCIAL_STATUS
+from django.conf import settings
+from urllib.parse import urljoin
+from django.utils import timezone
 # Create your models here.
 
 
@@ -24,29 +27,17 @@ class EmailAddress(models.Model):
         verbose_name_plural = "University emails"
 
 
+class UniversityGallery(models.Model):
+    image = models.ImageField(upload_to="static/db/unipics/")
 
-
-class Status(models.Model):
-    percent_of_graduations = models.IntegerField()
-    number_of_professors = models.IntegerField()
-    number_of_housing = models.IntegerField()
-    number_of_students = models.IntegerField()
-    about_university_title = HTMLField()
-    about_university_body = HTMLField()
-    about_university_image = models.ImageField(
-        upload_to="static/db/about_university/")
-
-    university_location = models.CharField(
-        max_length=300, blank=True, null=True)
-    university_email = models.ManyToManyField(EmailAddress)
-    phone_number = models.ManyToManyField(UniPhone)
-
-    def __str__(self):
-        return "Universitetni umumiy ma'lumotlari"
-
+    def __str__(self) -> str:
+        return f"University pics -> {self.id}"
+    
     class Meta:
-        verbose_name = "Status"
-        verbose_name_plural = "Statues"
+        verbose_name = "University picture"
+        verbose_name_plural = "University Pictures"
+
+
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to="static/db/gallery/")
@@ -196,6 +187,32 @@ class Leaders(models.Model):
         verbose_name = "Leader"
         verbose_name_plural = "Leaders"
 
+
+class Status(models.Model):
+    rector = models.ForeignKey(Leaders, on_delete=models.CASCADE, blank=True, null=True)
+    percent_of_graduations = models.IntegerField()
+    number_of_professors = models.IntegerField()
+    number_of_housing = models.IntegerField()
+    number_of_students = models.IntegerField()
+    about_university_title = HTMLField()
+    about_university_body = HTMLField()
+    about_university_image = models.ImageField(
+        upload_to="static/db/about_university/")
+
+    university_location = models.CharField(
+        max_length=300, blank=True, null=True)
+    university_email = models.ManyToManyField(EmailAddress)
+    phone_number = models.ManyToManyField(UniPhone)
+
+    def __str__(self):
+        return "Universitetni umumiy ma'lumotlari"
+
+    class Meta:
+        verbose_name = "Status"
+        verbose_name_plural = "Statues"
+
+
+
 class Event(models.Model):
     in_charge = models.ForeignKey(
         Workers,  on_delete=models.CASCADE, blank=True, null=True)
@@ -279,21 +296,48 @@ class AppliedStudents(models.Model):
     fathers_name = models.CharField(max_length=200)
     passport_number = models.CharField(max_length=200)
     passport_pdf = models.FileField(upload_to="static/users/passports")
-    country = models.CharField(max_length=2, choices=COUNTRY_CHOICES)
+    country = models.CharField(max_length=200, choices=COUNTRY_CHOICES)
     region = models.CharField(max_length=200)
     district = models.CharField(max_length=200)
-    district = models.CharField(max_length=200)
-    schooling = models.CharField(max_length=2, choices=SCHOOL_CHOICES)
+    schooling = models.CharField(max_length=200, choices=SCHOOL_CHOICES)
     diploma = models.FileField(upload_to="static/users/diplomas")
-    social_status = models.CharField(max_length=2, choices=SOCIAL_STATUS)
+    social_status = models.CharField(max_length=200, choices=SOCIAL_STATUS)
     social_status_file = models.FileField(upload_to="static/users/social_statuses")
     phone_number = models.CharField(max_length=200)
     email = models.EmailField()
+    date_created = models.DateTimeField(default=timezone.now)
     accepted = models.BooleanField(default=False)
+
 
     def __str__(self) -> str:
         return self.surname  + ", " + self.name
+    
+    def get_passport_pdf_url(self):
+        if self.passport_pdf:
+            return urljoin(settings.MEDIA_URL, self.passport_pdf.name)
+        return None
 
+    def get_diploma_url(self):
+        if self.diploma:
+            return urljoin(settings.MEDIA_URL, self.diploma.name)
+        return None
+
+    def get_social_status_file_url(self):
+        if self.social_status_file:
+            return urljoin(settings.MEDIA_URL, self.social_status_file.name)
+        return None
+    
+    @classmethod
+    def get_applications_count(cls, start_date=None, end_date=None):
+        queryset = cls.objects.all()
+
+        if start_date:
+            queryset = queryset.filter(date_created__date__gte=start_date)
+
+        if end_date:
+            queryset = queryset.filter(date_created__date__lte=end_date)
+
+        return queryset.count()
     class Meta:
         verbose_name = "Applied Student"
         verbose_name_plural = "Applied Students"

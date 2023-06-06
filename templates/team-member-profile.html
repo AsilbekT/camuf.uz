@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
 {% block link  %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,7 +42,14 @@
                     <div class="text-subline"></div>
                 </div>
                 <div class="offset-top-20">
-                    <p>{{ team_member.about|safe }}</p>
+                    {% if request.LANGUAGE_CODE == 'en' %}
+                    <p>{{ team_member.about_en|safe }}</p>
+                    {% elif request.LANGUAGE_CODE == 'ru' %}
+                    <p>{{ team_member.about_ru|safe }}</p>
+                    {% else %}
+                    <p>{{ team_member.about_uz|safe }}</p>
+
+                    {% endif %}
                 </div>
                 <div class="offset-top-30 offset-sm-top-30">
                     <h6 class="text-bold">Certificates and Awards</h6>

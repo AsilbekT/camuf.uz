@@ -6,7 +6,10 @@ from . import views
 urlpatterns = [
     path('', views.index, name="home"),
     path('about/', views.about, name="about"),
+    path('gallery/', views.gallery, name="gallery"),
     path('admission/', views.admission, name="admission"),
+    path('admission/<slug:slug>/', views.apply_form, name="apply_form"),
+    path('success/', views.success, name="success"),
     path('contact/', views.contact, name="contact"),
     path('save_email/', views.save_email, name="save_email"),
 
@@ -31,4 +34,5 @@ urlpatterns = [
     path('team/<str:catagory>/<slug:slug>/',
          views.member_details, name="member_details"),
     path('search_result/', views.search_result, name="search_result"),
+    path("change_lang/", views.change_lang, name="change_lang"),
 ]
