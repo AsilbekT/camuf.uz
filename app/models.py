@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 from django.core.mail import send_mail
-from .choices import COUNTRY_CHOICES, SCHOOL_CHOICES, SOCIAL_STATUS
+from .choices import COUNTRY_CHOICES, SCHOOL_CHOICES, SOCIAL_STATUS, STUDY_LANGUAGES
 from django.conf import settings
 from urllib.parse import urljoin
 from django.utils import timezone
@@ -292,6 +292,7 @@ class InterestedPeople(models.Model):
 
 class AppliedStudents(models.Model):
     program = models.ForeignKey(UndergraduateCourse, on_delete=models.CASCADE, blank=True, null=True)
+    language = models.CharField(max_length=200, choices=STUDY_LANGUAGES, blank=True, null=True)
     surname = models.CharField(max_length=200)
     bot_id = models.CharField(max_length=200, blank=True, null=True)
     name = models.CharField(max_length=200)

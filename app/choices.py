@@ -264,5 +264,21 @@ SOCIAL_STATUS = (
     ("Yoshlar daftari", "Yoshlar daftari"),
     ("Ayollar daftari", "Ayollar daftari"),
     ("Temir daftar", "Temir daftar"),
+    ("Yo'q", "Yo'q"),
     ("Boshqa", "Boshqa")
+)
+
+COUNTRY_CHOICES_TELEGRAM = (
+    ("UZ", "Uzbekistan"),
+    ("TJ", "Tajikistan"),
+    ("KG", "Kyrgyzstan"),
+    ("KZ", "Kazakhstan"),
+    ("O", "Other")
+)
+
+STUDY_LANGUAGES = (
+    ("", "O'qish tilini tanlang"),
+    ("en", "Ingliz"),
+    ("uz", "O'zbek"),
+    ("ru", "Rus"),
 )

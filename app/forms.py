@@ -1,8 +1,8 @@
 from django import forms
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
-from .models import AppliedStudents
-from .choices import COUNTRY_CHOICES, SCHOOL_CHOICES, SOCIAL_STATUS
+from .models import AppliedStudents, UndergraduateCourse
+from .choices import COUNTRY_CHOICES, SCHOOL_CHOICES, SOCIAL_STATUS, STUDY_LANGUAGES
 
 
 class ContactForm(forms.Form):
@@ -43,6 +43,20 @@ class ContactForm(forms.Form):
 
 
 class AppliedStudentsForm(forms.ModelForm):
+    language = forms.ChoiceField(
+        choices=STUDY_LANGUAGES,
+        widget=forms.Select(attrs={
+            'class': 'block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
+            'id': 'language'
+        })
+    )
+    program = forms.ModelChoiceField(
+        queryset=UndergraduateCourse.objects.all(),
+        widget=forms.Select(attrs={
+            'class': 'block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
+            'id': 'language'
+        })
+    )
     surname = forms.CharField(widget=forms.TextInput
                               (attrs={
                                   'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
@@ -140,6 +154,8 @@ class AppliedStudentsForm(forms.ModelForm):
     class Meta:
         model = AppliedStudents
         fields = [
+            "program",
+            "language",
             'surname', 
             'name', 
             'fathers_name', 

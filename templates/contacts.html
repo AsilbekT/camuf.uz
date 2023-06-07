@@ -82,11 +82,11 @@
                         </div>
                         <div class="offset-top-15">
                             <ul class="list list-unstyled">
+                                {% for i in status.phone_number.all %}
                                 <li><span class="icon novi-icon icon-xs text-madison mdi mdi-phone text-middle"></span>
-                                    {% for i in status.phone_number.all %}
                                         <a class="text-middle inset-left-10 text-dark" href="tel:{{ i.phone }}">{{ i.phone }}</a>
+                                    </li>
                                     {% endfor %}
-                                </li>
                             </ul>
                         </div>
                     </div>

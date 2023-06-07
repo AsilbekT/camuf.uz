@@ -30,7 +30,7 @@
                 <h2 class="veil reveal-sm-block mb-3">Ariza topshirish</h2>
                 <div class="offset-sm-top-35">
                     <ul class="list-inline list-inline-lg list-inline-dashed p">
-                        <li><a href="index.html">Bosh Sahifa</a></li>
+                        <li><a href="{% url 'home' %}">Bosh Sahifa</a></li>
                         <li>Qabul</li>
                     </ul>
                 </div>
@@ -41,11 +41,18 @@
     <div class="contact-form py-6">
         <div class="container" style="text-align: left;">
             <div class="shell">
+                <hr class="divider bg-madison">
                 <div class="flex flex-row flex-wrap">
                     <div class="grow md:pr-4 mb-4 mb-0">
-                        <form action="{% url 'apply_form' slug=slug %}"  enctype="multipart/form-data" method="post">
+                        <form action="{% url 'apply_form'%}"  enctype="multipart/form-data" method="post">
                             {% csrf_token %}
                             <div class="flex flex-wrap -mx-3 mb-6">
+                                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
+                                    {{ form.language }}
+                                </div>
+                                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
+                                    {{ form.program }}
+                                </div>
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
                                     {{ form.surname }}
                                 </div>

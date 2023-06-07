@@ -2,15 +2,16 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import requests
 from django.core.exceptions import ObjectDoesNotExist
-
-from app.choices import SCHOOL_CHOICES, SOCIAL_STATUS
+import urllib.request
+from app.choices import SCHOOL_CHOICES, SOCIAL_STATUS, COUNTRY_CHOICES_TELEGRAM
 from .models import BotUsers
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .credentials import URL, BOT_API
+from .credentials import URL, BOT_API, TOKEN
 # Create your views here.
 from django.views.decorators.http import require_http_methods
 from app.models import UndergraduateCourse, AppliedStudents
+from django.core.files import File
 
 
 def index(request):
@@ -36,6 +37,8 @@ def translate(message=None, user=None, text=None):
 
     if lang == 'uz':
         words = {
+            "iltimos pasport nusxasini joylang": "Iltimos pasport nusxasini elektron shaklda jo'nating",
+            "iltimos username izni kiriting": "Iltimos, username izni kiriting",
             'setting': '⚙️ Sozlash',
             "contactni kiriting": "Quyidagi tugma orqali telefon raqamingizni kiriting",
             "apply to uni": "📄 Qabul",
@@ -59,7 +62,7 @@ def translate(message=None, user=None, text=None):
             "iltimos ismizni kiriting": "Iltimos, ismizni kiriting",
             "iltimos famliyezni kiriting": "Iltimos, familiyangizni kiriting",
             "iltimos otezni ismini kiriting": "Iltimos, otezni ismini kiriting",
-            "iltimos pasport raqamini kiriting": "Iltimos, pasport raqamini kiriting",
+            "iltimos pasport raqamini kiriting": "Iltimos, pasport va serial raqamini kiriting",
             "iltimos davlatizni kiriting": "Iltimos, mamlakatingizga kiring",
             "iltimos viloyatni kiriting": "Iltimos, viloyatingizni kiring",
             "iltimos tumanni kiriting": "Iltimos, tumaningizni kiriting",
@@ -77,6 +80,8 @@ def translate(message=None, user=None, text=None):
 
     elif lang == 'en':
         words = {
+            "iltimos username izni kiriting": "Please enter your username",
+            "iltimos pasport nusxasini joylang": "Please send us an e-version of your passport copy.",
             
             "tarjima tilini kiritish":"enter translating languages",
             'setting':'⚙️ Setting',
@@ -102,7 +107,7 @@ def translate(message=None, user=None, text=None):
             "iltimos ismizni kiriting": "Please enter your name",
             "iltimos famliyezni kiriting": "Please enter your surname",
             "iltimos otezni ismini kiriting": "Please enter your father's name",
-            "iltimos pasport raqamini kiriting": "Please enter your passport number",
+            "iltimos pasport raqamini kiriting": "Please enter your passport and serial number",
             "iltimos davlatizni kiriting": "Please enter your country",
             "iltimos viloyatni kiriting": "Please enter your region",
             "iltimos tumanni kiriting": "Please enter your district",
@@ -124,13 +129,13 @@ def translate(message=None, user=None, text=None):
 def getpost(request):
     if request.method == 'POST':
         telegram_message = json.loads(request.body)
+        print(telegram_message)
         private = True
         if 'callback_query' in telegram_message.keys():
             message = telegram_message["callback_query"]['message']
             callbackHandler(telegram_message['callback_query'])
 
         elif 'message' in telegram_message.keys():
-
             message = telegram_message['message']
             if "chat" in message.keys():
                 if message['chat']['type'] == 'private':
@@ -147,11 +152,14 @@ def getpost(request):
         if private:
             try:
                 user = BotUsers.objects.get(user_id=message['from']['id'])
-
-                if 'text' in message.keys():
+                print(message.keys())
+                if "document" in message.keys():
+                    setHandler(message=message, user=user)
+                elif 'text' in message.keys():
                     messageHandler(message, user)
-                if 'contact' in message.keys():
+                elif 'contact' in message.keys():
                     contactHandler(message)
+
             except ObjectDoesNotExist:
                 if "text" in message.keys():
                     if message['text'] == translate(text="📂 Register/ A'zo bo'lish"):
@@ -207,7 +215,6 @@ def messageHandler(message, user):
 
 
 def setHandler(message, user):
-    print(user.user_step )
     if user.user_step:
         if user.user_step == "get_admission_name":
             applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
@@ -238,9 +245,16 @@ def setHandler(message, user):
         elif user.user_step == "get_admission_passport_number":
             applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
             applied_student.passport_number = message['text']
-            user.user_step = 'get_admission_country'
+            user.user_step = 'get_admission_passport_pdf'
             applied_student.save()
             user.save()
+            stepHandler(user, message)
+        
+        elif user.user_step == "get_admission_passport_pdf":
+            if "document" in message.keys():
+                handlePdffiles(message, "passport_pdf")
+                user.user_step = 'get_admission_country'
+                user.save()
             stepHandler(user, message)
 
         elif user.user_step == "get_admission_country":
@@ -270,18 +284,33 @@ def setHandler(message, user):
         elif user.user_step == "get_admission_schooling":
             applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
             applied_student.schooling = message['text']
-            user.user_step = 'get_admission_social_status'
+            user.user_step = 'get_admission_schooling_file'
             applied_student.save()
             user.save()
+            stepHandler(user, message)
+
+        elif user.user_step == "get_admission_schooling_file":
+            if "document" in message.keys():
+                handlePdffiles(message, "schooling_file")
+                user.user_step = 'get_admission_social_status'
+                user.save()
             stepHandler(user, message)
 
         elif user.user_step == "get_admission_social_status":
             applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
             applied_student.social_status = message['text']
-            user.user_step = 'get_admission_phone_number'
+            user.user_step = 'get_admission_social_status_file'
             applied_student.save()
             user.save()
             stepHandler(user, message)
+
+        elif user.user_step == "get_admission_social_status_file":
+            if "document" in message.keys():
+                handlePdffiles(message, "social_status_file")
+                user.user_step = 'get_admission_phone_number'
+                user.save()
+            stepHandler(user, message)
+
 
         elif user.user_step == "get_admission_phone_number":
             applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
@@ -298,7 +327,6 @@ def setHandler(message, user):
             stepHandler(user, message)
 
         elif user.user_step == 'get_lang':
-            print("here")
             user.user_lang = message['text']
             user.user_step = 'get_name'
             user.save()
@@ -353,12 +381,36 @@ def stepHandler(user, message):
             "reply_markup": json.dumps({
                 'remove_keyboard': True})
         })
+        
+    elif user.user_step == "get_admission_passport_pdf":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text='iltimos pasport nusxasini joylang'),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+        
 
+    elif user.user_step == "get_admission_schooling_file":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text="iltimos tamomlagan bilim yurtini tastiqlovchi xujjatni jo'nating"),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
+    elif user.user_step == "get_admission_social_status_file":
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(user=user, text="iltimos ijtimoiy xolatni tastiqlovchi xujjatni jo'nating"),
+            "reply_markup": json.dumps({
+                'remove_keyboard': True})
+        })
     elif user.user_step == "get_admission_country":
         bot_request("sendMessage", {
             "chat_id": user.user_id,
             'text': translate(user=user, text='iltimos davlatizni kiriting'),
             "reply_markup": json.dumps({
+                'keyboard': [[choice[1] for choice in COUNTRY_CHOICES_TELEGRAM]],
                 'remove_keyboard': True})
         })
 
@@ -387,6 +439,7 @@ def stepHandler(user, message):
                 'resize_keyboard': True
                 })
         })
+
 
     elif user.user_step == "get_admission_social_status":
         bot_request("sendMessage", {
@@ -418,7 +471,7 @@ def stepHandler(user, message):
     elif user.user_step == "get_name":
         bot_request("sendMessage", {
             "chat_id": user.user_id,
-            'text': translate(user=user, text='iltimos ismizni kiriting'),
+            'text': translate(user=user, text='iltimos username izni kiriting'),
             "reply_markup": json.dumps({
                 'remove_keyboard': True})
         })
@@ -606,3 +659,31 @@ def apply_to_uni(message):
 
     except ObjectDoesNotExist:
         redirectToHomePage(message)
+
+
+
+def handlePdffiles(message, file_type):
+    file_id = message['document']['file_id']
+    user_id = message['from']['id']
+    applied_students = AppliedStudents.objects.get(bot_id=user_id)
+
+    if file_type == "get_admission_country":
+        get_file_path_save(file_id=file_id, file_type=applied_students.passport_pdf)
+    elif file_type == "schooling_file":
+        get_file_path_save(file_id=file_id, file_type=applied_students.diploma)
+    elif file_type == "social_status_file":
+        get_file_path_save(file_id=file_id, file_type=applied_students.social_status_file)
+    applied_students.save()
+
+
+
+def get_file_path_save(file_id, file_type):
+    res = requests.get(f"https://api.telegram.org/bot{TOKEN}/getFile?file_id={file_id}").json()
+    file_path = f"https://api.telegram.org/file/bot{TOKEN}/{res['result']['file_path']}"
+    download_and_save_file(file_path, file_type)
+    
+
+def download_and_save_file(url, file_field):
+    response = urllib.request.urlopen(url)
+    file_name = url.split('/')[-1]
+    file_field.save(file_name, File(response))

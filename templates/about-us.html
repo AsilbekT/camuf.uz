@@ -26,7 +26,7 @@
                 <a href="{% url 'home' %}">
                     <img class="img-responsive reveal-inline-block" src="/{{ status.about_university_image }}" alt=""></a></div>
             <div class="cell-sm-7 cell-md-7 cell-sm-push-1">
-                <h3 class="text-bold">A Few Words <br class="veil reveal-lg-inline-block"> About the University</h3>
+                <h3 class="text-bold">Bizni Haqimizda</h3>
                 <hr class="divider bg-madison hr-sm-left-0">
                 <div class="offset-top-30 offset-md-top-30">
                     {{ status.about_university_title | safe }}
@@ -44,7 +44,7 @@
                 <div class="offset-top-30">
                     <p>Jamoamizga qo'shiling va kelajagdagi muvaffaqiyatingiz uchun birinchi qadamni qo'ying</p>
                 </div>
-                <div class="offset-top-35 offset-lg-top-70"><a class="btn btn-primary" href="#">Ariza topshirish</a></div>
+                <div class="offset-top-35 offset-lg-top-70"><a class="btn btn-primary" href="{% url "apply_form" %}">Ariza topshirish</a></div>
             </div>
         </div>
     </div>

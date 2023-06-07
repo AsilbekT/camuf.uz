@@ -495,7 +495,7 @@ def admission(request):
         }
     return render(request, "yonalishlar.html", context)
 
-def apply_form(request, slug):
+def apply_form(request):
     try:
         status = Status.objects.get(id=1)
         phones = status.phone_number.all()
@@ -503,18 +503,16 @@ def apply_form(request, slug):
     except:
         status = None
     
-    course = UndergraduateCourse.objects.get(slug=slug)
 
     if request.method == 'POST':
         form = AppliedStudentsForm(request.POST, request.FILES)
 
         if form.is_valid():
             instance = form.save()
-            instance.program = course
-            instance.save()
+
 
             text = f"<b>Yangi arizachi</b>\n"
-            text += f"<b>Yo'nalish:</b> {course.title}\n"
+            text += f"<b>Yo'nalish:</b> {form.cleaned_data['title']}\n"
             text += f"<b>Familiyasi:</b> {form.cleaned_data['surname']}\n"
             text += f"<b>Ismi:</b> {form.cleaned_data['name']}\n"
             text += f"<b>Otasining ismi:</b> {form.cleaned_data['fathers_name']}\n"
@@ -543,7 +541,6 @@ def apply_form(request, slug):
         'phones': phones,
         'emails': emails,
         'form': form,
-        'slug': slug
         }
     return render(request, 'admission.html', context)
 
