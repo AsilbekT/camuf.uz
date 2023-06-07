@@ -4,15 +4,19 @@ import requests
 from django.core.exceptions import ObjectDoesNotExist
 import urllib.request
 from app.choices import SCHOOL_CHOICES, SOCIAL_STATUS, COUNTRY_CHOICES_TELEGRAM
-from .models import BotUsers
+from .models import BotUsers, BotAdmin
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .credentials import URL, BOT_API, TOKEN
+from django.utils.timezone import make_naive
+from .credentials import URL, BOT_API, TOKEN, BASE_DOMAIN
 # Create your views here.
 from django.views.decorators.http import require_http_methods
 from app.models import UndergraduateCourse, AppliedStudents
 from django.core.files import File
-
+from django.contrib.auth.models import Group
+import datetime
+import pandas as pd
+import os
 
 def index(request):
     return HttpResponse("index is working")
@@ -37,6 +41,7 @@ def translate(message=None, user=None, text=None):
 
     if lang == 'uz':
         words = {
+            "statistika": "📊 Statistika",
             "iltimos pasport nusxasini joylang": "Iltimos pasport nusxasini elektron shaklda jo'nating",
             "iltimos username izni kiriting": "Iltimos, username izni kiriting",
             'setting': '⚙️ Sozlash',
@@ -58,7 +63,10 @@ def translate(message=None, user=None, text=None):
             "Stomatologiya": "🦷 Stomatologiya",
             "Davolash ishi": "💊 Davolash ishi",
             "Pediatriya": "💉️️ Pediatriya",
-
+            "Iltimos quyidagilardan tanlang": "Itimos quyidagilardan birini tanlang",
+            "all": "Hammasi",
+            "today": "Bugungilik",
+            "last_week": "Bir haftalik",
             "iltimos ismizni kiriting": "Iltimos, ismizni kiriting",
             "iltimos famliyezni kiriting": "Iltimos, familiyangizni kiriting",
             "iltimos otezni ismini kiriting": "Iltimos, otezni ismini kiriting",
@@ -82,7 +90,8 @@ def translate(message=None, user=None, text=None):
         words = {
             "iltimos username izni kiriting": "Please enter your username",
             "iltimos pasport nusxasini joylang": "Please send us an e-version of your passport copy.",
-            
+            "statistika": "📊 Statistics",
+            "Iltimos quyidagilardan tanlang": "Please choose one of the following",
             "tarjima tilini kiritish":"enter translating languages",
             'setting':'⚙️ Setting',
             "contact": "📞 Phone number",
@@ -93,7 +102,9 @@ def translate(message=None, user=None, text=None):
             "please enter your name":'Please enter your name',
             "contactni kiriting": "Please enter your phone number via the button bellow!",
             "home page": "Please select an option below to let us know how we can assist you!",
-
+            "all": "All",
+            "today": "Today",
+            "last_week": "Last week",
             "Til": "Languages 🇺🇿 🇺🇸",
             "quyidagilardan birini tanlang": "Choose one of the following",
             "Muloqot tili": "Current language",
@@ -129,7 +140,6 @@ def translate(message=None, user=None, text=None):
 def getpost(request):
     if request.method == 'POST':
         telegram_message = json.loads(request.body)
-        print(telegram_message)
         private = True
         if 'callback_query' in telegram_message.keys():
             message = telegram_message["callback_query"]['message']
@@ -152,13 +162,20 @@ def getpost(request):
         if private:
             try:
                 user = BotUsers.objects.get(user_id=message['from']['id'])
-                print(message.keys())
-                if "document" in message.keys():
-                    setHandler(message=message, user=user)
-                elif 'text' in message.keys():
-                    messageHandler(message, user)
-                elif 'contact' in message.keys():
-                    contactHandler(message)
+                if is_bot_admin(user):
+                    if "document" in message.keys():
+                        setHandler(message=message, user=user)
+                    elif 'text' in message.keys():
+                        messageHandler(message, user, admin=True)
+                    elif 'contact' in message.keys():
+                        contactHandler(message)
+                else:
+                    if "document" in message.keys():
+                        setHandler(message=message, user=user)
+                    elif 'text' in message.keys():
+                        messageHandler(message, user)
+                    elif 'contact' in message.keys():
+                        contactHandler(message)
 
             except ObjectDoesNotExist:
                 if "text" in message.keys():
@@ -189,15 +206,38 @@ def setwebhook(request):
     response = requests.post(BOT_API + "setWebhook?url=" + URL).json()
     return HttpResponse(f"{response}")
 
+def is_bot_admin(bot_user):
+    return bot_user.bot_users.exists()
 
 def bot_request(method, data):
     return requests.post(BOT_API + method, data)
 
 
-def messageHandler(message, user):
+
+def messageHandler(message, user, admin=False):
     user = BotUsers.objects.get(user_id=message['from']['id'])
     if user.user_step:
         setHandler(message, user)
+    elif message['text'] == translate(message=message, text="statistika"):
+        bot_request("sendMessage", {
+            "chat_id": user.user_id,
+            'text': translate(message=message, text="Iltimos quyidagilardan tanlang"),
+            "reply_markup": json.dumps({
+                "keyboard": [
+                    [translate(message=message, text=i.title) for i in UndergraduateCourse.objects.all()],
+                    ],
+                'resize_keyboard': True
+            })
+        })
+
+    elif message['text'] == translate(message=message, text="Stomatologiya"):
+        statisticsHandler(user, 'Stomatologiya')
+    elif message['text'] == translate(message=message, text="Pediatriya"):
+        statisticsHandler(user, "Pediatriya")
+    elif message['text'] == translate(message=message, text="Davolash ishi"):
+        statisticsHandler(user, "Davolash ishi")
+
+
     elif message['text'] == translate(message=message, text="setting"):
         settingHandler(message)
     elif message['text'] == translate(message=message, text="apply to uni"):
@@ -211,8 +251,28 @@ def messageHandler(message, user):
         })
     # 
     else:
-        redirectToHomePage(message)
+        redirectToHomePage(message, admin=admin)
 
+
+def statisticsHandler(user, program):
+    bot_request('sendMessage', {
+        'chat_id':user.user_id,
+        'parse_mode': 'html',
+        'text': translate(user=user, text="Iltimos quyidagilardan birini tanlang"),
+        'reply_markup': json.dumps(
+            {
+                "inline_keyboard": [
+                    [
+                        {'text': translate(text="all", user=user), 'callback_data': f"all/{program}"},
+                        {'text': translate(text="today", user=user), 'callback_data': f"today/{program}"},
+                    ],[
+                        {'text': translate(text="last_week", user=user), 'callback_data': f"last_week/{program}"}
+                    ]
+                ]
+            }
+        )
+    }
+                )
 
 def setHandler(message, user):
     if user.user_step:
@@ -299,9 +359,15 @@ def setHandler(message, user):
         elif user.user_step == "get_admission_social_status":
             applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
             applied_student.social_status = message['text']
-            user.user_step = 'get_admission_social_status_file'
-            applied_student.save()
-            user.save()
+            if message['text'] != translate(message=message, text="Yo'q"):
+                user.user_step = 'get_admission_social_status_file'
+                applied_student.save()
+                user.save()
+            else:
+                user.user_step = 'get_admission_phone_number'
+                applied_student.save()
+                user.save()
+
             stepHandler(user, message)
 
         elif user.user_step == "get_admission_social_status_file":
@@ -324,6 +390,26 @@ def setHandler(message, user):
                 'parse_mode': 'html',
                 'text': translate(user=user, text="qabul qilindi")
                 })
+            text = f"<b>Yangi arizachi</b>\n"
+            text += f"<b>Yo'nalish:</b> {applied_student.program.title}\n"
+            text += f"<b>Familiyasi:</b> {applied_student.surname}\n"
+            text += f"<b>Ismi:</b> {applied_student.name}\n"
+            text += f"<b>Otasining ismi:</b> {applied_student.fathers_name}\n"
+            text += f"<b>Passport raqami:</b> {applied_student.passport_number}\n"
+            text += f"<b>Passport PDF:</b> \nhttps://camuf.uz{applied_student.get_passport_pdf_url()}\n"
+            text += f"<b>Region:</b> {applied_student.region}\n"
+            text += f"<b>O'qish:</b> {applied_student.schooling}\n"
+            text += f"<b>Diplom raqami:</b> \nhttps://camuf.uz/{applied_student.get_diploma_url()}\n"
+            text += f"<b>Ijtimoiy holati:</b> {applied_student.social_status}\n"
+            text += f"<b>Ijtimoiy holat fayli:</b> \nhttps://camuf.uz/{applied_student.get_social_status_file_url()}\n"
+            text += f"<b>Telefon raqami:</b> {applied_student.phone_number}\n"
+            text += f"<b>Email:</b> {applied_student.email}\n"
+
+            bot_request("sendMessage", {
+                "chat_id": -1001566478762,
+                'parse_mode': 'html',
+                "text": text
+            })
             stepHandler(user, message)
 
         elif user.user_step == 'get_lang':
@@ -350,7 +436,6 @@ def setHandler(message, user):
 
 def stepHandler(user, message):
     if user.user_step == "get_admission_name":
-        print("here")
         bot_request("sendMessage", {
             "chat_id": user.user_id,
             'text': translate(user=user, text='iltimos ismizni kiriting'),
@@ -492,19 +577,29 @@ def stepHandler(user, message):
 
 
 
-def redirectToHomePage(message):
+def redirectToHomePage(message, admin=False):
     user_id = message['from']['id']
+    if admin:
+        keyboard = [
+                    [
+                        translate(message=message, text="apply to uni"), translate(message=message, text='setting')
+                    ], [
+                        translate(message=message, text='biz haqimizda'), translate(message=message, text='statistika')
+                    ]
+                ]
+    else:
+        keyboard = [
+                    [
+                        translate(message=message, text="apply to uni"), translate(message=message, text='setting')
+                    ], [
+                        translate(message=message, text='biz haqimizda')
+                    ]
+                ]
     bot_request("sendMessage", {
         "chat_id": user_id,
         'text': translate(message=message, text="home page"),
         "reply_markup": json.dumps({
-            "keyboard": [
-                [
-                    translate(message=message, text="apply to uni"), translate(message=message, text='setting')
-                ], [
-                    translate(message=message, text='biz haqimizda')
-                ]
-            ],
+            "keyboard": keyboard,
             'resize_keyboard': True
         })
     })
@@ -545,6 +640,17 @@ def callbackHandler(message):
         if user.user_step:
             setHandler(message, user)
         # admission_
+
+        elif "all" in message['data'] and '/' in message['data']:
+            program = message['data'].split("/")[1]
+            export_and_send_application_info(message, "all", program)
+        elif "today" in message['data'] and '/' in message['data']:
+            program = message['data'].split("/")[1]
+            export_and_send_application_info(message, "today", program)
+        elif "last_week" in message['data'] and '/' in message['data']:
+            program = message['data'].split("/")[1]
+            export_and_send_application_info(message, "last_week", program)
+
         elif message['data'].split("_")[0] == 'admission':
             message_id = message['message']['message_id']
             delete_message(user.user_id, message_id)
@@ -687,3 +793,89 @@ def download_and_save_file(url, file_field):
     response = urllib.request.urlopen(url)
     file_name = url.split('/')[-1]
     file_field.save(file_name, File(response))
+
+
+def export_and_send_application_info(message, option, program, all_in_one=False):
+    # Send the Excel file to the Telegram bot using the bot_request function
+    message_id = message['message']['message_id']
+    user_id = message['from']['id']
+    delete_message(user_id, message_id)
+    
+    try:
+        course = UndergraduateCourse.objects.get(title=program)
+    except ObjectDoesNotExist:
+        course = None
+
+    today = datetime.date.today()
+    last_week = today - datetime.timedelta(days=7)
+    if all_in_one:
+        if option == 'today':
+            applications = AppliedStudents.objects.filter(date_created__date=today)
+        elif option == 'last_week':
+            applications = AppliedStudents.objects.filter(date_created__date__gte=last_week, date_created__date__lte=today)
+        elif option == 'all':
+            applications = AppliedStudents.objects.all()
+        else:
+            print("Invalid option.")
+            return
+    else:
+        if option == 'today':
+            applications = course.program.filter(date_created__date=today)
+        elif option == 'last_week':
+            applications = course.program.filter(date_created__date__gte=last_week, date_created__date__lte=today)
+        elif option == 'all':
+            applications = course.program.all()
+        else:
+            print("Invalid option.")
+            return       
+    if applications.count() > 0:
+        # Convert the queryset to a Pandas DataFrame
+        df = pd.DataFrame(list(applications.values()))
+        # Convert datetime fields to timezone-unaware
+        df['date_created'] = df['date_created'].apply(make_naive)
+
+        # Export DataFrame to Excel
+        excel_file_path = f"static/statistics/{user_id}_application_info.xlsx"
+        df.to_excel(excel_file_path, index=False)
+
+        file_url = f"{BASE_DOMAIN}static/statistics/{user_id}_application_info.xlsx"
+
+        send_file_from_url(file_url, user_id)
+
+        # Remove the temporary Excel file
+        os.remove(excel_file_path)
+    else:
+        bot_request("sendMessage", {
+            "chat_id": user_id,
+            "text": translate(message=message, text="hali hech narsa yo'q")
+        })
+    redirectToHomePage(message=message, admin=True)
+
+def send_file_from_url(file_url, chat_id):
+    bot_api_method = "sendDocument"
+    bot_api_url = f"https://api.telegram.org/bot{TOKEN}/{bot_api_method}"
+
+    # Download the file from the URL
+    response = requests.get(file_url)
+
+    if response.status_code == 200:
+        # Extract the filename from the URL
+        file_name = file_url.split("/")[-1]
+
+        # Prepare the request data with the downloaded file
+        files = {"document": (file_name, response.content)}
+        data = {"chat_id": chat_id}
+
+        response = requests.post(bot_api_url, files=files, data=data)
+
+        if response.status_code == 200:
+            print("File sent successfully!")
+        else:
+            print("Failed to send the file.")
+    else:
+        print("Failed to download the file.")
+
+
+
+
+

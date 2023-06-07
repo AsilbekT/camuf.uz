@@ -11,3 +11,7 @@ class BotUsers(models.Model):
 
     def __str__(self):
         return self.fullname
+    
+
+class BotAdmin(models.Model):
+    user = models.ManyToManyField(BotUsers, related_name="bot_users")
