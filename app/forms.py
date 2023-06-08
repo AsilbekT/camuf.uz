@@ -135,7 +135,8 @@ class AppliedStudentsForm(forms.ModelForm):
         widget=forms.FileInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
             'id': 'social_status_file',
-        })
+        }),
+        required=False
     )
     phone_number = forms.CharField(
         widget=forms.TextInput(attrs={

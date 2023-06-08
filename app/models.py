@@ -305,7 +305,7 @@ class AppliedStudents(models.Model):
     schooling = models.CharField(max_length=200, choices=SCHOOL_CHOICES)
     diploma = models.FileField(upload_to="static/users/diplomas")
     social_status = models.CharField(max_length=200, choices=SOCIAL_STATUS)
-    social_status_file = models.FileField(upload_to="static/users/social_statuses")
+    social_status_file = models.FileField(upload_to="static/users/social_statuses", null=True, blank=True)
     phone_number = models.CharField(max_length=200)
     email = models.EmailField()
     date_created = models.DateTimeField(default=timezone.now)
