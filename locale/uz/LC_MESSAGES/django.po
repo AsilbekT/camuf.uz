@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 21:50+0500\n"
+"POT-Creation-Date: 2023-06-19 22:54+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,67 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: app/choices.py:257
-msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
-msgstr "Tamomlagan bilim yurtini tastiqlovchi xujjat"
-
-#: app/choices.py:281
+#: app/choices.py:283
 #, fuzzy
 #| msgid "English"
 msgid "Ingliz"
 msgstr "Inglizcha"
 
-#: app/choices.py:282
+#: app/choices.py:284
 #, fuzzy
 #| msgid "Uzbek"
 msgid "O'zbek"
 msgstr "O'zbekcha"
 
-#: app/choices.py:283
+#: app/choices.py:285
 #, fuzzy
 #| msgid "Russian"
 msgid "Rus"
 msgstr "Ruscha"
-
-#: app/forms.py:66 templates/contacts.html:44
-msgid "Familiya"
-msgstr "Familiya"
-
-#: app/forms.py:72 templates/contacts.html:38
-msgid "Ism"
-msgstr "Ism"
-
-#: app/forms.py:79
-msgid "Otasini ismi"
-msgstr "Otasini ismi"
-
-#: app/forms.py:85
-msgid "Pasport Seriya raqami"
-msgstr "Pasport Seriya raqami"
-
-#: app/forms.py:92 templates/yonalishlar.html:55
-msgid "Pasport nusxasi"
-msgstr "Pasport nusxasi"
-
-#: app/forms.py:105
-msgid "Viloyat"
-msgstr "Viloyat"
-
-#: app/forms.py:111
-msgid "Tuman"
-msgstr "Tuman"
-
-#: app/forms.py:126
-msgid "Diplom nusxasi"
-msgstr "Diplom nusxasi"
-
-#: app/forms.py:146
-msgid "Telefon raqam"
-msgstr "Telefon raqam"
-
-#: app/forms.py:152
-msgid "Elektron manzil"
-msgstr "Elektron manzil"
 
 #: app/models.py:20
 #, fuzzy
@@ -293,19 +249,67 @@ msgstr "O'qish tilini tanlang"
 msgid "select_study_program"
 msgstr "Mutaxassislikni tanlang"
 
+#: templates/admission.html:68 templates/contacts.html:44
+msgid "Familiya"
+msgstr "Familiya"
+
+#: templates/admission.html:74 templates/contacts.html:38
+msgid "Ism"
+msgstr "Ism"
+
 #: templates/admission.html:80
-msgid "Pasport ni yuklang"
-msgstr "Pasport ni yuklang"
+msgid "Otasini ismi"
+msgstr "Otasini ismi"
+
+#: templates/admission.html:86
+msgid "Pasport Seriya raqami"
+msgstr "Pasport Seriya raqami"
+
+#: templates/admission.html:92 templates/yonalishlar.html:55
+msgid "Pasport nusxasi"
+msgstr "Pasport nusxasi"
 
 #: templates/admission.html:99
+#, fuzzy
+#| msgid "Oliy ta'limni ta'minlash"
+msgid "Davlatizni tanlang"
+msgstr "Oliy ta'limni ta'minlash"
+
+#: templates/admission.html:105
+msgid "Viloyat"
+msgstr "Viloyat"
+
+#: templates/admission.html:111
+msgid "Tuman"
+msgstr "Tuman"
+
+#: templates/admission.html:117
+msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
+msgstr "Tamomlagan bilim yurtini tastiqlovchi xujjat"
+
+#: templates/admission.html:123
 msgid "Diplomizni yuklang"
 msgstr "Diplomizni yuklang"
 
-#: templates/admission.html:112
+#: templates/admission.html:130
+#, fuzzy
+#| msgid "Ijtimoiy tarmoqlarda"
+msgid "Ijtimoiy xolat"
+msgstr "Ijtimoiy tarmoqlarda"
+
+#: templates/admission.html:136
+msgid "Telefon raqam"
+msgstr "Telefon raqam"
+
+#: templates/admission.html:142
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 msgstr "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 
-#: templates/admission.html:128
+#: templates/admission.html:150
+msgid "Elektron manzil"
+msgstr "Elektron manzil"
+
+#: templates/admission.html:161
 msgid "Yuborish"
 msgstr "Yuborish"
 
@@ -604,9 +608,7 @@ msgid "Oliy ta'limni ta'minlash"
 msgstr "Oliy ta'limni ta'minlash"
 
 #: templates/index.html:42 templates/index.html:77
-#, fuzzy
-#| msgid "Biz haqimizda"
-msgid "Biz haqimizda"
+msgid "biz_haqimizda"
 msgstr "Biz haqimizda"
 
 #: templates/index.html:107
@@ -835,15 +837,11 @@ msgstr "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"
 msgid "Universitet Rasmlari"
 msgstr "Universitet raxbari"
 
-#, fuzzy
-#~| msgid "Ijtimoiy tarmoqlarda"
-#~ msgid "Ijtimoiy xolat"
-#~ msgstr "Ijtimoiy tarmoqlarda"
+#~ msgid "Diplom nusxasi"
+#~ msgstr "Diplom nusxasi"
 
-#, fuzzy
-#~| msgid "Oliy ta'limni ta'minlash"
-#~ msgid "O'qish tilini tanlang"
-#~ msgstr "Oliy ta'limni ta'minlash"
+#~ msgid "Pasport ni yuklang"
+#~ msgstr "Pasport ni yuklang"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 21:50+0500\n"
+"POT-Creation-Date: 2023-06-19 22:54+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,67 +20,23 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: app/choices.py:257
-msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
-msgstr "Подтверждающий документ об окончании обучения"
-
-#: app/choices.py:281
+#: app/choices.py:283
 #, fuzzy
 #| msgid "English"
 msgid "Ingliz"
 msgstr "Английский"
 
-#: app/choices.py:282
+#: app/choices.py:284
 #, fuzzy
 #| msgid "Uzbek"
 msgid "O'zbek"
 msgstr "Узбекский"
 
-#: app/choices.py:283
+#: app/choices.py:285
 #, fuzzy
 #| msgid "Russian"
 msgid "Rus"
 msgstr "Русский"
-
-#: app/forms.py:66 templates/contacts.html:44
-msgid "Familiya"
-msgstr "Фамилия"
-
-#: app/forms.py:72 templates/contacts.html:38
-msgid "Ism"
-msgstr "Имя"
-
-#: app/forms.py:79
-msgid "Otasini ismi"
-msgstr "Отчество"
-
-#: app/forms.py:85
-msgid "Pasport Seriya raqami"
-msgstr "Серия и номер паспорта"
-
-#: app/forms.py:92 templates/yonalishlar.html:55
-msgid "Pasport nusxasi"
-msgstr "Копия паспорта"
-
-#: app/forms.py:105
-msgid "Viloyat"
-msgstr "Область"
-
-#: app/forms.py:111
-msgid "Tuman"
-msgstr "Район"
-
-#: app/forms.py:126
-msgid "Diplom nusxasi"
-msgstr "Копия диплома"
-
-#: app/forms.py:146
-msgid "Telefon raqam"
-msgstr "Номер телефона"
-
-#: app/forms.py:152
-msgid "Elektron manzil"
-msgstr "Электронный адрес"
 
 #: app/models.py:20
 #, fuzzy
@@ -293,19 +249,67 @@ msgstr "Выберите язык обучения"
 msgid "select_study_program"
 msgstr "Выберите специальность"
 
+#: templates/admission.html:68 templates/contacts.html:44
+msgid "Familiya"
+msgstr "Фамилия"
+
+#: templates/admission.html:74 templates/contacts.html:38
+msgid "Ism"
+msgstr "Имя"
+
 #: templates/admission.html:80
-msgid "Pasport ni yuklang"
-msgstr "Загрузите паспорт"
+msgid "Otasini ismi"
+msgstr "Отчество"
+
+#: templates/admission.html:86
+msgid "Pasport Seriya raqami"
+msgstr "Серия и номер паспорта"
+
+#: templates/admission.html:92 templates/yonalishlar.html:55
+msgid "Pasport nusxasi"
+msgstr "Копия паспорта"
 
 #: templates/admission.html:99
+#, fuzzy
+#| msgid "Oliy ta'limni ta'minlash"
+msgid "Davlatizni tanlang"
+msgstr "Обеспечение высшего образования"
+
+#: templates/admission.html:105
+msgid "Viloyat"
+msgstr "Область"
+
+#: templates/admission.html:111
+msgid "Tuman"
+msgstr "Район"
+
+#: templates/admission.html:117
+msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
+msgstr "Подтверждающий документ об окончании обучения"
+
+#: templates/admission.html:123
 msgid "Diplomizni yuklang"
 msgstr "Загрузите диплом"
 
-#: templates/admission.html:112
+#: templates/admission.html:130
+#, fuzzy
+#| msgid "Ijtimoiy tarmoqlarda"
+msgid "Ijtimoiy xolat"
+msgstr "На социальных сетях"
+
+#: templates/admission.html:136
+msgid "Telefon raqam"
+msgstr "Номер телефона"
+
+#: templates/admission.html:142
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 msgstr "Если есть документ, подтверждающий социальное положение"
 
-#: templates/admission.html:128
+#: templates/admission.html:150
+msgid "Elektron manzil"
+msgstr "Электронный адрес"
+
+#: templates/admission.html:161
 msgid "Yuborish"
 msgstr "Отправить"
 
@@ -601,9 +605,7 @@ msgid "Oliy ta'limni ta'minlash"
 msgstr "Обеспечение высшего образования"
 
 #: templates/index.html:42 templates/index.html:77
-#, fuzzy
-#| msgid "Biz haqimizda"
-msgid "Biz haqimizda"
+msgid "biz_haqimizda"
 msgstr "О нас"
 
 #: templates/index.html:107
@@ -739,8 +741,8 @@ msgid ""
 "Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili "
 "uchun qabul boshlanganligini ma'lum qiladi."
 msgstr ""
-"Известно, что Центральный азиатский медицинский университет начал прием"
-"студентов на учебный год 2023/2024."
+"Известно, что Центральный азиатский медицинский университет начал "
+"приемстудентов на учебный год 2023/2024."
 
 #: templates/yonalishlar.html:33
 msgid "university_advantages"
@@ -829,15 +831,11 @@ msgstr "По адресу: ул. Саноат, г. Фергана, 24 (офла�
 msgid "Universitet Rasmlari"
 msgstr "Президент университета"
 
-#, fuzzy
-#~| msgid "Ijtimoiy tarmoqlarda"
-#~ msgid "Ijtimoiy xolat"
-#~ msgstr "На социальных сетях"
+#~ msgid "Diplom nusxasi"
+#~ msgstr "Копия диплома"
 
-#, fuzzy
-#~| msgid "Oliy ta'limni ta'minlash"
-#~ msgid "O'qish tilini tanlang"
-#~ msgstr "Обеспечение высшего образования"
+#~ msgid "Pasport ni yuklang"
+#~ msgstr "Загрузите паспорт"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"
@@ -849,10 +847,6 @@ msgstr "Президент университета"
 #~ msgid "Ko'proq o'rganish"
 #~ msgstr "Узнать больше"
 
-#, fuzzy
-#~| msgid "Biz haqimizda"
-#~ msgid "Biz-Haqimizda"
-#~ msgstr "О нас"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"

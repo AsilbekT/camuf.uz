@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 21:50+0500\n"
+"POT-Creation-Date: 2023-06-19 22:54+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,67 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: app/choices.py:257
-msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
-msgstr "Confirmation document of graduation"
-
-#: app/choices.py:281
+#: app/choices.py:283
 #, fuzzy
 #| msgid "English"
 msgid "Ingliz"
 msgstr "English"
 
-#: app/choices.py:282
+#: app/choices.py:284
 #, fuzzy
 #| msgid "Uzbek"
 msgid "O'zbek"
 msgstr "Uzbek"
 
-#: app/choices.py:283
+#: app/choices.py:285
 #, fuzzy
 #| msgid "Russian"
 msgid "Rus"
 msgstr "Russian"
-
-#: app/forms.py:66 templates/contacts.html:44
-msgid "Familiya"
-msgstr "Surname"
-
-#: app/forms.py:72 templates/contacts.html:38
-msgid "Ism"
-msgstr "Name"
-
-#: app/forms.py:79
-msgid "Otasini ismi"
-msgstr "Father's name"
-
-#: app/forms.py:85
-msgid "Pasport Seriya raqami"
-msgstr "Passport Serial Number"
-
-#: app/forms.py:92 templates/yonalishlar.html:55
-msgid "Pasport nusxasi"
-msgstr "Copy of Passport"
-
-#: app/forms.py:105
-msgid "Viloyat"
-msgstr "Region"
-
-#: app/forms.py:111
-msgid "Tuman"
-msgstr "District"
-
-#: app/forms.py:126
-msgid "Diplom nusxasi"
-msgstr "Copy of Diploma"
-
-#: app/forms.py:146
-msgid "Telefon raqam"
-msgstr "Phone number"
-
-#: app/forms.py:152
-msgid "Elektron manzil"
-msgstr "Email address"
 
 #: app/models.py:20
 #, fuzzy
@@ -289,19 +245,67 @@ msgstr "Choose study language"
 msgid "select_study_program"
 msgstr "Choose a major"
 
+#: templates/admission.html:68 templates/contacts.html:44
+msgid "Familiya"
+msgstr "Surname"
+
+#: templates/admission.html:74 templates/contacts.html:38
+msgid "Ism"
+msgstr "Name"
+
 #: templates/admission.html:80
-msgid "Pasport ni yuklang"
-msgstr "send your passport copy"
+msgid "Otasini ismi"
+msgstr "Father's name"
+
+#: templates/admission.html:86
+msgid "Pasport Seriya raqami"
+msgstr "Passport Serial Number"
+
+#: templates/admission.html:92 templates/yonalishlar.html:55
+msgid "Pasport nusxasi"
+msgstr "Copy of Passport"
 
 #: templates/admission.html:99
+#, fuzzy
+#| msgid "Oliy ta'limni ta'minlash"
+msgid "Davlatizni tanlang"
+msgstr "Providing Higher Education"
+
+#: templates/admission.html:105
+msgid "Viloyat"
+msgstr "Region"
+
+#: templates/admission.html:111
+msgid "Tuman"
+msgstr "District"
+
+#: templates/admission.html:117
+msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
+msgstr "Confirmation document of graduation"
+
+#: templates/admission.html:123
 msgid "Diplomizni yuklang"
 msgstr "send your diplom copy"
 
-#: templates/admission.html:112
+#: templates/admission.html:130
+#, fuzzy
+#| msgid "Ijtimoiy tarmoqlarda"
+msgid "Ijtimoiy xolat"
+msgstr "In social media"
+
+#: templates/admission.html:136
+msgid "Telefon raqam"
+msgstr "Phone number"
+
+#: templates/admission.html:142
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 msgstr "If there is a document confirming social status"
 
-#: templates/admission.html:128
+#: templates/admission.html:150
+msgid "Elektron manzil"
+msgstr "Email address"
+
+#: templates/admission.html:161
 msgid "Yuborish"
 msgstr "Submit"
 
@@ -597,9 +601,7 @@ msgid "Oliy ta'limni ta'minlash"
 msgstr "Providing Higher Education"
 
 #: templates/index.html:42 templates/index.html:77
-#, fuzzy
-#| msgid "Biz haqimizda"
-msgid "Biz haqimizda"
+msgid "biz_haqimizda"
 msgstr "About Us"
 
 #: templates/index.html:107
@@ -777,8 +779,8 @@ msgid ""
 "2023/2024 o‘quv yilida universitetga quyidagi yo‘nalishlarga talabalar qabul "
 "qilinadi:"
 msgstr ""
-"In the 2023/2024 academic year, students will be admitted to the "
-"university in the following fields:"
+"In the 2023/2024 academic year, students will be admitted to the university "
+"in the following fields:"
 
 #: templates/yonalishlar.html:47
 msgid "Davolash ishi – o‘qish muddati 6 yil (200 nafar)"
@@ -826,15 +828,11 @@ msgstr "24, Sanoat str., Fergana (offline)"
 msgid "Universitet Rasmlari"
 msgstr "University Leader"
 
-#, fuzzy
-#~| msgid "Ijtimoiy tarmoqlarda"
-#~ msgid "Ijtimoiy xolat"
-#~ msgstr "In social media"
+#~ msgid "Diplom nusxasi"
+#~ msgstr "Copy of Diploma"
 
-#, fuzzy
-#~| msgid "Oliy ta'limni ta'minlash"
-#~ msgid "O'qish tilini tanlang"
-#~ msgstr "Providing Higher Education"
+#~ msgid "Pasport ni yuklang"
+#~ msgstr "send your passport copy"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 21:50+0500\n"
+"POT-Creation-Date: 2023-06-19 22:54+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,67 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: app/choices.py:257
-msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
-msgstr "Eğitimin yapıldığı ülkeyi onaylayan bir belge"
-
-#: app/choices.py:281
+#: app/choices.py:283
 #, fuzzy
 #| msgid "English"
 msgid "Ingliz"
 msgstr "İngilizce"
 
-#: app/choices.py:282
+#: app/choices.py:284
 #, fuzzy
 #| msgid "Uzbek"
 msgid "O'zbek"
 msgstr "Özbekçe"
 
-#: app/choices.py:283
+#: app/choices.py:285
 #, fuzzy
 #| msgid "Russian"
 msgid "Rus"
 msgstr "Rusça"
-
-#: app/forms.py:66 templates/contacts.html:44
-msgid "Familiya"
-msgstr "Soyadı"
-
-#: app/forms.py:72 templates/contacts.html:38
-msgid "Ism"
-msgstr "İsim"
-
-#: app/forms.py:79
-msgid "Otasini ismi"
-msgstr "Baba Adı"
-
-#: app/forms.py:85
-msgid "Pasport Seriya raqami"
-msgstr "Pasaport Seri Numarası"
-
-#: app/forms.py:92 templates/yonalishlar.html:55
-msgid "Pasport nusxasi"
-msgstr "Pasaport Fotokopisi"
-
-#: app/forms.py:105
-msgid "Viloyat"
-msgstr "İl"
-
-#: app/forms.py:111
-msgid "Tuman"
-msgstr "İlçe"
-
-#: app/forms.py:126
-msgid "Diplom nusxasi"
-msgstr "Diploma Fotokopisi"
-
-#: app/forms.py:146
-msgid "Telefon raqam"
-msgstr "Telefon Numarası"
-
-#: app/forms.py:152
-msgid "Elektron manzil"
-msgstr "E-posta Adresi"
 
 #: app/models.py:20
 #, fuzzy
@@ -289,19 +245,67 @@ msgstr "Eğitim dili seçin"
 msgid "select_study_program"
 msgstr "Выберите специальность"
 
+#: templates/admission.html:68 templates/contacts.html:44
+msgid "Familiya"
+msgstr "Soyadı"
+
+#: templates/admission.html:74 templates/contacts.html:38
+msgid "Ism"
+msgstr "İsim"
+
 #: templates/admission.html:80
-msgid "Pasport ni yuklang"
-msgstr "Pasaportu yükleyin"
+msgid "Otasini ismi"
+msgstr "Baba Adı"
+
+#: templates/admission.html:86
+msgid "Pasport Seriya raqami"
+msgstr "Pasaport Seri Numarası"
+
+#: templates/admission.html:92 templates/yonalishlar.html:55
+msgid "Pasport nusxasi"
+msgstr "Pasaport Fotokopisi"
 
 #: templates/admission.html:99
+#, fuzzy
+#| msgid "Oliy ta'limni ta'minlash"
+msgid "Davlatizni tanlang"
+msgstr "Yüksek Öğretim Sağlama"
+
+#: templates/admission.html:105
+msgid "Viloyat"
+msgstr "İl"
+
+#: templates/admission.html:111
+msgid "Tuman"
+msgstr "İlçe"
+
+#: templates/admission.html:117
+msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
+msgstr "Eğitimin yapıldığı ülkeyi onaylayan bir belge"
+
+#: templates/admission.html:123
 msgid "Diplomizni yuklang"
 msgstr "Diplomanızı yükleyin"
 
-#: templates/admission.html:112
+#: templates/admission.html:130
+#, fuzzy
+#| msgid "Ijtimoiy tarmoqlarda"
+msgid "Ijtimoiy xolat"
+msgstr "Sosyal medyada"
+
+#: templates/admission.html:136
+msgid "Telefon raqam"
+msgstr "Telefon Numarası"
+
+#: templates/admission.html:142
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 msgstr "Sosyal statüyü teyit eden bir belge varsa"
 
-#: templates/admission.html:128
+#: templates/admission.html:150
+msgid "Elektron manzil"
+msgstr "E-posta Adresi"
+
+#: templates/admission.html:161
 msgid "Yuborish"
 msgstr "Gönder"
 
@@ -598,9 +602,7 @@ msgid "Oliy ta'limni ta'minlash"
 msgstr "Yüksek Öğretim Sağlama"
 
 #: templates/index.html:42 templates/index.html:77
-#, fuzzy
-#| msgid "Biz haqimizda"
-msgid "Biz haqimizda"
+msgid "biz_haqimizda"
 msgstr "Hakkımızda"
 
 #: templates/index.html:107
@@ -831,15 +833,11 @@ msgstr "Fergana şehri, Sanoat ko'chasi 24 (çevrimdışı)"
 msgid "Universitet Rasmlari"
 msgstr "Üniversite Yöneticisi"
 
-#, fuzzy
-#~| msgid "Ijtimoiy tarmoqlarda"
-#~ msgid "Ijtimoiy xolat"
-#~ msgstr "Sosyal medyada"
+#~ msgid "Diplom nusxasi"
+#~ msgstr "Diploma Fotokopisi"
 
-#, fuzzy
-#~| msgid "Oliy ta'limni ta'minlash"
-#~ msgid "O'qish tilini tanlang"
-#~ msgstr "Yüksek Öğretim Sağlama"
+#~ msgid "Pasport ni yuklang"
+#~ msgstr "Pasaportu yükleyin"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"
@@ -851,10 +849,6 @@ msgstr "Üniversite Yöneticisi"
 #~ msgid "Ko'proq o'rganish"
 #~ msgstr "Daha fazla bilgi edinin"
 
-#, fuzzy
-#~| msgid "Biz haqimizda"
-#~ msgid "Biz-Haqimizda"
-#~ msgstr "Hakkımızda"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"
