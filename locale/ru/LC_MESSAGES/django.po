@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 16:55+0500\n"
+"POT-Creation-Date: 2023-06-19 21:50+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,17 +24,23 @@ msgstr ""
 msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
 msgstr "Подтверждающий документ об окончании обучения"
 
-#: app/choices.py:265
+#: app/choices.py:281
 #, fuzzy
-#| msgid "Ijtimoiy tarmoqlarda"
-msgid "Ijtimoiy xolat"
-msgstr "На социальных сетях"
+#| msgid "English"
+msgid "Ingliz"
+msgstr "Английский"
 
 #: app/choices.py:282
 #, fuzzy
-#| msgid "Oliy ta'limni ta'minlash"
-msgid "O'qish tilini tanlang"
-msgstr "Обеспечение высшего образования"
+#| msgid "Uzbek"
+msgid "O'zbek"
+msgstr "Узбекский"
+
+#: app/choices.py:283
+#, fuzzy
+#| msgid "Russian"
+msgid "Rus"
+msgstr "Русский"
 
 #: app/forms.py:66 templates/contacts.html:44
 msgid "Familiya"
@@ -236,7 +242,7 @@ msgid "Turkish"
 msgstr "Турецкий"
 
 #: templates/about-us.html:13 templates/about-us.html:17
-#: templates/index.html:113 templates/nav.html:48
+#: templates/about-us.html:30 templates/index.html:113 templates/nav.html:48
 msgid "Universitet haqida"
 msgstr "О университете"
 
@@ -245,12 +251,6 @@ msgstr "О университете"
 #| msgid "Universitet haqida"
 msgid "Universitet"
 msgstr "О университете"
-
-#: templates/about-us.html:30
-#, fuzzy
-#| msgid "Biz haqimizda"
-msgid "Biz-Haqimizda"
-msgstr "О нас"
 
 #: templates/about-us.html:56
 msgid "dan ortiq talabalar"
@@ -285,23 +285,32 @@ msgstr "Главная страница"
 msgid "Qabul"
 msgstr "Прием"
 
-#: templates/admission.html:73
+#: templates/admission.html:55
+msgid "choose_study_language_choice"
+msgstr "Выберите язык обучения"
+
+#: templates/admission.html:62
+msgid "select_study_program"
+msgstr "Выберите специальность"
+
+#: templates/admission.html:80
 msgid "Pasport ni yuklang"
 msgstr "Загрузите паспорт"
 
-#: templates/admission.html:92
+#: templates/admission.html:99
 msgid "Diplomizni yuklang"
 msgstr "Загрузите диплом"
 
-#: templates/admission.html:105
+#: templates/admission.html:112
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 msgstr "Если есть документ, подтверждающий социальное положение"
 
-#: templates/admission.html:121
+#: templates/admission.html:128
 msgid "Yuborish"
 msgstr "Отправить"
 
 #: templates/article_details.html:14 templates/news-post-page.html:14
+#: templates/yonalishlar.html:114
 msgid "To'liq ma'lumot"
 msgstr "Подробная информация"
 
@@ -470,9 +479,12 @@ msgid "Undergraduate Study"
 msgstr "Бакалавриат"
 
 #: templates/course-grid.html:15 templates/course-grid.html:19
-#: templates/course-grid.html:27
 msgid "Course"
 msgstr "Курс"
+
+#: templates/course-grid.html:27 templates/yonalishlar.html:81
+msgid "all_majors"
+msgstr "Специальности бакалавриата"
 
 #: templates/course-grid.html:42 templates/course-grid.html:58
 #: templates/course-grid.html:74 templates/course-grid.html:90
@@ -646,7 +658,7 @@ msgstr "Лидерство"
 msgid "Our_team_members"
 msgstr "Члены нашей команды"
 
-#: templates/nav.html:56 templates/yonalishlar.html:81
+#: templates/nav.html:56
 msgid "Yo'nalishlar"
 msgstr "Направления"
 
@@ -727,14 +739,12 @@ msgid ""
 "Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili "
 "uchun qabul boshlanganligini ma'lum qiladi."
 msgstr ""
-"Известно, что Центральный азиатский медицинский университет начал прием "
+"Известно, что Центральный азиатский медицинский университет начал прием"
 "студентов на учебный год 2023/2024."
 
 #: templates/yonalishlar.html:33
-#, fuzzy
-#| msgid "Universitet raxbari"
-msgid "Universitetimizning afzalliklari:"
-msgstr "Преимущества нашего университета:"
+msgid "university_advantages"
+msgstr "Преимущества"
 
 #: templates/yonalishlar.html:35
 msgid "Dual ta'lim tizimida tahsil olish"
@@ -813,17 +823,36 @@ msgstr "Через Telegram-бот -"
 msgid "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"
 msgstr "По адресу: ул. Саноат, г. Фергана, 24 (офлайн)"
 
-#: templates/yonalishlar.html:92
-#, fuzzy
-#| msgid "Ko'proq bilish"
-msgid "Ko'proq o'rganish"
-msgstr "Узнать больше"
-
-#: templates/yonalishlar.html:111
+#: templates/yonalishlar.html:133
 #, fuzzy
 #| msgid "Universitet raxbari"
 msgid "Universitet Rasmlari"
 msgstr "Президент университета"
+
+#, fuzzy
+#~| msgid "Ijtimoiy tarmoqlarda"
+#~ msgid "Ijtimoiy xolat"
+#~ msgstr "На социальных сетях"
+
+#, fuzzy
+#~| msgid "Oliy ta'limni ta'minlash"
+#~ msgid "O'qish tilini tanlang"
+#~ msgstr "Обеспечение высшего образования"
+
+#, fuzzy
+#~| msgid "Universitet raxbari"
+#~ msgid "Universitetimizning afzalliklari:"
+#~ msgstr "Преимущества нашего университета:"
+
+#, fuzzy
+#~| msgid "Ko'proq bilish"
+#~ msgid "Ko'proq o'rganish"
+#~ msgstr "Узнать больше"
+
+#, fuzzy
+#~| msgid "Biz haqimizda"
+#~ msgid "Biz-Haqimizda"
+#~ msgstr "О нас"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"

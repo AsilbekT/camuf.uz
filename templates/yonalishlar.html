@@ -30,7 +30,7 @@
                 {% trans "Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili uchun qabul boshlanganligini ma'lum qiladi."%}"
             </h1>
             <div class="list mb-6">
-                <h2 class="text-2xl mb-6 font-extrabold" style="text-align: left;">{% trans "Universitetimizning afzalliklari:"%}</h2>
+                <h2 class="text-2xl mb-6 font-extrabold" style="text-align: left;">{% trans "university_advantages"%}</h2>
                 <ul class="list-decimal" style="text-align: left;">
                     <li class="ml-6 mb-2" >{% trans "Dual ta'lim tizimida tahsil olish"%}</li>
                     <li class="ml-6 mb-2">{% trans "5 kunlik o‘qish tizimi"%}</li>
@@ -78,18 +78,40 @@
     <div class="courses py-6">
         <div class="container">
             <b>
-                <h1 class="text-center text-3xl mb-4">{% trans "Yo'nalishlar"%}</h1>
+                <h1 class="text-center text-3xl mb-4">{% trans "all_majors"%}</h1>
             </b><br>
             <div class="shell">
                 {% for i in courses %}
                     <div class="p-6 bg-gray-50 border border-gray-200 rounded-lg shadow mb-4"  style="text-align: left;">
                         <img class="w-24 h-24 object-cover mb-4" src="/{{ i.image }}" alt="">
+                        {% if request.LANGUAGE_CODE == "uz" %}
                         <a href="{% url 'course_details' catagory=i.catagory slug=i.slug %}">
-                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{{ i.title |safe}}</h5>
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{{ i.title_uz |safe}}</h5>
                         </a>
-                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 md:w-2/3"> {{ i.subtitle|safe }} </p>
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 md:w-2/3"> {{ i.subtitle_uz|safe }} </p>
+
+                        {% elif request.LANGUAGE_CODE == "ru" %}
+                        <a href="{% url 'course_details' catagory=i.catagory slug=i.slug %}">
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{{ i.title_ru |safe}}</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 md:w-2/3"> {{ i.subtitle_ru|safe }} </p>
+
+                        {% elif request.LANGUAGE_CODE == "en" %}
+                        <a href="{% url 'course_details' catagory=i.catagory slug=i.slug %}">
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{{ i.title_en |safe}}</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 md:w-2/3"> {{ i.subtitle_en|safe }} </p>
+
+                        {% else %}
+                        <a href="{% url 'course_details' catagory=i.catagory slug=i.slug %}">
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">{{ i.title_tr |safe}}</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 md:w-2/3"> {{ i.subtitle_tr|safe }} </p>
+
+                        {% endif %}
+
                         <a href="{% url 'course_details' catagory=i.catagory slug=i.slug %}" class="inline-flex items-center text-blue-600 hover:underline">
-                            {% trans "Ko'proq o'rganish"%}
+                            {% trans "To'liq ma'lumot"%}
                             <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path

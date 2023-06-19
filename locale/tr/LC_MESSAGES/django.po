@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 16:55+0500\n"
+"POT-Creation-Date: 2023-06-19 21:50+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,17 +22,23 @@ msgstr ""
 msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
 msgstr "Eğitimin yapıldığı ülkeyi onaylayan bir belge"
 
-#: app/choices.py:265
+#: app/choices.py:281
 #, fuzzy
-#| msgid "Ijtimoiy tarmoqlarda"
-msgid "Ijtimoiy xolat"
-msgstr "Sosyal medyada"
+#| msgid "English"
+msgid "Ingliz"
+msgstr "İngilizce"
 
 #: app/choices.py:282
 #, fuzzy
-#| msgid "Oliy ta'limni ta'minlash"
-msgid "O'qish tilini tanlang"
-msgstr "Yüksek Öğretim Sağlama"
+#| msgid "Uzbek"
+msgid "O'zbek"
+msgstr "Özbekçe"
+
+#: app/choices.py:283
+#, fuzzy
+#| msgid "Russian"
+msgid "Rus"
+msgstr "Rusça"
 
 #: app/forms.py:66 templates/contacts.html:44
 msgid "Familiya"
@@ -234,7 +240,7 @@ msgid "Turkish"
 msgstr "Türkçe"
 
 #: templates/about-us.html:13 templates/about-us.html:17
-#: templates/index.html:113 templates/nav.html:48
+#: templates/about-us.html:30 templates/index.html:113 templates/nav.html:48
 msgid "Universitet haqida"
 msgstr "Üniversite Hakkında"
 
@@ -243,12 +249,6 @@ msgstr "Üniversite Hakkında"
 #| msgid "Universitet haqida"
 msgid "Universitet"
 msgstr "Üniversite Hakkında"
-
-#: templates/about-us.html:30
-#, fuzzy
-#| msgid "Biz haqimizda"
-msgid "Biz-Haqimizda"
-msgstr "Hakkımızda"
 
 #: templates/about-us.html:56
 msgid "dan ortiq talabalar"
@@ -281,23 +281,32 @@ msgstr "Ana Sayfa"
 msgid "Qabul"
 msgstr "Kabul"
 
-#: templates/admission.html:73
+#: templates/admission.html:55
+msgid "choose_study_language_choice"
+msgstr "Eğitim dili seçin"
+
+#: templates/admission.html:62
+msgid "select_study_program"
+msgstr "Выберите специальность"
+
+#: templates/admission.html:80
 msgid "Pasport ni yuklang"
 msgstr "Pasaportu yükleyin"
 
-#: templates/admission.html:92
+#: templates/admission.html:99
 msgid "Diplomizni yuklang"
 msgstr "Diplomanızı yükleyin"
 
-#: templates/admission.html:105
+#: templates/admission.html:112
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 msgstr "Sosyal statüyü teyit eden bir belge varsa"
 
-#: templates/admission.html:121
+#: templates/admission.html:128
 msgid "Yuborish"
 msgstr "Gönder"
 
 #: templates/article_details.html:14 templates/news-post-page.html:14
+#: templates/yonalishlar.html:114
 msgid "To'liq ma'lumot"
 msgstr "Tam Bilgi"
 
@@ -466,9 +475,12 @@ msgid "Undergraduate Study"
 msgstr "Lisans Eğitimi"
 
 #: templates/course-grid.html:15 templates/course-grid.html:19
-#: templates/course-grid.html:27
 msgid "Course"
 msgstr "Ders"
+
+#: templates/course-grid.html:27 templates/yonalishlar.html:81
+msgid "all_majors"
+msgstr "Lisans Bölümleri"
 
 #: templates/course-grid.html:42 templates/course-grid.html:58
 #: templates/course-grid.html:74 templates/course-grid.html:90
@@ -643,7 +655,7 @@ msgstr "Rahbariyat"
 msgid "Our_team_members"
 msgstr "Ekip üyelerimiz"
 
-#: templates/nav.html:56 templates/yonalishlar.html:81
+#: templates/nav.html:56
 msgid "Yo'nalishlar"
 msgstr "Bölümler"
 
@@ -732,10 +744,8 @@ msgstr ""
 "başladığını duyurur."
 
 #: templates/yonalishlar.html:33
-#, fuzzy
-#| msgid "Universitet raxbari"
-msgid "Universitetimizning afzalliklari:"
-msgstr "Üniversite Yöneticisi"
+msgid "university_advantages"
+msgstr "Avantajlar"
 
 #: templates/yonalishlar.html:35
 msgid "Dual ta'lim tizimida tahsil olish"
@@ -815,17 +825,36 @@ msgstr "Telegram botu aracılığıyla -"
 msgid "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"
 msgstr "Fergana şehri, Sanoat ko'chasi 24 (çevrimdışı)"
 
-#: templates/yonalishlar.html:92
-#, fuzzy
-#| msgid "Ko'proq bilish"
-msgid "Ko'proq o'rganish"
-msgstr "Daha fazla bilgi edinin"
-
-#: templates/yonalishlar.html:111
+#: templates/yonalishlar.html:133
 #, fuzzy
 #| msgid "Universitet raxbari"
 msgid "Universitet Rasmlari"
 msgstr "Üniversite Yöneticisi"
+
+#, fuzzy
+#~| msgid "Ijtimoiy tarmoqlarda"
+#~ msgid "Ijtimoiy xolat"
+#~ msgstr "Sosyal medyada"
+
+#, fuzzy
+#~| msgid "Oliy ta'limni ta'minlash"
+#~ msgid "O'qish tilini tanlang"
+#~ msgstr "Yüksek Öğretim Sağlama"
+
+#, fuzzy
+#~| msgid "Universitet raxbari"
+#~ msgid "Universitetimizning afzalliklari:"
+#~ msgstr "Üniversite Yöneticisi"
+
+#, fuzzy
+#~| msgid "Ko'proq bilish"
+#~ msgid "Ko'proq o'rganish"
+#~ msgstr "Daha fazla bilgi edinin"
+
+#, fuzzy
+#~| msgid "Biz haqimizda"
+#~ msgid "Biz-Haqimizda"
+#~ msgstr "Hakkımızda"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"

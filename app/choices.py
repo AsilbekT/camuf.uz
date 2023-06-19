@@ -1,7 +1,7 @@
 from django.utils.translation import gettext as _
 
 COUNTRY_CHOICES = (
-    ('', 'Davlatizni tanlang'),
+    ('', ''),
     ("AF", "Afghanistan"),
     ("AX", "Aland Islands"),
     ("AL", "Albania"),
@@ -254,7 +254,7 @@ COUNTRY_CHOICES = (
 
 
 SCHOOL_CHOICES = (
-    ("", _("Tamomlagan bilim yurtini tastiqlovchi xujjat")),
+    ("", ""),
     ("O'rta maktab", "O'rta maktab"),
     ("Litsey", "Litsey"),
     ("Bilim yurti", "Bilim yurti"),
@@ -262,7 +262,7 @@ SCHOOL_CHOICES = (
 )
 
 SOCIAL_STATUS = (
-    ("", _("Ijtimoiy xolat")),
+    ("", ""),
     ("Yoshlar daftari", "Yoshlar daftari"),
     ("Ayollar daftari", "Ayollar daftari"),
     ("Temir daftar", "Temir daftar"),
@@ -279,8 +279,8 @@ COUNTRY_CHOICES_TELEGRAM = (
 )
 
 STUDY_LANGUAGES = (
-    ("", _("O'qish tilini tanlang")),
-    ("en", "Ingliz"),
-    ("uz", "O'zbek"),
-    ("ru", "Rus"),
+    ("", ""),
+    ("en", _("Ingliz")),
+    ("uz", _("O'zbek")),
+    ("ru", _("Rus")),
 )

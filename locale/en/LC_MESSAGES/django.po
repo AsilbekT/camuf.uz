@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 16:55+0500\n"
+"POT-Creation-Date: 2023-06-19 21:50+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,17 +22,23 @@ msgstr ""
 msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
 msgstr "Confirmation document of graduation"
 
-#: app/choices.py:265
+#: app/choices.py:281
 #, fuzzy
-#| msgid "Ijtimoiy tarmoqlarda"
-msgid "Ijtimoiy xolat"
-msgstr "In social media"
+#| msgid "English"
+msgid "Ingliz"
+msgstr "English"
 
 #: app/choices.py:282
 #, fuzzy
-#| msgid "Oliy ta'limni ta'minlash"
-msgid "O'qish tilini tanlang"
-msgstr "Providing Higher Education"
+#| msgid "Uzbek"
+msgid "O'zbek"
+msgstr "Uzbek"
+
+#: app/choices.py:283
+#, fuzzy
+#| msgid "Russian"
+msgid "Rus"
+msgstr "Russian"
 
 #: app/forms.py:66 templates/contacts.html:44
 msgid "Familiya"
@@ -234,7 +240,7 @@ msgid "Turkish"
 msgstr "Turkish"
 
 #: templates/about-us.html:13 templates/about-us.html:17
-#: templates/index.html:113 templates/nav.html:48
+#: templates/about-us.html:30 templates/index.html:113 templates/nav.html:48
 msgid "Universitet haqida"
 msgstr "About the University"
 
@@ -243,12 +249,6 @@ msgstr "About the University"
 #| msgid "Universitet haqida"
 msgid "Universitet"
 msgstr "About the University"
-
-#: templates/about-us.html:30
-#, fuzzy
-#| msgid "Biz haqimizda"
-msgid "Biz-Haqimizda"
-msgstr "About Us"
 
 #: templates/about-us.html:56
 msgid "dan ortiq talabalar"
@@ -279,25 +279,34 @@ msgstr "Home page"
 
 #: templates/admission.html:36 templates/nav.html:71
 msgid "Qabul"
-msgstr "admission"
+msgstr "Admission"
 
-#: templates/admission.html:73
+#: templates/admission.html:55
+msgid "choose_study_language_choice"
+msgstr "Choose study language"
+
+#: templates/admission.html:62
+msgid "select_study_program"
+msgstr "Choose a major"
+
+#: templates/admission.html:80
 msgid "Pasport ni yuklang"
 msgstr "send your passport copy"
 
-#: templates/admission.html:92
+#: templates/admission.html:99
 msgid "Diplomizni yuklang"
 msgstr "send your diplom copy"
 
-#: templates/admission.html:105
+#: templates/admission.html:112
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
 msgstr "If there is a document confirming social status"
 
-#: templates/admission.html:121
+#: templates/admission.html:128
 msgid "Yuborish"
 msgstr "Submit"
 
 #: templates/article_details.html:14 templates/news-post-page.html:14
+#: templates/yonalishlar.html:114
 msgid "To'liq ma'lumot"
 msgstr "Learn more"
 
@@ -466,9 +475,12 @@ msgid "Undergraduate Study"
 msgstr "Undergraduate Study"
 
 #: templates/course-grid.html:15 templates/course-grid.html:19
-#: templates/course-grid.html:27
 msgid "Course"
 msgstr "Course"
+
+#: templates/course-grid.html:27 templates/yonalishlar.html:81
+msgid "all_majors"
+msgstr "Undergraduate Majors"
 
 #: templates/course-grid.html:42 templates/course-grid.html:58
 #: templates/course-grid.html:74 templates/course-grid.html:90
@@ -642,7 +654,7 @@ msgstr "Leadership"
 msgid "Our_team_members"
 msgstr "Our team members"
 
-#: templates/nav.html:56 templates/yonalishlar.html:81
+#: templates/nav.html:56
 msgid "Yo'nalishlar"
 msgstr "Fields"
 
@@ -724,18 +736,16 @@ msgid ""
 "Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili "
 "uchun qabul boshlanganligini ma'lum qiladi."
 msgstr ""
-"Central Asian Medical University 2023/2024 academic yearinforms that "
+"Central Asian Medical University 2023/2024 academic year informs that "
 "admission has begun for."
 
 #: templates/yonalishlar.html:33
-#, fuzzy
-#| msgid "Universitet raxbari"
-msgid "Universitetimizning afzalliklari:"
-msgstr "University Leader"
+msgid "university_advantages"
+msgstr "Advantages"
 
 #: templates/yonalishlar.html:35
 msgid "Dual ta'lim tizimida tahsil olish"
-msgstr "Studying in the dual education system"
+msgstr "Dual education system"
 
 #: templates/yonalishlar.html:36
 msgid "5 kunlik o‘qish tizimi"
@@ -743,15 +753,15 @@ msgstr "5-day study system"
 
 #: templates/yonalishlar.html:37
 msgid "Nazariya va amaliyotning hamohang olib borilishi"
-msgstr "Synchronization of theory and practice"
+msgstr "Integration of theory and practice"
 
 #: templates/yonalishlar.html:38
 msgid "Work&Travel dasturi bo‘yicha sayohatlar"
-msgstr "Trips under the Work&Travel program"
+msgstr "Work&Travel trips"
 
 #: templates/yonalishlar.html:39
 msgid "Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi"
-msgstr "Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi"
+msgstr "Practical training in modern clinics"
 
 #: templates/yonalishlar.html:40
 msgid "Zamonaviy kampus va simulyasiya markazi"
@@ -760,7 +770,7 @@ msgstr "State-of-the-art campus and simulation center"
 #: templates/yonalishlar.html:41
 msgid ""
 "Butun dunyo kutubxonalari tarmog‘iga to‘g‘ridan-to‘g‘ri chiqish imkoniyati"
-msgstr "Direct access to the worldwide network of libraries"
+msgstr "Direct access to global library network"
 
 #: templates/yonalishlar.html:45
 msgid ""
@@ -768,19 +778,19 @@ msgid ""
 "qilinadi:"
 msgstr ""
 "In the 2023/2024 academic year, students will be admitted to the "
-"universityin the following fields:"
+"university in the following fields:"
 
 #: templates/yonalishlar.html:47
 msgid "Davolash ishi – o‘qish muddati 6 yil (200 nafar)"
-msgstr "Treatment work - study period 6 years (200 people)"
+msgstr "Medical treatment - 6-year study program (200 students)"
 
 #: templates/yonalishlar.html:48
 msgid "Pediatriya ishi -  o‘qish muddati 6 yil (100 nafar)"
-msgstr "Pediatric work - study period 6 years (100 people)"
+msgstr "Pediatrics - 6-year study program (100 students)"
 
 #: templates/yonalishlar.html:49
 msgid "Stomatologiya - o‘qish muddati 5 yil (200 nafar)"
-msgstr "Dentistry - study period 5 years (200 students)"
+msgstr "Dentistry - 5-year study program (200 students)"
 
 #: templates/yonalishlar.html:53
 msgid "Qanday hujjatlar talab qilinadi?"
@@ -796,11 +806,11 @@ msgstr "Picture (3.5X4.5) – 6 pieces"
 
 #: templates/yonalishlar.html:61
 msgid "Qanday hujjat topshiriladi?"
-msgstr "What document is submitted?"
+msgstr "How to apply?"
 
 #: templates/yonalishlar.html:63
 msgid "Bizni web sahifamiz orqali"
-msgstr "Apply through our website"
+msgstr "via our website"
 
 #: templates/yonalishlar.html:64
 msgid "Telegram bot orqali -"
@@ -808,19 +818,38 @@ msgstr "via Telegram bot -"
 
 #: templates/yonalishlar.html:65
 msgid "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"
-msgstr "Fergana city Sanoat street 24 house (offline)"
+msgstr "24, Sanoat str., Fergana (offline)"
 
-#: templates/yonalishlar.html:92
-#, fuzzy
-#| msgid "Ko'proq bilish"
-msgid "Ko'proq o'rganish"
-msgstr "Learn More"
-
-#: templates/yonalishlar.html:111
+#: templates/yonalishlar.html:133
 #, fuzzy
 #| msgid "Universitet raxbari"
 msgid "Universitet Rasmlari"
 msgstr "University Leader"
+
+#, fuzzy
+#~| msgid "Ijtimoiy tarmoqlarda"
+#~ msgid "Ijtimoiy xolat"
+#~ msgstr "In social media"
+
+#, fuzzy
+#~| msgid "Oliy ta'limni ta'minlash"
+#~ msgid "O'qish tilini tanlang"
+#~ msgstr "Providing Higher Education"
+
+#, fuzzy
+#~| msgid "Universitet raxbari"
+#~ msgid "Universitetimizning afzalliklari:"
+#~ msgstr "University Leader"
+
+#, fuzzy
+#~| msgid "Ko'proq bilish"
+#~ msgid "Ko'proq o'rganish"
+#~ msgstr "Learn More"
+
+#, fuzzy
+#~| msgid "Biz haqimizda"
+#~ msgid "Biz-Haqimizda"
+#~ msgstr "About Us"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"
