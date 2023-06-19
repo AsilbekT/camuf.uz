@@ -23,6 +23,8 @@ def index(request):
         emails = status.university_email.all()
     except:
         status = None
+        phones = None
+        emails = None
 
     context = {
         "news": news, 
@@ -466,7 +468,7 @@ def change_lang(request):
             if old_lang == "ru" and changed_lang != "ru":
                 url_parts.insert(1, changed_lang)
 
-            if changed_lang in ['en', 'uz']:
+            if changed_lang in ['en', 'uz', 'tr']:
                 url_parts[1] = url_parts[1].replace(old_lang, changed_lang)
 
             new_url = '/'.join(url_parts)

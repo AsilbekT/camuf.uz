@@ -8,7 +8,7 @@ class ArticleCatagoryAdmin(admin.ModelAdmin):
     search_fields = ['catagory_name']
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['title', 'date_created',  'get_related_field']
+    list_display = ['title_uz', 'date_created',  'get_related_field']
 
     def get_related_field(self, obj):
         return obj.article_catagory

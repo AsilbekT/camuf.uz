@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+{% load i18n %}
+
+{% block title  %}Central Asian Medical University{% endblock %}
 
 {% block link  %}{% endblock %}
 
@@ -9,11 +11,11 @@
 <section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bac_news.jpeg' %}">
     <div class="parallax-content section-30 section-sm-70">
         <div class="shell">
-            <h2 class="veil reveal-sm-block">To'liq ma'lumot</h2>
+            <h2 class="veil reveal-sm-block">{% trans "To'liq ma'lumot"%}</h2>
             <div class="offset-sm-top-35">
                 <ul class="list-inline list-inline-lg list-inline-dashed p">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li>Contact</li>
+                    <li><a href="{% url 'home' %}">{% trans "Home"%}</a></li>
+                    <li>{% trans "Contact"%}</li>
                 </ul>
             </div>
         </div>
@@ -23,8 +25,11 @@
 <section class="section novi-background bg-cover section-70 section-md-114 bg-default">
     <div class="shell">
         <div class="range range-50 range-xs-center">
+            {% if request.LANGUAGE_CODE == "uz" %}
             <div class="cell-sm-8 cell-md-8 text-md-left">
-                <h3 class="text-bold">{{ news.title }}</h3>
+                <h3 class="text-bold">
+                    {{ news.title_uz }}
+                </h3>
                 <hr class="divider bg-madison hr-md-left-0">
                 <div class="offset-md-top-20 offset-top-10">
                     <ul class="post-news-meta list list-inline list-inline-xl">
@@ -33,16 +38,70 @@
                 </div>
                 <div class="offset-top-30"><img class="img-responsive" src="/{{ news.image }}" width="770" height="500" alt="">
                     <div class="offset-top-30">
-                        <p>{{ news.subtitle|safe }}</p>
+                        <p>{{ news.subtitle_uz|safe }}</p>
                     </div>
-                    <p>{{ news.body |safe}}</p>
+                    <p>{{ news.body_uz |safe}}</p>
                 </div>
+            {% elif request.LANGUAGE_CODE == "ru" %}
+            <div class="cell-sm-8 cell-md-8 text-md-left">
+                <h3 class="text-bold">
+                    {{ news.title_ru }}
+                </h3>
+                <hr class="divider bg-madison hr-md-left-0">
+                <div class="offset-md-top-20 offset-top-10">
+                    <ul class="post-news-meta list list-inline list-inline-xl">
+                        <li><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ news.date_created }}</span></li>
+                    </ul>
+                </div>
+                <div class="offset-top-30"><img class="img-responsive" src="/{{ news.image }}" width="770" height="500" alt="">
+                    <div class="offset-top-30">
+                        <p>{{ news.subtitle_ru|safe }}</p>
+                    </div>
+                    <p>{{ news.body_ru |safe}}</p>
+                </div>
+            {% elif request.LANGUAGE_CODE == "en" %}
+            <div class="cell-sm-8 cell-md-8 text-md-left">
+                <h3 class="text-bold">
+                    {{ news.title_en }}
+                </h3>
+                <hr class="divider bg-madison hr-md-left-0">
+                <div class="offset-md-top-20 offset-top-10">
+                    <ul class="post-news-meta list list-inline list-inline-xl">
+                        <li><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ news.date_created }}</span></li>
+                    </ul>
+                </div>
+                <div class="offset-top-30"><img class="img-responsive" src="/{{ news.image }}" width="770" height="500" alt="">
+                    <div class="offset-top-30">
+                        <p>{{ news.subtitle_en|safe }}</p>
+                    </div>
+                    <p>{{ news.body_en |safe}}</p>
+                </div>
+            {% else %}
+            <div class="cell-sm-8 cell-md-8 text-md-left">
+                <h3 class="text-bold">
+                    {{ news.title_tr }}
+                </h3>
+                <hr class="divider bg-madison hr-md-left-0">
+                <div class="offset-md-top-20 offset-top-10">
+                    <ul class="post-news-meta list list-inline list-inline-xl">
+                        <li><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ news.date_created }}</span></li>
+                    </ul>
+                </div>
+                <div class="offset-top-30"><img class="img-responsive" src="/{{ news.image }}" width="770" height="500" alt="">
+                    <div class="offset-top-30">
+                        <p>{{ news.subtitle_tr|safe }}</p>
+                    </div>
+                    <p>{{ news.body_tr |safe}}</p>
+                </div>
+            {% endif %}
+
+            
 
             </div>
             <div class="cell-xs-8 cell-md-4 text-left">
                 <aside class="aside inset-md-left-30">
                     <div class="aside-item">
-                        <h6 class="text-bold">Gallery</h6>
+                        <h6 class="text-bold">{% trans "Gallery"%}</h6>
                         <div class="text-subline"></div>
                         <div class="range range-condensed range-custom offset-top-20" data-lightgallery="group">
                             {% for image in gallery %}
@@ -55,7 +114,7 @@
                         </div>
                     </div>
                     <div class="aside-item">
-                        <h6 class="text-bold">Categories</h6>
+                        <h6 class="text-bold">{% trans "Categories"%}</h6>
                         <div class="text-subline"></div>
                         <div class="offset-top-20">
                             <ul class="list list-marked list-marked-primary">

@@ -15936,6 +15936,12 @@ fieldset[disabled] .tags-list .btn-primary {
 	content: "\f1aa";
 }
 
+.lang-btn {
+	background-color: transparent;
+	/* color: white; */
+	border: none;
+}
+
 .fa-language:before {
 	content: "\f1ab";
 }

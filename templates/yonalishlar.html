@@ -1,5 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
+{% load i18n %}
+
 {% block title %}Central Asian Medical University
 {% endblock %} 
 {% block link  %}
@@ -11,11 +13,11 @@
     <section class="section breadcrumb-modern context-dark parallax-container bg-[url('/images/Contact.jpg')]">
         <div class="parallax-content section-30 section-sm-70">
             <div class="shell text-center">
-                <h2 class="veil reveal-sm-block mb-3">Admission</h2>
+                <h2 class="veil reveal-sm-block mb-3">{% trans "Admission"%}</h2>
                 <div class="offset-sm-top-35">
                     <ul class="list-inline list-inline-lg list-inline-dashed p">
-                        <li><a href="index.html">Bosh Sahifa</a></li>
-                        <li>Contact Page</li>
+                        <li><a href="index.html">{% trans "Bosh Sahifa"%}</a></li>
+                        <li>{% trans "Contact Page"%}</li>
                     </ul>
                 </div>
             </div>
@@ -25,48 +27,48 @@
     <div class="container">
         <div class="shell">
             <h1 class="mx-auto text-3xl mb-4 md:w-2/3 mb-4 pt-4 font-black">
-                Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili uchun qabul boshlanganligini ma'lum qiladi.
+                {% trans "Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili uchun qabul boshlanganligini ma'lum qiladi."%}"
             </h1>
             <div class="list mb-6">
-                <h2 class="text-2xl mb-6 font-extrabold" style="text-align: left;">Universitetimizning afzalliklari:</h2>
+                <h2 class="text-2xl mb-6 font-extrabold" style="text-align: left;">{% trans "Universitetimizning afzalliklari:"%}</h2>
                 <ul class="list-decimal" style="text-align: left;">
-                    <li class="ml-6 mb-2" >Dual ta'lim tizimida tahsil olish</li>
-                    <li class="ml-6 mb-2">5 kunlik o‘qish tizimi</li>
-                    <li class="ml-6 mb-2">Nazariya va amaliyotning hamohang olib borilishi</li>
-                    <li class="ml-6 mb-2">Work&Travel dasturi bo‘yicha sayohatlar</li>
-                    <li class="ml-6 mb-2">Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi</li>
-                    <li class="ml-6 mb-2">Zamonaviy kampus va simulyasiya markazi</li>
-                    <li class="ml-6 mb-2">Butun dunyo kutubxonalari tarmog‘iga to‘g‘ridan-to‘g‘ri chiqish imkoniyati</li>
+                    <li class="ml-6 mb-2" >{% trans "Dual ta'lim tizimida tahsil olish"%}</li>
+                    <li class="ml-6 mb-2">{% trans "5 kunlik o‘qish tizimi"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Nazariya va amaliyotning hamohang olib borilishi"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Work&Travel dasturi bo‘yicha sayohatlar"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Zamonaviy kampus va simulyasiya markazi"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Butun dunyo kutubxonalari tarmog‘iga to‘g‘ridan-to‘g‘ri chiqish imkoniyati"%}</li>
                 </ul>
             </div>
             <div class="list mb-6" style="text-align: left;">
-                <h2 class="text-2xl mb-6 font-extrabold">2023/2024 o‘quv yilida universitetga quyidagi yo‘nalishlarga talabalar qabul qilinadi:</h2>
+                <h2 class="text-2xl mb-6 font-extrabold">{% trans "2023/2024 o‘quv yilida universitetga quyidagi yo‘nalishlarga talabalar qabul qilinadi:"%}</h2>
                 <ul class="list-decimal">
-                    <li class="ml-6 mb-2">Davolash ishi – o‘qish muddati 6 yil (200 nafar)</li>
-                    <li class="ml-6 mb-2">Pediatriya ishi -  o‘qish muddati 6 yil (100 nafar)</li>
-                    <li class="ml-6 mb-2">Stomatologiya - o‘qish muddati 5 yil (200 nafar)</li>
+                    <li class="ml-6 mb-2">{% trans "Davolash ishi – o‘qish muddati 6 yil (200 nafar)"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Pediatriya ishi -  o‘qish muddati 6 yil (100 nafar)"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Stomatologiya - o‘qish muddati 5 yil (200 nafar)"%}</li>
                 </ul>
             </div>
             <div class="list mb-6" style="text-align: left;">
-                <h2 class="text-2xl mb-6 font-extrabold" >Qanday hujjatlar talab qilinadi?</h2>
+                <h2 class="text-2xl mb-6 font-extrabold" >{% trans "Qanday hujjatlar talab qilinadi?"%}</h2>
                 <ul class="list-decimal">
-                    <li class="ml-6 mb-2">Pasport nusxasi</li>
-                    <li class="ml-6 mb-2">Attestat yoki diplom</li>
-                    <li class="ml-6 mb-2">Rasm (3.5X4.5) – 6 dona</li>
+                    <li class="ml-6 mb-2">{% trans "Pasport nusxasi"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Attestat yoki diplom"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Rasm (3.5X4.5) – 6 dona"%}</li>
                 </ul>
             </div>
             <div class="list mb-6" style="text-align: left;">
-                <h2 class="text-2xl mb-6 font-extrabold" >Qanday hujjat topshiriladi?</h2>
+                <h2 class="text-2xl mb-6 font-extrabold" >{% trans "Qanday hujjat topshiriladi?"%}</h2>
                 <ul class="list-decimal">
-                    <li class="ml-6 mb-2">Bizni web sahifamiz orqali</li>
-                    <li class="ml-6 mb-2">Telegram bot orqali - <a  class="inline-flex items-center text-blue-600 hover:underline" href="https://t.me/central_asian_uni_bot" target="_blank">@central_asian_uni_bot</a></li>
-                    <li class="ml-6 mb-2">Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)</li>
+                    <li class="ml-6 mb-2">{% trans "Bizni web sahifamiz orqali"%}</li>
+                    <li class="ml-6 mb-2">{% trans "Telegram bot orqali -"%}" <a  class="inline-flex items-center text-blue-600 hover:underline" href="https://t.me/central_asian_uni_bot" target="_blank">@central_asian_uni_bot</a></li>
+                    <li class="ml-6 mb-2">{% trans "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"%}</li>
                 </ul>
             </div>
           <div class="offset-top-30">
             <a class="btn btn-icon btn-icon-right btn-default" href="{% url 'apply_form' %}">
                 <span class="icon fa-arrow-right"></span>
-                <span>Ariza topshirish</span>
+                <span>{% trans "Ariza topshirish"%}</span>
             </a>
         </div>
         <hr class="divider bg-madison">
@@ -76,7 +78,7 @@
     <div class="courses py-6">
         <div class="container">
             <b>
-                <h1 class="text-center text-3xl mb-4">Yo'nalishlar</h1>
+                <h1 class="text-center text-3xl mb-4">{% trans "Yo'nalishlar"%}</h1>
             </b><br>
             <div class="shell">
                 {% for i in courses %}
@@ -87,7 +89,7 @@
                         </a>
                         <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 md:w-2/3"> {{ i.subtitle|safe }} </p>
                         <a href="{% url 'course_details' catagory=i.catagory slug=i.slug %}" class="inline-flex items-center text-blue-600 hover:underline">
-                            Ko'proq o'rganish
+                            {% trans "Ko'proq o'rganish"%}
                             <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -106,7 +108,7 @@
 
     <section class="section novi-background bg-cover section-70 section-md-114 bg-default">
         <div class="shell">
-            <h2> Universitet Rasmlari</h2>
+            <h2> {% trans "Universitet Rasmlari"%}</h2>
             <hr class="divider bg-madison">
             <div class="offset-top-60">
                 <div class="range range-30 range-xs-center" data-lightgallery="group">

@@ -21,7 +21,7 @@ from django.urls import path, include
 from django.utils.translation import gettext_lazy as _
 
 urlpatterns = i18n_patterns(
-    path(_('admin/'), admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include("app.urls")),
     path('', include("bot.urls")),
     prefix_default_language=False

@@ -16,294 +16,290 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
-"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: app/choices.py:257
 msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
-msgstr "Подтверждающий документ об окончании обучения"
+msgstr "Eğitimin yapıldığı ülkeyi onaylayan bir belge"
 
 #: app/choices.py:265
 #, fuzzy
 #| msgid "Ijtimoiy tarmoqlarda"
 msgid "Ijtimoiy xolat"
-msgstr "На социальных сетях"
+msgstr "Sosyal medyada"
 
 #: app/choices.py:282
 #, fuzzy
 #| msgid "Oliy ta'limni ta'minlash"
 msgid "O'qish tilini tanlang"
-msgstr "Обеспечение высшего образования"
+msgstr "Yüksek Öğretim Sağlama"
 
 #: app/forms.py:66 templates/contacts.html:44
 msgid "Familiya"
-msgstr "Фамилия"
+msgstr "Soyadı"
 
 #: app/forms.py:72 templates/contacts.html:38
 msgid "Ism"
-msgstr "Имя"
+msgstr "İsim"
 
 #: app/forms.py:79
 msgid "Otasini ismi"
-msgstr "Отчество"
+msgstr "Baba Adı"
 
 #: app/forms.py:85
 msgid "Pasport Seriya raqami"
-msgstr "Серия и номер паспорта"
+msgstr "Pasaport Seri Numarası"
 
 #: app/forms.py:92 templates/yonalishlar.html:55
 msgid "Pasport nusxasi"
-msgstr "Копия паспорта"
+msgstr "Pasaport Fotokopisi"
 
 #: app/forms.py:105
 msgid "Viloyat"
-msgstr "Область"
+msgstr "İl"
 
 #: app/forms.py:111
 msgid "Tuman"
-msgstr "Район"
+msgstr "İlçe"
 
 #: app/forms.py:126
 msgid "Diplom nusxasi"
-msgstr "Копия диплома"
+msgstr "Diploma Fotokopisi"
 
 #: app/forms.py:146
 msgid "Telefon raqam"
-msgstr "Номер телефона"
+msgstr "Telefon Numarası"
 
 #: app/forms.py:152
 msgid "Elektron manzil"
-msgstr "Электронный адрес"
+msgstr "E-posta Adresi"
 
 #: app/models.py:20
 #, fuzzy
 #| msgid "Universitet raxbari"
 msgid "University Number"
-msgstr "Номер университета"
+msgstr "Üniversite Numarası"
 
 #: app/models.py:21
 #, fuzzy
 #| msgid "Universitet raxbari"
 msgid "University Numbers"
-msgstr "Номера университета"
+msgstr "Üniversite Numaraları"
 
 #: app/models.py:27
 #, fuzzy
 #| msgid "Universitet haqida"
 msgid "University email"
-msgstr "Электронная почта университета"
+msgstr "Üniversite E-postası"
 
 #: app/models.py:28
 #, fuzzy
 #| msgid "Universitet haqida"
 msgid "University emails"
-msgstr "Электронные почты университета"
+msgstr "Üniversite E-postaları"
 
 #: app/models.py:34
 msgid "University pics -> {}"
-msgstr "Изображения университета -> {}"
+msgstr "Üniversite resimleri -> {}"
 
 #: app/models.py:37
 #, fuzzy
 #| msgid "Universitet haqida"
 msgid "University picture"
-msgstr "Изображение университета"
+msgstr "Üniversite Resmi"
 
 #: app/models.py:38
 msgid "University Pictures"
-msgstr "Изображения университета"
+msgstr "Üniversite Resimleri"
 
 #: app/models.py:46
 msgid "Gallery -> {}"
-msgstr "Галерея -> {}"
+msgstr "Galeri -> {}"
 
 #: app/models.py:49 templates/article_details.html:47
 #: templates/articles.html:123 templates/gallery.html:14
 #: templates/gallery.html:18 templates/grid-news.html:123
 #: templates/news-post-page.html:104
 msgid "Gallery"
-msgstr "Галерея"
+msgstr "Galeri"
 
 #: app/models.py:50
 msgid "Galleries"
-msgstr "Галереи"
+msgstr "Galeriler"
 
 #: app/models.py:66
 msgid "News Category"
-msgstr "Категория новостей"
+msgstr "Haber Kategorisi"
 
 #: app/models.py:67
 msgid "News Categories"
-msgstr "Категории новостей"
+msgstr "Haber Kategorileri"
 
 #: app/models.py:98 app/models.py:99
 msgid "News"
-msgstr "Новости"
+msgstr "Haberler"
 
 #: app/models.py:114
 msgid "Article Category"
-msgstr "Категория статьи"
+msgstr "Makale Kategorisi"
 
 #: app/models.py:115
 msgid "Article Categories"
-msgstr "Категории статей"
+msgstr "Makale Kategorileri"
 
 #: app/models.py:145
 msgid "Article"
-msgstr "Статья"
+msgstr "Makale"
 
 #: app/models.py:146 templates/nav.html:64
 msgid "Articles"
-msgstr "Статьи"
+msgstr "Makaleler"
 
 #: app/models.py:179
 msgid "Worker"
-msgstr "Работник"
+msgstr "Çalışan"
 
 #: app/models.py:180
 msgid "Workers"
-msgstr "Работники"
+msgstr "Çalışanlar"
 
 #: app/models.py:213
 msgid "Leader"
-msgstr "Руководитель"
+msgstr "Lider"
 
 #: app/models.py:214
 msgid "Leaders"
-msgstr "Руководители"
+msgstr "Liderler"
 
 #: app/models.py:243
 #, fuzzy
 #| msgid "Statistika"
 msgid "Status"
-msgstr "Статус"
+msgstr "İstatistikler"
 
 #: app/models.py:244
 msgid "Statues"
-msgstr "Статуи"
+msgstr "Heykeller"
 
 #: app/models.py:276
 msgid "Event"
-msgstr "Событие"
+msgstr "Etkinlik"
 
 #: app/models.py:277
 msgid "Events"
-msgstr "События"
+msgstr "Etkinlikler"
 
 #: app/models.py:307
 msgid "Undergraduate Course"
-msgstr "Бакалаврский курс"
+msgstr "Lisans Programı"
 
 #: app/models.py:308
 msgid "Undergraduate Courses"
-msgstr "Бакалаврские курсы"
+msgstr "Lisans Programları"
 
 #: app/models.py:329
 msgid "Graduate Course"
-msgstr "Магистерский курс"
+msgstr "Yüksek Lisans Programı"
 
 #: app/models.py:330
 msgid "Graduate Courses"
-msgstr "Магистерские курсы"
+msgstr "Yüksek Lisans Programları"
 
 #: app/models.py:339 app/models.py:340
 msgid "Interested People"
-msgstr "Заинтересованные лица"
+msgstr "İlgilenen Kişiler"
 
 #: app/models.py:395
 msgid "Applied Student"
-msgstr "Претендующий студент"
+msgstr "Başvuran Öğrenci"
 
 #: app/models.py:396
 msgid "Applied Students"
-msgstr "Претендующие студенты"
+msgstr "Başvuran Öğrenciler"
 
 #: camu/settings.py:137
 msgid "English"
-msgstr "Английский"
+msgstr "İngilizce"
 
 #: camu/settings.py:138
 msgid "Uzbek"
-msgstr "Узбекский"
+msgstr "Özbekçe"
 
 #: camu/settings.py:139
 msgid "Russian"
-msgstr "Русский"
+msgstr "Rusça"
 
 #: camu/settings.py:140
 msgid "Turkish"
-msgstr "Турецкий"
+msgstr "Türkçe"
 
 #: templates/about-us.html:13 templates/about-us.html:17
 #: templates/index.html:113 templates/nav.html:48
 msgid "Universitet haqida"
-msgstr "О университете"
+msgstr "Üniversite Hakkında"
 
 #: templates/about-us.html:16
 #, fuzzy
 #| msgid "Universitet haqida"
 msgid "Universitet"
-msgstr "О университете"
+msgstr "Üniversite Hakkında"
 
 #: templates/about-us.html:30
 #, fuzzy
 #| msgid "Biz haqimizda"
 msgid "Biz-Haqimizda"
-msgstr "О нас"
+msgstr "Hakkımızda"
 
 #: templates/about-us.html:56
 msgid "dan ortiq talabalar"
-msgstr "более студентов"
+msgstr "öğrenciden fazla"
 
 #: templates/about-us.html:58
 msgid ""
 "Jamoamizga qo'shiling va kelajagdagi muvaffaqiyatingiz uchun birinchi "
 "qadamni qo'ying"
-msgstr ""
-"Присоединяйтесь к нашей команде и сделайте первый шаг к вашему будущему "
-"успеху"
+msgstr "Ekibimize katılın ve gelecekteki başarınız için ilk siz olunadım at"
 
 #: templates/about-us.html:60 templates/admission.html:32
 #: templates/course-details.html:46 templates/yonalishlar.html:71
 msgid "Ariza topshirish"
-msgstr "Подать заявление"
+msgstr "Başvuru yapın"
 
 #: templates/admission.html:19
 msgid "Muvaffaqqiyatli Yuborildi"
-msgstr "Успешно отправлено"
+msgstr "Başarıyla Gönderildi"
 
 #: templates/admission.html:22
 msgid "ok"
-msgstr "ок"
+msgstr "tamam"
 
 #: templates/admission.html:35 templates/yonalishlar.html:19
 msgid "Bosh Sahifa"
-msgstr "Главная страница"
+msgstr "Ana Sayfa"
 
 #: templates/admission.html:36 templates/nav.html:71
 msgid "Qabul"
-msgstr "Прием"
+msgstr "Kabul"
 
 #: templates/admission.html:73
 msgid "Pasport ni yuklang"
-msgstr "Загрузите паспорт"
+msgstr "Pasaportu yükleyin"
 
 #: templates/admission.html:92
 msgid "Diplomizni yuklang"
-msgstr "Загрузите диплом"
+msgstr "Diplomanızı yükleyin"
 
 #: templates/admission.html:105
 msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
-msgstr "Если есть документ, подтверждающий социальное положение"
+msgstr "Sosyal statüyü teyit eden bir belge varsa"
 
 #: templates/admission.html:121
 msgid "Yuborish"
-msgstr "Отправить"
+msgstr "Gönder"
 
 #: templates/article_details.html:14 templates/news-post-page.html:14
 msgid "To'liq ma'lumot"
-msgstr "Подробная информация"
+msgstr "Tam Bilgi"
 
 #: templates/article_details.html:17 templates/articles.html:17
 #: templates/contacts.html:16 templates/course-details.html:16
@@ -313,88 +309,88 @@ msgstr "Подробная информация"
 #: templates/news-post-page.html:17 templates/search-results.html:18
 #: templates/team-member-profile.html:17 templates/team.html:16
 msgid "Home"
-msgstr "Главная"
+msgstr "Ana Sayfa"
 
 #: templates/article_details.html:18 templates/contacts.html:17
 #: templates/course-details.html:17 templates/news-post-page.html:18
 msgid "Contact"
-msgstr "Контакт"
+msgstr "İletişim"
 
 #: templates/article_details.html:60 templates/articles.html:136
 #: templates/grid-news.html:136 templates/news-post-page.html:117
 msgid "Categories"
-msgstr "Категории"
+msgstr "Kategoriler"
 
 #: templates/articles.html:14 templates/articles.html:18
 #, fuzzy
-#| msgid "Talabalar"
+#| msgid "Maqolalar"
 msgid "Maqolalar"
-msgstr "Статьи"
+msgstr "Nesne"
 
 #: templates/articles.html:78 templates/grid-news.html:78
 #: templates/search-results.html:19
 msgid "Search"
-msgstr "Поиск"
+msgstr "Ara"
 
 #: templates/articles.html:97 templates/grid-news.html:97
 msgid "Archive"
-msgstr "Архив"
+msgstr "Arşiv"
 
 #: templates/articles.html:102 templates/grid-news.html:102
 msgid "Jan"
-msgstr "Янв"
+msgstr "Oca"
 
 #: templates/articles.html:103 templates/grid-news.html:103
 msgid "Feb"
-msgstr "Фев"
+msgstr "Şub"
 
 #: templates/articles.html:104 templates/grid-news.html:104
 msgid "March"
-msgstr "Март"
+msgstr "Mart"
 
 #: templates/articles.html:105 templates/grid-news.html:105
 msgid "April"
-msgstr "Апр"
+msgstr "Nis"
 
 #: templates/articles.html:106 templates/grid-news.html:106
 msgid "May"
-msgstr "Май"
+msgstr "May"
 
 #: templates/articles.html:107 templates/grid-news.html:107
 msgid "June"
-msgstr "Июнь"
+msgstr "Haz"
 
 #: templates/articles.html:112 templates/grid-news.html:112
 msgid "July"
-msgstr "Июль"
+msgstr "Tem"
 
 #: templates/articles.html:113 templates/grid-news.html:113
 msgid "Aug"
-msgstr "Авг"
+msgstr "Ağu"
 
 #: templates/articles.html:114 templates/grid-news.html:114
 msgid "Sep"
-msgstr "Сен"
+msgstr "Eyl"
 
 #: templates/articles.html:115 templates/grid-news.html:115
 msgid "Oct"
-msgstr "Окт"
+msgstr "Eki"
 
 #: templates/articles.html:116 templates/grid-news.html:116
 msgid "Nov"
-msgstr "Ноя"
+msgstr "Kas"
 
 #: templates/articles.html:117 templates/grid-news.html:117
 msgid "Dec"
-msgstr "Дек"
+msgstr "Ara"
 
 #: templates/contacts.html:13 templates/footer.html:23
 msgid "Contact US"
-msgstr "Свяжитесь с нами"
+msgstr "Bize Ulaşın"
 
 #: templates/contacts.html:27 templates/events.html:20
 msgid "Bog'lanish"
-msgstr "Связаться"
+msgstr "İletişim"
 
 #: templates/contacts.html:30
 msgid ""
@@ -404,85 +400,85 @@ msgid ""
 "tashrif buyurishingiz mumkin. Savollaringizga javob berishdan xursand "
 "bo'lamiz."
 msgstr ""
-"Вы можете связаться с нами любым удобным для вас способом. Мы доступны 24/7 "
-"по факсу или электронной почте. Вы также можете воспользоваться формой "
-"быстрой связи ниже или посетить нас лично. Мы будем рады ответить на ваши "
-"вопросы."
+"Bizimle size uygun olan herhangi bir şekilde iletişime geçebilirsiniz. Faks "
+"veya e-posta ile 7/24 hizmetinizdeyiz. Ayrıca aşağıdaki hızlı iletişim "
+"formunu kullanabilir veya bizi bizzat ziyaret edebilirsiniz. Sorularınızı "
+"yanıtlamaktan mutluluk duyarız."
 
 #: templates/contacts.html:50
 msgid "Elektorn manzil"
-msgstr "Электронный адрес"
+msgstr "E-posta Adresi"
 
 #: templates/contacts.html:56
 msgid "Telefon raqami"
-msgstr "Номер телефона"
+msgstr "Telefon Numarası"
 
 #: templates/contacts.html:62
 msgid "Habar"
-msgstr "Сообщение"
+msgstr "Mesaj"
 
 #: templates/contacts.html:73
 msgid "Habarni jo'natish"
-msgstr "Отправить сообщение"
+msgstr "Mesajı Gönder"
 
 #: templates/contacts.html:81
 msgid "Telefon"
-msgstr "Телефон"
+msgstr "Telefon"
 
 #: templates/contacts.html:96 templates/footer.html:67
 msgid "Elektron pochta"
-msgstr "Электронная почта"
+msgstr "E-posta"
 
 #: templates/contacts.html:112
 msgid "Manzil"
-msgstr "Адрес"
+msgstr "Adres"
 
 #: templates/contacts.html:120
 msgid "O'zbekiston. Farg'ona  viloyat, Farg'ona Shaxri"
-msgstr "Узбекистан. Ферганская область, город Фергана"
+msgstr "Özbekistan, Fergana viloyati, Fergana Shahri"
 
 #: templates/contacts.html:126
 msgid "Qabul vaqti"
-msgstr "Время приема"
+msgstr "Resepsiyon saatleri"
 
 #: templates/contacts.html:135
 msgid "Dushanba-Juma: 8:00 dan - 20:00 gacha"
-msgstr "Понедельник-пятница: с 8:00 до 20:00"
+msgstr "Pazartesi-Cuma: 8:00 - 20:00 arası"
 
 #: templates/contacts.html:138
 msgid "Shanba: 8:00 dan - 15:00 gacha"
-msgstr "Суббота: с 8:00 до 15:00"
+msgstr "Cumartesi: 8:00 - 15:00 arası"
 
 #: templates/contacts.html:141
 msgid "Yakshanba: Dam olish kuni"
-msgstr "Воскресенье: выходной"
+msgstr "Pazar: Kapalı"
 
 #: templates/contacts.html:148
 msgid "Ijtimoiy tarmoqlarda"
-msgstr "На социальных сетях"
+msgstr "Sosyal medyada"
 
 #: templates/course-details.html:13
 msgid "Course Details"
-msgstr "Подробности курса"
+msgstr "Ders Detayları"
 
 #: templates/course-details.html:53
 msgid "Undergraduate Study"
-msgstr "Бакалавриат"
+msgstr "Lisans Eğitimi"
 
 #: templates/course-grid.html:15 templates/course-grid.html:19
 #: templates/course-grid.html:27
 msgid "Course"
-msgstr "Курс"
+msgstr "Ders"
 
 #: templates/course-grid.html:42 templates/course-grid.html:58
 #: templates/course-grid.html:74 templates/course-grid.html:90
 msgid "O‘qish davomiyligi:"
-msgstr "Продолжительность обучения:"
+msgstr "Eğitim Süresi:"
 
 #: templates/course-grid.html:42 templates/course-grid.html:58
 #: templates/course-grid.html:74 templates/course-grid.html:90
 msgid "yil"
-msgstr "год"
+msgstr "yıl"
 
 #: templates/course-grid.html:50 templates/course-grid.html:66
 #: templates/course-grid.html:82 templates/course-grid.html:98
@@ -490,48 +486,50 @@ msgstr "год"
 #: templates/event-page.html:240 templates/event-page.html:321
 #: templates/index.html:226
 msgid "Batafsil"
-msgstr "Подробнее"
+msgstr "Daha Fazla Oku"
 
 #: templates/course-grid.html:107
 #, fuzzy
 #| msgid "Barcha yangiliklarni ko'rish"
 msgid "Hamma kurslarni ko'rish"
-msgstr "Посмотреть все курсы"
+msgstr "Tüm Haberleri Görüntüle"
 
 #: templates/event-page.html:12
 msgid "Event Details"
-msgstr "Подробности мероприятия"
+msgstr "Etkinlik Detayları"
 
 #: templates/event-page.html:16
 msgid "Event page"
-msgstr "Страница мероприятия"
+msgstr "Etkinlik Sayfası"
 
 #: templates/event-page.html:30 templates/event-page.html:111
 #: templates/event-page.html:192 templates/event-page.html:273
 msgid "O'qituvchi haqida"
-msgstr "О преподавателе"
+msgstr "Eğitmen Hakkında"
 
 #: templates/event-page.html:69 templates/event-page.html:150
 #: templates/event-page.html:231 templates/event-page.html:312
 msgid "Other&nbsp;Events"
-msgstr "Другие мероприятия"
+msgstr "Diğer Etkinlikler"
 
 #: templates/events.html:16
+#, fuzzy
+#| msgid "E'lonlar"
 msgid "E'lonlar taxtasi"
-msgstr "Список объявлений"
+msgstr "Duyurular"
 
 #: templates/events.html:19
 msgid "Asosiy saxifa"
-msgstr "Главная страница"
+msgstr "Ana Sayfa"
 
 #: templates/events.html:44
 msgid "Learn More"
-msgstr "Узнать больше"
+msgstr "Daha Fazla Bilgi"
 
 #: templates/footer.html:57 templates/index.html:365 templates/nav.html:62
 #: templates/nav.html:65
 msgid "So'ngi yangiliklar"
-msgstr "Последние новости"
+msgstr "En Son Haberler"
 
 #: templates/footer.html:60
 msgid ""
@@ -539,462 +537,468 @@ msgid ""
 "faoliyati haqidagi xabarlarni pochta qutingizga yetkazish uchun elektron "
 "pochta manzilingizni kiriting..."
 msgstr ""
-"Введите свой адрес электронной почты, чтобы получать последние новости "
-"университета, специальные мероприятия и студенческие мероприятия, "
-"доставленные на ваш почтовый ящик..."
+"En son Üniversite haberlerini, özel etkinlikleri ve öğrenci aktivitelerini "
+"gelen kutunuza almak için e-posta adresinizi girin..."
 
 #: templates/footer.html:69
 msgid "OBUNA BO'LISH"
-msgstr "ПОДПИСАТЬСЯ"
+msgstr "ABONE"
 
 #: templates/footer.html:80
 msgid "Barcha huquqlar himoyalangan."
-msgstr "Все права защищены."
+msgstr "Her hakkı saklıdır."
 
 #: templates/footer.html:80
 msgid "Maxfiylik siyosati."
-msgstr "Политика конфиденциальности."
+msgstr "Gizlilik Politikası."
 
 #: templates/gallery.html:26
 msgid "Grid Gallery"
-msgstr "Галерея сетки"
+msgstr "Grid Galeri"
 
 #: templates/grid-news.html:14
 msgid "Grid News"
-msgstr "Сетка новостей"
+msgstr "Kılavuz Haberler"
 
 #: templates/grid-news.html:18
 #, fuzzy
 #| msgid "So'ngi yangiliklar"
 msgid "Yangiliklar"
-msgstr "Последние новости"
+msgstr "En Son Haberler"
 
 #: templates/history.html:13 templates/history.html:17
 msgid "History"
-msgstr "История"
+msgstr "Tarih"
 
 #: templates/history.html:29
 msgid "Christopher Smith"
-msgstr "Кристофер Смит"
+msgstr "Christopher Smith"
 
 #: templates/history.html:31
 msgid ""
 "First president of the James Whitaker University, served from 1876 to 1897."
 msgstr ""
-"Первый президент Университета Джеймса Уитакера, занимал должность с 1876 по "
-"1897 год."
+"James Whitaker Üniversitesi'nin ilk başkanı, 1876'dan 1897'ye kadar görev "
+"yaptı."
 
 #: templates/index.html:27 templates/index.html:61
 msgid "Oliy ta'limni ta'minlash"
-msgstr "Обеспечение высшего образования"
+msgstr "Yüksek Öğretim Sağlama"
 
 #: templates/index.html:42 templates/index.html:77
 #, fuzzy
 #| msgid "Biz haqimizda"
 msgid "Biz haqimizda"
-msgstr "О нас"
+msgstr "Hakkımızda"
 
 #: templates/index.html:107
 msgid "MAMASADIKOV NURILLO SHUKRULLAEVICH"
-msgstr "МАМАСАДИКОВ НУРИЛЛО ШУКРУЛЛАЕВИЧ"
+msgstr "MAMASADIKOV NURILLO SHUKRULLAEVICH"
 
 #: templates/index.html:109
 msgid "Universitet raxbari"
-msgstr "Президент университета"
+msgstr "Üniversite Yöneticisi"
 
 #: templates/index.html:124
 msgid "Ko'proq bilish"
-msgstr "Узнать больше"
+msgstr "Daha Fazla Bilgi Edin"
 
 #: templates/index.html:135
 msgid "Statistika"
-msgstr "Статистика"
+msgstr "İstatistikler"
 
 #: templates/index.html:151
 msgid "Bitiruvchilar"
-msgstr "Выпускники"
+msgstr "Mezunlar"
 
 #: templates/index.html:166
 msgid "Professor o`qituvchilar"
-msgstr "Профессоры"
+msgstr "Profesör Öğretim Görevlileri"
 
 #: templates/index.html:181
 msgid "Talabalar shaharchalari"
-msgstr "Студенческие города"
+msgstr "Öğrenci Şehirleri"
 
 #: templates/index.html:196
 msgid "number_of_students"
-msgstr "Количество студентов"
+msgstr "Öğrenci sayısı"
 
 #: templates/index.html:207
 msgid "E'lonlar"
-msgstr "Объявления"
+msgstr "Duyurular"
 
 #: templates/index.html:293
 msgid "Voqealar taqvimini ko'rish"
-msgstr "Просмотреть календарь мероприятий"
+msgstr "Etkinlik Takvimini Görüntüle"
 
 #: templates/index.html:435
 msgid "Barcha yangiliklarni ko'rish"
-msgstr "Посмотреть все новости"
+msgstr "Tüm Haberleri Görüntüle"
 
 #: templates/nav.html:52
 msgid "Rahbariyat"
-msgstr "Лидерство"
+msgstr "Rahbariyat"
 
 #: templates/nav.html:53
 msgid "Our_team_members"
-msgstr "Члены нашей команды"
+msgstr "Ekip üyelerimiz"
 
 #: templates/nav.html:56 templates/yonalishlar.html:81
 msgid "Yo'nalishlar"
-msgstr "Направления"
+msgstr "Bölümler"
 
 #: templates/nav.html:58
 msgid "Bakalavriat"
-msgstr "Бакалавриат"
+msgstr "Lisans"
 
 #: templates/nav.html:66
 msgid "Hodisalar"
-msgstr "События"
+msgstr "Olaylar"
 
 #: templates/nav.html:69
 msgid "Fotografiyalar"
-msgstr "Фотографии"
+msgstr "Fotoğraflar"
 
 #: templates/nav.html:70
 msgid "Aloqa"
-msgstr "Контакт"
+msgstr "Temas etmek"
 
 #: templates/nav.html:72
 msgid "Tillar"
-msgstr "Языки"
+msgstr "Diller"
 
 #: templates/nav.html:93
 #, fuzzy
 #| msgid "Search"
 msgid "Search..."
-msgstr "Поиск"
+msgstr "Ara"
 
 #: templates/search-results.html:15
+#, fuzzy
+#| msgid "Search"
 msgid "Search Results"
-msgstr "Результаты поиска"
+msgstr "Ara"
 
 #: templates/success.html:47
 msgid ""
 "Sizni so'rovingiz muvaffaqqiyatli qabul qilindi, sizga elektron pochta "
 "orqali javob beramiz!"
-msgstr "Ваш запрос успешно принят, мы ответим вам по электронной почте!"
+msgstr "Talebiniz başarıyla alındı, size e-posta ile cevap vereceğiz!"
 
 #: templates/team-member-profile.html:14
 msgid "Team Member Profile"
-msgstr "Профиль участника команды"
+msgstr "Takım Üyesi Profili"
 
 #: templates/team-member-profile.html:18
 msgid "Member Profile"
-msgstr "Профиль участника"
+msgstr "Üye Profili"
 
 #: templates/team-member-profile.html:29
 msgid "Get in Touch"
-msgstr "Связаться"
+msgstr "Temasta olmak"
 
 #: templates/team-member-profile.html:41
 msgid "About"
-msgstr "О нас"
+msgstr "Hakkında"
 
 #: templates/team-member-profile.html:55
 msgid "Certificates and Awards"
-msgstr "Сертификаты и награды"
+msgstr "Sertifikalar ve Ödüller"
 
 #: templates/team.html:13 templates/team.html:25
 msgid "Our Lecturer"
-msgstr "Наши лекторы"
+msgstr "Our Lecturer"
 
 #: templates/team.html:17
 msgid "Team"
-msgstr "Команда"
+msgstr "Team"
 
 #: templates/yonalishlar.html:16
 msgid "Admission"
-msgstr "Прием"
+msgstr "Kabul"
 
 #: templates/yonalishlar.html:20
+#, fuzzy
+#| msgid "Contact"
 msgid "Contact Page"
-msgstr "Страница контактов"
+msgstr "İletişim"
 
 #: templates/yonalishlar.html:30
 msgid ""
 "Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili "
 "uchun qabul boshlanganligini ma'lum qiladi."
 msgstr ""
-"Известно, что Центральный азиатский медицинский университет начал прием "
-"студентов на учебный год 2023/2024."
+"Orta Asya Tıp Üniversitesi, 2023/2024 akademik yılı için kabullerin "
+"başladığını duyurur."
 
 #: templates/yonalishlar.html:33
 #, fuzzy
 #| msgid "Universitet raxbari"
 msgid "Universitetimizning afzalliklari:"
-msgstr "Преимущества нашего университета:"
+msgstr "Üniversite Yöneticisi"
 
 #: templates/yonalishlar.html:35
 msgid "Dual ta'lim tizimida tahsil olish"
-msgstr "Обучение в двух системах"
+msgstr "Çift öğretim sistemiyle eğitim alma"
 
 #: templates/yonalishlar.html:36
 msgid "5 kunlik o‘qish tizimi"
-msgstr "5-дневная учебная система"
+msgstr "5 günlük öğrenim sistemi"
 
 #: templates/yonalishlar.html:37
 msgid "Nazariya va amaliyotning hamohang olib borilishi"
-msgstr "Сочетание теории и практики"
+msgstr "Teori ve uygulamanın bütünleşmesi"
 
 #: templates/yonalishlar.html:38
 msgid "Work&Travel dasturi bo‘yicha sayohatlar"
-msgstr "Путешествия по программе Work&Travel"
+msgstr "Work&Travel programıyla seyahat imkanları"
 
 #: templates/yonalishlar.html:39
 msgid "Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi"
-msgstr "Проведение занятий в современных клиниках"
+msgstr "Modern kliniklerde uygulama dersleri alma"
 
 #: templates/yonalishlar.html:40
 msgid "Zamonaviy kampus va simulyasiya markazi"
-msgstr "Современный кампус и симуляционный центр"
+msgstr "Modern kampüs ve simülasyon merkezi"
 
 #: templates/yonalishlar.html:41
 msgid ""
 "Butun dunyo kutubxonalari tarmog‘iga to‘g‘ridan-to‘g‘ri chiqish imkoniyati"
-msgstr "Прямой доступ к всемирной сети библиотек"
+msgstr ""
+"Dünya genişliğinde kutup araştırma istasyonlarına doğrudan erişim imkanı"
 
 #: templates/yonalishlar.html:45
 msgid ""
 "2023/2024 o‘quv yilida universitetga quyidagi yo‘nalishlarga talabalar qabul "
 "qilinadi:"
 msgstr ""
-"В учебном году 2023/2024 университет принимает студентов на следующие "
-"направления:"
+"2023/2024 eğitim yılında üniversitemize aşağıdaki alanlara öğrenci kabul "
+"edilecektir:"
 
 #: templates/yonalishlar.html:47
 msgid "Davolash ishi – o‘qish muddati 6 yil (200 nafar)"
-msgstr "Направление: Лечебное дело - 6 лет (200 человек)"
+msgstr "Davolash işi – 6 yıl süreyle okuma (200 kişi)"
 
 #: templates/yonalishlar.html:48
 msgid "Pediatriya ishi -  o‘qish muddati 6 yil (100 nafar)"
-msgstr "Направление: Педиатрия - 6 лет (100 человек)"
+msgstr "Pediatri işi - öğrenim süresi 6 yıl (100 kişi)"
 
 #: templates/yonalishlar.html:49
 msgid "Stomatologiya - o‘qish muddati 5 yil (200 nafar)"
-msgstr "Направление: Стоматология - 5 лет (200 человек)"
+msgstr "Diş hekimliği - öğrenim süresi 5 yıl (200 kişi)"
 
 #: templates/yonalishlar.html:53
 msgid "Qanday hujjatlar talab qilinadi?"
-msgstr "Какие документы требуются?"
+msgstr "Hangi belgeler gereklidir?"
 
 #: templates/yonalishlar.html:56
 msgid "Attestat yoki diplom"
-msgstr "Аттестат или диплом"
+msgstr "Diploma veya sertifika"
 
 #: templates/yonalishlar.html:57
 msgid "Rasm (3.5X4.5) – 6 dona"
-msgstr "Фотография (3,5X4,5) - 6 штук"
+msgstr "Resim (3.5X4.5) - 6 adet"
 
 #: templates/yonalishlar.html:61
 msgid "Qanday hujjat topshiriladi?"
-msgstr "Как предоставить документы?"
+msgstr "Belgeler nasıl sunulur?"
 
 #: templates/yonalishlar.html:63
 msgid "Bizni web sahifamiz orqali"
-msgstr "Через нашу веб-страницу"
+msgstr "Web sayfamız üzerinden"
 
 #: templates/yonalishlar.html:64
 msgid "Telegram bot orqali -"
-msgstr "Через Telegram-бот -"
+msgstr "Telegram botu aracılığıyla -"
 
 #: templates/yonalishlar.html:65
 msgid "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"
-msgstr "По адресу: ул. Саноат, г. Фергана, 24 (офлайн)"
+msgstr "Fergana şehri, Sanoat ko'chasi 24 (çevrimdışı)"
 
 #: templates/yonalishlar.html:92
 #, fuzzy
 #| msgid "Ko'proq bilish"
 msgid "Ko'proq o'rganish"
-msgstr "Узнать больше"
+msgstr "Daha fazla bilgi edinin"
 
 #: templates/yonalishlar.html:111
 #, fuzzy
 #| msgid "Universitet raxbari"
 msgid "Universitet Rasmlari"
-msgstr "Президент университета"
+msgstr "Üniversite Yöneticisi"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"
 #~ msgid "Universitetni umumiy ma'lumotlari"
-#~ msgstr "Общая информация об университете"
+#~ msgstr "Üniversite Yöneticisi"
 
-#~ msgid "Biz bilan bog'lanish"
-#~ msgstr "Связаться"
+#, fuzzy
+#~| msgid "Bog'lanish"
+#~ msgid "Biz_bilan_bog'lanish"
+#~ msgstr "İletişim"
 
 #, fuzzy
 #~| msgid "Elektron pochta"
 #~ msgid "Elektron pochta manzilingiz"
-#~ msgstr "Электронная почта"
+#~ msgstr "E-posta"
 
 #, fuzzy
 #~| msgid "Applied Students"
 #~ msgid "students_number"
-#~ msgstr "Претендующие студенты"
+#~ msgstr "Başvuran Öğrenciler"
 
 #~ msgid "admin/"
-#~ msgstr "админ/"
+#~ msgstr "admin/"
 
 #, fuzzy
 #~| msgid "Talabalar"
 #~ msgid "Talabalar"
-#~ msgstr "Студенты"
+#~ msgstr "Öğrenciler"
 
 #~ msgid "Bizni jamoamiz"
-#~ msgstr "Bizni jamoamiz"
+#~ msgstr "Biz bir takımız"
 
 #, fuzzy
 #~| msgid "So'ngi yangiliklar"
 #~ msgid "Yangiliklari"
-#~ msgstr "Последние новости"
+#~ msgstr "En Son Haberler"
 
 #, fuzzy
 #~| msgid "Member Profile"
 #~ msgid "Member since"
-#~ msgstr "Профиль участника"
+#~ msgstr "Üye Profili"
 
 #, fuzzy
 #~| msgid "Statues"
 #~ msgid "Static Files"
-#~ msgstr "Статуи"
+#~ msgstr "Heykeller"
 
 #, fuzzy
 #~| msgid "Jan"
 #~ msgid "and"
-#~ msgstr "Янв"
+#~ msgstr "Oca"
 
 #, fuzzy
 #~| msgid "Nov"
 #~ msgid "No"
-#~ msgstr "Ноя"
+#~ msgstr "Kas"
 
 #, fuzzy
 #~| msgid "Statistika"
 #~ msgid "Sat"
-#~ msgstr "Статус"
+#~ msgstr "İstatistikler"
 
 #, fuzzy
 #~| msgid "Jan"
 #~ msgid "jan"
-#~ msgstr "Янв"
+#~ msgstr "Oca"
 
 #, fuzzy
 #~| msgid "Feb"
 #~ msgid "feb"
-#~ msgstr "Фев"
+#~ msgstr "Şub"
 
 #, fuzzy
 #~| msgid "May"
 #~ msgid "may"
-#~ msgstr "Май"
+#~ msgstr "May"
 
 #, fuzzy
 #~| msgid "Aug"
 #~ msgid "aug"
-#~ msgstr "Авг"
+#~ msgstr "Ağu"
 
 #, fuzzy
 #~| msgid "Sep"
 #~ msgid "sep"
-#~ msgstr "Сен"
+#~ msgstr "Eyl"
 
 #, fuzzy
 #~| msgid "Oct"
 #~ msgid "oct"
-#~ msgstr "Окт"
+#~ msgstr "Eki"
 
 #, fuzzy
 #~| msgid "Nov"
 #~ msgid "nov"
-#~ msgstr "Ноя"
+#~ msgstr "Kas"
 
 #, fuzzy
 #~| msgid "Dec"
 #~ msgid "dec"
-#~ msgstr "Дек"
+#~ msgstr "Ara"
 
 #, fuzzy
 #~| msgid "March"
 #~ msgctxt "abbrev. month"
 #~ msgid "March"
-#~ msgstr "Март"
+#~ msgstr "Mart"
 
 #, fuzzy
 #~| msgid "April"
 #~ msgctxt "abbrev. month"
 #~ msgid "April"
-#~ msgstr "Апр"
+#~ msgstr "Nis"
 
 #, fuzzy
 #~| msgid "May"
 #~ msgctxt "abbrev. month"
 #~ msgid "May"
-#~ msgstr "Май"
+#~ msgstr "May"
 
 #, fuzzy
 #~| msgid "June"
 #~ msgctxt "abbrev. month"
 #~ msgid "June"
-#~ msgstr "Июнь"
+#~ msgstr "Haz"
 
 #, fuzzy
 #~| msgid "July"
 #~ msgctxt "abbrev. month"
 #~ msgid "July"
-#~ msgstr "Июль"
+#~ msgstr "Tem"
 
 #, fuzzy
 #~| msgid "March"
 #~ msgctxt "alt. month"
 #~ msgid "March"
-#~ msgstr "Март"
+#~ msgstr "Mart"
 
 #, fuzzy
 #~| msgid "April"
 #~ msgctxt "alt. month"
 #~ msgid "April"
-#~ msgstr "Апр"
+#~ msgstr "Nis"
 
 #, fuzzy
 #~| msgid "May"
 #~ msgctxt "alt. month"
 #~ msgid "May"
-#~ msgstr "Май"
+#~ msgstr "May"
 
 #, fuzzy
 #~| msgid "June"
 #~ msgctxt "alt. month"
 #~ msgid "June"
-#~ msgstr "Июнь"
+#~ msgstr "Haz"
 
 #, fuzzy
 #~| msgid "July"
 #~ msgctxt "alt. month"
 #~ msgid "July"
-#~ msgstr "Июль"
+#~ msgstr "Tem"
+
+#, fuzzy
+#~| msgid "So'ngi yangiliklar"
+#~ msgid "yangiliklar"
+#~ msgstr "En Son Haberler"
 
 #, fuzzy
 #~| msgid "Universitet raxbari"
 #~ msgid "Universitet yangiliklari"
-#~ msgstr "Президент университета"
+#~ msgstr "Üniversite Yöneticisi"
 
 #~ msgid ""
-#~ "You can reach out to us in any convenient way. We work 24/7 via fax or "
-#~ "email. Also, you can personally visit us or use the quick contact form "
-#~ "below. We are happy to answer your questions."
+#~ "James Whitaker Üniversitesi'nin ilk rektörü, 1876'dan 1897'ye hizmet etti."
 #~ msgstr ""
-#~ "Вы можете связаться с нами любым удобным способом.Мы работаем "
-#~ "круглосуточно по факсу или электронной почте.Кроме того, вы можете "
-#~ "воспользоваться предоставленной ниже формой быстрого контакта или лично "
-#~ "посетить нас. Мы с удовольствием ответим на ваши вопросы."
+#~ "James Whitaker Üniversitesi'nin ilk rektörü, 1876'dan 1897'ye hizmet etti."

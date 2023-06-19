@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
-{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+{% block title  %}Central Asian Medical University{% endblock %}
 
 {% block link  %}{% endblock %}
 
@@ -9,11 +10,11 @@
 <section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bg_of_uni.jpg' %}">
     <div class="parallax-content section-30 section-sm-70">
         <div class="shell">
-            <h2 class="veil reveal-sm-block">Universitet haqida</h2>
+            <h2 class="veil reveal-sm-block">{% trans "Universitet haqida"%}</h2>
             <div class="offset-sm-top-35">
                 <ul class="list-inline list-inline-lg list-inline-dashed p">
-                    <li><a href="{% url 'home' %}">Universitet</a></li>
-                    <li>Universitet haqida</li>
+                    <li><a href="{% url 'home' %}">{% trans "Universitet"%}</a></li>
+                    <li>{% trans "Universitet haqida"%}</li>
                 </ul>
             </div>
         </div>
@@ -26,11 +27,23 @@
                 <a href="{% url 'home' %}">
                     <img class="img-responsive reveal-inline-block" src="/{{ status.about_university_image }}" alt=""></a></div>
             <div class="cell-sm-7 cell-md-7 cell-sm-push-1">
-                <h3 class="text-bold">Bizni Haqimizda</h3>
+                <h3 class="text-bold">{% trans "Universitet haqida"%}</h3>
                 <hr class="divider bg-madison hr-sm-left-0">
                 <div class="offset-top-30 offset-md-top-30">
-                    {{ status.about_university_title | safe }}
-                    {{ status.about_university_body | safe }}
+                    {% if request.LANGUAGE_CODE == "uz" %}
+                        {{ status.about_university_title_uz | safe }}
+                        {{ status.about_university_body_uz | safe }}
+                    {% elif request.LANGUAGE_CODE == "ru" %}
+                        {{ status.about_university_title_ru | safe }}
+                        {{ status.about_university_body_ru | safe }}
+                    {% elif request.LANGUAGE_CODE == "en" %}
+                        {{ status.about_university_title_en | safe }}
+                        {{ status.about_university_body_en | safe }}
+                    {% else %}
+                        {{ status.about_university_title_tr | safe }}
+                        {{ status.about_university_body_tr | safe }}
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>
@@ -40,11 +53,11 @@
     <div class="bg-vide novi-vide" data-vide-bg="{% static '' %}video/bg-video-1-lg.mp4" data-vide-options="posterType: jpg">
         <div class="bg-vide-content section-100 section-md-160">
             <div class="shell">
-                <h2 class="text-bold">{{ status.number_of_students }} dan ortiq talabalar</h2>
+                <h2 class="text-bold">{{ status.number_of_students }}{% trans "dan ortiq talabalar"%}</h2>
                 <div class="offset-top-30">
-                    <p>Jamoamizga qo'shiling va kelajagdagi muvaffaqiyatingiz uchun birinchi qadamni qo'ying</p>
+                    <p>{% trans "Jamoamizga qo'shiling va kelajagdagi muvaffaqiyatingiz uchun birinchi qadamni qo'ying"%}</p>
                 </div>
-                <div class="offset-top-35 offset-lg-top-70"><a class="btn btn-primary" href="{% url "apply_form" %}">Ariza topshirish</a></div>
+                <div class="offset-top-35 offset-lg-top-70"><a class="btn btn-primary" href="{% url "apply_form" %}">{% trans "Ariza topshirish"%}</a></div>
             </div>
         </div>
     </div>

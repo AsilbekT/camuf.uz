@@ -1,5 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
+{% load i18n %}
+
 {% block title %}Central Asian Medical University
 {% endblock %} 
 {% block link %} {% endblock %} 
@@ -22,7 +24,7 @@
             <div class="range range-xs-center">
               <div class="cell-md-9 cell-xs-10">
                 <div data-caption-animate="fadeInUp" data-caption-delay="100">
-                  <h1 class="text-bold">Oliy ta'limni ta'minlash</h1>
+                  <h1 class="text-bold">{% trans "Oliy ta'limni ta'minlash" %}</h1>
                 </div>
                 <div
                   class="offset-top-20 offset-xs-top-40 offset-xl-top-15"
@@ -37,7 +39,7 @@
                 >
                   <div class="group-xl group-middle">
                     <a class="btn btn-default" href="{% url 'about' %}">
-                      <span data-novi-id="3">Biz haqimizda</span>
+                      <span data-novi-id="3">{% trans "Biz haqimizda" %}</span>
                     </a>
                   </div>
                 </div>
@@ -56,7 +58,7 @@
             <div class="range range-xs-center">
               <div class="cell-md-9 cell-xs-10">
                 <div data-caption-animate="fadeInUp" data-caption-delay="100">
-                  <h1 class="text-bold">Oliy ta'limni ta'minlash</h1>
+                  <h1 class="text-bold">{% trans "Oliy ta'limni ta'minlash"%}</h1>
                 </div>
                 <div
                   class="offset-top-20 offset-xs-top-40 offset-xl-top-15"
@@ -72,7 +74,7 @@
                 >
                   <div class="group-xl group-middle">
                     <a class="btn btn-default" href="#">
-                      <span data-novi-id="3">Biz haqimizda</span>
+                      <span data-novi-id="3">{% trans "Biz haqimizda"%}</span>
                     </a>
                   </div>
                 </div>
@@ -96,23 +98,30 @@
         <div class="inset-sm-left-50">
           <img
             class="img-responsive reveal-inline-block img-rounded"
-            src="{{ status.rector.image }}"
+            src="/{{ status.rector.image }}"
             alt="#"
             width="340"
             height="300"
           />
           <div class="offset-top-20">
-            <h6 class="text-primary text-bold">MAMASADIKOV NURILLO SHUKRULLAEVICH</h6>
+            <h6 class="text-primary text-bold">{% trans "MAMASADIKOV NURILLO SHUKRULLAEVICH"%}</h6>
           </div>
-          <p>Universitet raxbari</p>
+          <p>{% trans "Universitet raxbari"%}</p>
         </div>
       </div>
       <div class="cell-sm-8 cell-sm-push-1 text-sm-left">
-        <h2 class="text-bold">Universitet haqida</h2>
+        <h2 class="text-bold">{% trans "Universitet haqida"%}</h2>
         <hr class="divider bg-madison hr-sm-left-0" />
-          {{ status.about_university_title |safe }}
-
-          <div class="offset-top-30"><a class="btn btn-icon btn-icon-right btn-default" href="{% url 'about' %}"><span class="icon fa-arrow-right"></span><span>Ko'proq bilish</span></a></div>
+          {% if request.LANGUAGE_CODE == 'uz' %}
+            {{ status.about_university_title_uz |safe }}
+          {% elif request.LANGUAGE_CODE == 'tr' %}
+            {{ status.about_university_title_tr |safe }}
+          {% elif request.LANGUAGE_CODE == 'en' %}
+            {{ status.about_university_title_en |safe }}
+          {% else %}
+            {{ status.about_university_title_ru |safe }}
+          {% endif %}
+          <div class="offset-top-30"><a class="btn btn-icon btn-icon-right btn-default" href="{% url 'about' %}"><span class="icon fa-arrow-right"></span><span>{% trans "Ko'proq bilish"%}</span></a></div>
         </div>
       
     </div>
@@ -123,7 +132,7 @@
   class="section novi-background bg-cover section-70 section-md-114 bg-default"
 >
   <div class="shell">
-    <h2 class="text-bold">Statistika</h2>
+    <h2 class="text-bold">{% trans "Statistika"%}</h2>
     <hr class="divider bg-madison" />
     <div
       class="range range-65 range-xs-center range-md-left offset-top-55 counters"
@@ -139,7 +148,7 @@
           </div>
           <hr class="divider bg-gray-light divider-sm" />
           <div class="offset-top-10">
-            <h6 class="text-black font-accent">Bitiruvchilar</h6>
+            <h6 class="text-black font-accent">{% trans "Bitiruvchilar"%}</h6>
           </div>
         </div>
       </div>
@@ -154,7 +163,7 @@
           </div>
           <hr class="divider bg-gray-light divider-sm" />
           <div class="offset-top-10">
-            <h6 class="text-black font-accent">Professor o`qituvchilar</h6>
+            <h6 class="text-black font-accent">{% trans "Professor o`qituvchilar"%}</h6>
           </div>
         </div>
       </div>
@@ -169,7 +178,7 @@
           </div>
           <hr class="divider bg-gray-light divider-sm" />
           <div class="offset-top-10">
-            <h6 class="text-black font-accent">Talabalar shaharchalari</h6>
+            <h6 class="text-black font-accent">{% trans "Talabalar shaharchalari"%}</h6>
           </div>
         </div>
       </div>
@@ -184,7 +193,7 @@
           </div>
           <hr class="divider bg-gray-light divider-sm" />
           <div class="offset-top-10">
-            <h6 class="text-black font-accent">Talabalar</h6>
+            <h6 class="text-black font-accent">{% trans "number_of_students"%}</h6>
           </div>
         </div>
       </div>
@@ -195,7 +204,7 @@
   class="section novi-background bg-cover section-70 section-md-114 bg-catskill"
 >
   <div class="shell-wide">
-    <h2 class="text-bold">E'lonlar</h2>
+    <h2 class="text-bold">{% trans "E'lonlar"%}</h2>
     <hr class="divider bg-madison" />
     <div class="range range-50 offset-top-50 range-xs-center">
       {% for i in events %}
@@ -214,7 +223,7 @@
                 <a
                   class="btn btn-default"
                   href="{% url 'event_details' slug=i.slug %}"
-                  >Batafsil</a
+                  >{% trans "Batafsil"%}</a
                 >
               </div>
             </div>
@@ -236,7 +245,17 @@
               <div class="post-event-body text-lg-left">
                 <h6>
                   <a href="{% url 'event_details' slug=i.slug %}"
-                    >{{ i.title }}</a
+                    >
+                      {% if request.LANGUAGE_CODE == "uz" %}
+                        {{ i.title_uz }}
+                      {% elif request.LANGUAGE_CODE == "en" %}
+                        {{ i.title_en }}
+                      {% elif request.LANGUAGE_CODE == "ru" %}
+                        {{ i.title_ru }}
+                      {% else %}
+                        {{ i.title_tr }}
+                      {% endif %}
+                      </a
                   >
                 </h6>
                 <ul class="list-inline list-inline-xs">
@@ -246,7 +265,17 @@
                         class="icon novi-icon icon-xxs mdi mdi-account-outline text-middle"
                       ></span
                       ><span class="inset-left-10 text-dark text-middle"
-                        >{{ i.in_charge.fullname }}</span
+                        >
+                        {% if request.LANGUAGE_CODE == 'en' %}
+                        {{ i.in_charge.fullname_en }}
+                        {% elif request.LANGUAGE_CODE == 'uz' %}
+                        {{ i.in_charge.fullname_uz }}
+                        {% elif request.LANGUAGE_CODE == 'tr' %}
+                        {{ i.in_charge.fullname_tr }}
+                        {% else %}
+                        {{ i.in_charge.fullname_ru }}
+                        {% endif %}
+                        </span
                       ></a
                     >
                   </li>
@@ -261,7 +290,7 @@
     <div class="offset-top-50 offset-lg-top-56">
       <a class="btn btn-icon btn-icon-right btn-primary" href="{% url 'events' %}"
         ><span class="icon fa-arrow-right"></span
-        ><span>Voqealar taqvimini ko'rish</span></a
+        ><span>{% trans "Voqealar taqvimini ko'rish"%}</span></a
       >
     </div>
   </div>
@@ -333,7 +362,7 @@
   class="section novi-background bg-cover section-70 section-md-114 bg-catskill"
 >
   <div class="shell isotope-wrap">
-    <h2 class="text-bold">So'ngi yangiliklar</h2>
+    <h2 class="text-bold">{% trans "So'ngi yangiliklar"%}</h2>
     <hr class="divider bg-madison" />
     <div class="row range-30 isotope offset-top-50 text-left">
       {% for i in news %}
@@ -348,12 +377,45 @@
             /></a>
           </div>
           <div class="post-news-body">
+            {% if request.LANGUAGE_CODE == "uz" %}
             <h6>
-              <a href="{% url 'news_details' slug=i.slug %}">{{ i.title }}</a>
+              <a href="{% url 'news_details' slug=i.slug %}">
+                {{ i.title_uz }}
+              </a>
             </h6>
             <div class="offset-top-20">
-              <p>{{ i.subtitle }}</p>
+              <p>{{ i.subtitle_uz }}</p>
             </div>
+            {% elif request.LANGUAGE_CODE == "ru" %}
+            <h6>
+              <a href="{% url 'news_details' slug=i.slug %}">
+                {{ i.title_ru }}
+              </a>
+            </h6>
+            <div class="offset-top-20">
+              <p>{{ i.subtitle_ru }}</p>
+            </div>
+            {% elif request.LANGUAGE_CODE == "en" %}
+            <h6>
+              <a href="{% url 'news_details' slug=i.slug %}">
+                {{ i.title_en }}
+              </a>
+            </h6>
+            <div class="offset-top-20">
+              <p>{{ i.subtitle_en }}</p>
+            </div>
+            {% else %}
+            <h6>
+              <a href="{% url 'news_details' slug=i.slug %}">
+                {{ i.title_tr }}
+              </a>
+            </h6>
+            <div class="offset-top-20">
+              <p>{{ i.subtitle_tr }}</p>
+            </div>
+            {% endif %}
+            
+
             <div class="post-news-meta offset-top-20">
               <span
                 class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"
@@ -362,6 +424,7 @@
                 >{{ i.date_created }}</span
               >
             </div>
+
           </div>
         </article>
       </div>
@@ -369,7 +432,7 @@
     </div>
     <div class="offset-top-50">
       <a class="btn btn-primary" href="{% url 'news' %}"
-        >Barcha yangiliklarni ko'rish</a
+        >{% trans "Barcha yangiliklarni ko'rish"%}</a
       >
     </div>
   </div>

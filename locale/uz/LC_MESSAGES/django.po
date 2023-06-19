@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-23 14:59+0500\n"
+"POT-Creation-Date: 2023-06-19 16:55+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,985 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-#: camu/settings.py:126
+
+#: app/choices.py:257
+msgid "Tamomlagan bilim yurtini tastiqlovchi xujjat"
+msgstr "Tamomlagan bilim yurtini tastiqlovchi xujjat"
+
+#: app/choices.py:265
+#, fuzzy
+#| msgid "Ijtimoiy tarmoqlarda"
+msgid "Ijtimoiy xolat"
+msgstr "Ijtimoiy tarmoqlarda"
+
+#: app/choices.py:282
+#, fuzzy
+#| msgid "Oliy ta'limni ta'minlash"
+msgid "O'qish tilini tanlang"
+msgstr "Oliy ta'limni ta'minlash"
+
+#: app/forms.py:66 templates/contacts.html:44
+msgid "Familiya"
+msgstr "Familiya"
+
+#: app/forms.py:72 templates/contacts.html:38
+msgid "Ism"
+msgstr "Ism"
+
+#: app/forms.py:79
+msgid "Otasini ismi"
+msgstr "Otasini ismi"
+
+#: app/forms.py:85
+msgid "Pasport Seriya raqami"
+msgstr "Pasport Seriya raqami"
+
+#: app/forms.py:92 templates/yonalishlar.html:55
+msgid "Pasport nusxasi"
+msgstr "Pasport nusxasi"
+
+#: app/forms.py:105
+msgid "Viloyat"
+msgstr "Viloyat"
+
+#: app/forms.py:111
+msgid "Tuman"
+msgstr "Tuman"
+
+#: app/forms.py:126
+msgid "Diplom nusxasi"
+msgstr "Diplom nusxasi"
+
+#: app/forms.py:146
+msgid "Telefon raqam"
+msgstr "Telefon raqam"
+
+#: app/forms.py:152
+msgid "Elektron manzil"
+msgstr "Elektron manzil"
+
+#: app/models.py:20
+#, fuzzy
+#| msgid "Universitet raxbari"
+msgid "University Number"
+msgstr "Universitet raxbari"
+
+#: app/models.py:21
+#, fuzzy
+#| msgid "Universitet raxbari"
+msgid "University Numbers"
+msgstr "Universitet raxbari"
+
+#: app/models.py:27
+#, fuzzy
+#| msgid "Universitet haqida"
+msgid "University email"
+msgstr "Universitet haqida"
+
+#: app/models.py:28
+#, fuzzy
+#| msgid "Universitet haqida"
+msgid "University emails"
+msgstr "Universitet haqida"
+
+#: app/models.py:34
+msgid "University pics -> {}"
+msgstr "Universitet rasmlari -> {}"
+
+#: app/models.py:37
+#, fuzzy
+#| msgid "Universitet haqida"
+msgid "University picture"
+msgstr "Universitet haqida"
+
+#: app/models.py:38
+msgid "University Pictures"
+msgstr "Universitet Rasmlari"
+
+#: app/models.py:46
+msgid "Gallery -> {}"
+msgstr "Galeriya"
+
+#: app/models.py:49 templates/article_details.html:47
+#: templates/articles.html:123 templates/gallery.html:14
+#: templates/gallery.html:18 templates/grid-news.html:123
+#: templates/news-post-page.html:104
+msgid "Gallery"
+msgstr "Galeriya"
+
+#: app/models.py:50
+msgid "Galleries"
+msgstr "Rasmlar"
+
+#: app/models.py:66
+msgid "News Category"
+msgstr "Yangiliklar toifasi"
+
+#: app/models.py:67
+msgid "News Categories"
+msgstr "Yangiliklar toifalari"
+
+#: app/models.py:98 app/models.py:99
+msgid "News"
+msgstr "Yangiliklar"
+
+#: app/models.py:114
+msgid "Article Category"
+msgstr "Maqola toifasi"
+
+#: app/models.py:115
+msgid "Article Categories"
+msgstr "Maqola toifalari"
+
+#: app/models.py:145
+msgid "Article"
+msgstr "Maqola"
+
+#: app/models.py:146 templates/nav.html:64
+msgid "Articles"
+msgstr "Maqolalar"
+
+#: app/models.py:179
+msgid "Worker"
+msgstr "Ishchi"
+
+#: app/models.py:180
+msgid "Workers"
+msgstr "Ishchilar"
+
+#: app/models.py:213
+msgid "Leader"
+msgstr "Rahbar"
+
+#: app/models.py:214
+msgid "Leaders"
+msgstr "Rahbarlar"
+
+#: app/models.py:243
+#, fuzzy
+#| msgid "Statistika"
+msgid "Status"
+msgstr "Statistika"
+
+#: app/models.py:244
+msgid "Statues"
+msgstr "Statuslar"
+
+#: app/models.py:276
+msgid "Event"
+msgstr "Voqea"
+
+#: app/models.py:277
+msgid "Events"
+msgstr "Voqealar"
+
+#: app/models.py:307
+msgid "Undergraduate Course"
+msgstr "Bakalavr kursi"
+
+#: app/models.py:308
+msgid "Undergraduate Courses"
+msgstr "Bakalavr kurslari"
+
+#: app/models.py:329
+msgid "Graduate Course"
+msgstr "Bitiruv kursi"
+
+#: app/models.py:330
+msgid "Graduate Courses"
+msgstr "Bitiruv kurslari"
+
+#: app/models.py:339 app/models.py:340
+msgid "Interested People"
+msgstr "Qiziqqan odamlar"
+
+#: app/models.py:395
+msgid "Applied Student"
+msgstr "Universitetga Topshirgan Talaba"
+
+#: app/models.py:396
+msgid "Applied Students"
+msgstr "Universitetga Topshirgan Talabalar"
+
+#: camu/settings.py:137
 msgid "English"
-msgstr ""
+msgstr "Inglizcha"
 
-#: camu/settings.py:127
+#: camu/settings.py:138
 msgid "Uzbek"
-msgstr ""
+msgstr "O'zbekcha"
 
-#: camu/settings.py:128
+#: camu/settings.py:139
 msgid "Russian"
+msgstr "Ruscha"
+
+#: camu/settings.py:140
+msgid "Turkish"
+msgstr "Turkcha"
+
+#: templates/about-us.html:13 templates/about-us.html:17
+#: templates/index.html:113 templates/nav.html:48
+msgid "Universitet haqida"
+msgstr "Universitet haqida"
+
+#: templates/about-us.html:16
+#, fuzzy
+#| msgid "Universitet haqida"
+msgid "Universitet"
+msgstr "Universitet haqida"
+
+#: templates/about-us.html:30
+#, fuzzy
+#| msgid "Biz haqimizda"
+msgid "Biz-Haqimizda"
+msgstr "haqimizda"
+
+#: templates/about-us.html:56
+msgid "dan ortiq talabalar"
+msgstr "dan ortiq talabalar"
+
+#: templates/about-us.html:58
+msgid ""
+"Jamoamizga qo'shiling va kelajagdagi muvaffaqiyatingiz uchun birinchi "
+"qadamni qo'ying"
 msgstr ""
+"Jamoamizga qo'shiling va kelajagdagi muvaffaqiyatingiz uchun birinchi "
+"qadamni qo'ying"
+
+#: templates/about-us.html:60 templates/admission.html:32
+#: templates/course-details.html:46 templates/yonalishlar.html:71
+msgid "Ariza topshirish"
+msgstr "Ariza topshirish"
+
+#: templates/admission.html:19
+msgid "Muvaffaqqiyatli Yuborildi"
+msgstr "Muvaffaqqiyatli Yuborildi"
+
+#: templates/admission.html:22
+msgid "ok"
+msgstr "ok"
+
+#: templates/admission.html:35 templates/yonalishlar.html:19
+msgid "Bosh Sahifa"
+msgstr "Bosh Sahifa"
+
+#: templates/admission.html:36 templates/nav.html:71
+msgid "Qabul"
+msgstr "Qabul"
+
+#: templates/admission.html:73
+msgid "Pasport ni yuklang"
+msgstr "Pasport ni yuklang"
+
+#: templates/admission.html:92
+msgid "Diplomizni yuklang"
+msgstr "Diplomizni yuklang"
+
+#: templates/admission.html:105
+msgid "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
+msgstr "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"
+
+#: templates/admission.html:121
+msgid "Yuborish"
+msgstr "Yuborish"
+
+#: templates/article_details.html:14 templates/news-post-page.html:14
+msgid "To'liq ma'lumot"
+msgstr "To'liq ma'lumot"
+
+#: templates/article_details.html:17 templates/articles.html:17
+#: templates/contacts.html:16 templates/course-details.html:16
+#: templates/course-grid.html:18 templates/event-page.html:15
+#: templates/gallery.html:17 templates/grid-news.html:17
+#: templates/history.html:16 templates/nav.html:47
+#: templates/news-post-page.html:17 templates/search-results.html:18
+#: templates/team-member-profile.html:17 templates/team.html:16
+msgid "Home"
+msgstr "Asosiy Sahifa"
+
+#: templates/article_details.html:18 templates/contacts.html:17
+#: templates/course-details.html:17 templates/news-post-page.html:18
+msgid "Contact"
+msgstr "Bog'lanish"
+
+#: templates/article_details.html:60 templates/articles.html:136
+#: templates/grid-news.html:136 templates/news-post-page.html:117
+msgid "Categories"
+msgstr "Kategoriyalar"
+
+#: templates/articles.html:14 templates/articles.html:18
+#, fuzzy
+#| msgid "Talabalar"
+msgid "Maqolalar"
+msgstr "Talabalar"
+
+#: templates/articles.html:78 templates/grid-news.html:78
+#: templates/search-results.html:19
+msgid "Search"
+msgstr "Qidirish"
+
+#: templates/articles.html:97 templates/grid-news.html:97
+msgid "Archive"
+msgstr "Archive"
+
+#: templates/articles.html:102 templates/grid-news.html:102
+msgid "Jan"
+msgstr "Yan"
+
+#: templates/articles.html:103 templates/grid-news.html:103
+msgid "Feb"
+msgstr "Fev"
+
+#: templates/articles.html:104 templates/grid-news.html:104
+msgid "March"
+msgstr "Mart"
+
+#: templates/articles.html:105 templates/grid-news.html:105
+msgid "April"
+msgstr "Aprel"
+
+#: templates/articles.html:106 templates/grid-news.html:106
+msgid "May"
+msgstr "May"
+
+#: templates/articles.html:107 templates/grid-news.html:107
+msgid "June"
+msgstr "Iyun"
+
+#: templates/articles.html:112 templates/grid-news.html:112
+msgid "July"
+msgstr "Iyul"
+
+#: templates/articles.html:113 templates/grid-news.html:113
+msgid "Aug"
+msgstr "Avgust"
+
+#: templates/articles.html:114 templates/grid-news.html:114
+msgid "Sep"
+msgstr "Sentabr"
+
+#: templates/articles.html:115 templates/grid-news.html:115
+msgid "Oct"
+msgstr "Oktyabr"
+
+#: templates/articles.html:116 templates/grid-news.html:116
+msgid "Nov"
+msgstr "Noyabr"
+
+#: templates/articles.html:117 templates/grid-news.html:117
+msgid "Dec"
+msgstr "Dekabr"
+
+#: templates/contacts.html:13 templates/footer.html:23
+msgid "Contact US"
+msgstr "Biz bilan bog'lanish"
+
+#: templates/contacts.html:27 templates/events.html:20
+msgid "Bog'lanish"
+msgstr "Bog'lanish"
+
+#: templates/contacts.html:30
+msgid ""
+"Siz uchun qulay bo'lgan har qanday usulda biz bilan bog'lanishingiz mumkin. "
+"Biz faks yoki elektron pochta orqali 24/7 ishlaymiz. Shuningdek, quyida "
+"joylashgan tezkor aloqa shaklidan foydalanishingiz yoki bizga shaxsan "
+"tashrif buyurishingiz mumkin. Savollaringizga javob berishdan xursand "
+"bo'lamiz."
+msgstr ""
+"Siz uchun qulay bo'lgan har qanday usulda biz bilan bog'lanishingiz mumkin. "
+"Biz faks yoki elektron pochta orqali 24/7 ishlaymiz. Shuningdek, quyida "
+"joylashgan tezkor aloqa shaklidan foydalanishingiz yoki bizga shaxsan "
+"tashrif buyurishingiz mumkin. Savollaringizga javob berishdan xursand "
+"bo'lamiz."
+
+#: templates/contacts.html:50
+msgid "Elektorn manzil"
+msgstr "Elektorn manzil"
+
+#: templates/contacts.html:56
+msgid "Telefon raqami"
+msgstr "Telefon raqami"
+
+#: templates/contacts.html:62
+msgid "Habar"
+msgstr "Xabar"
+
+#: templates/contacts.html:73
+msgid "Habarni jo'natish"
+msgstr "Xabarni jo'natish"
+
+#: templates/contacts.html:81
+msgid "Telefon"
+msgstr "Telefon"
+
+#: templates/contacts.html:96 templates/footer.html:67
+msgid "Elektron pochta"
+msgstr "Elektron pochta"
+
+#: templates/contacts.html:112
+msgid "Manzil"
+msgstr "Manzil"
+
+#: templates/contacts.html:120
+msgid "O'zbekiston. Farg'ona  viloyat, Farg'ona Shaxri"
+msgstr "O'zbekiston. Farg'ona  viloyat, Farg'ona Shaxri"
+
+#: templates/contacts.html:126
+msgid "Qabul vaqti"
+msgstr "Qabul vaqti"
+
+#: templates/contacts.html:135
+msgid "Dushanba-Juma: 8:00 dan - 20:00 gacha"
+msgstr "Dushanba-Juma: 8:00 dan - 20:00 gacha"
+
+#: templates/contacts.html:138
+msgid "Shanba: 8:00 dan - 15:00 gacha"
+msgstr "Shanba: 8:00 dan - 15:00 gacha"
+
+#: templates/contacts.html:141
+msgid "Yakshanba: Dam olish kuni"
+msgstr "Yakshanba: Dam olish kuni"
+
+#: templates/contacts.html:148
+msgid "Ijtimoiy tarmoqlarda"
+msgstr "Ijtimoiy tarmoqlarda"
+
+#: templates/course-details.html:13
+msgid "Course Details"
+msgstr "Kurs tafsilotlari"
+
+#: templates/course-details.html:53
+msgid "Undergraduate Study"
+msgstr "Bakalavr ta'limi"
+
+#: templates/course-grid.html:15 templates/course-grid.html:19
+#: templates/course-grid.html:27
+msgid "Course"
+msgstr "Kurs"
+
+#: templates/course-grid.html:42 templates/course-grid.html:58
+#: templates/course-grid.html:74 templates/course-grid.html:90
+msgid "O‘qish davomiyligi:"
+msgstr "O‘qish davomiyligi:"
+
+#: templates/course-grid.html:42 templates/course-grid.html:58
+#: templates/course-grid.html:74 templates/course-grid.html:90
+msgid "yil"
+msgstr "yil"
+
+#: templates/course-grid.html:50 templates/course-grid.html:66
+#: templates/course-grid.html:82 templates/course-grid.html:98
+#: templates/event-page.html:78 templates/event-page.html:159
+#: templates/event-page.html:240 templates/event-page.html:321
+#: templates/index.html:226
+msgid "Batafsil"
+msgstr "Batafsil"
+
+#: templates/course-grid.html:107
+#, fuzzy
+#| msgid "Barcha yangiliklarni ko'rish"
+msgid "Hamma kurslarni ko'rish"
+msgstr "Barcha yangiliklarni ko'rish"
+
+#: templates/event-page.html:12
+msgid "Event Details"
+msgstr "Tadbir tafsilotlari"
+
+#: templates/event-page.html:16
+msgid "Event page"
+msgstr "Tadbir sahifasi"
+
+#: templates/event-page.html:30 templates/event-page.html:111
+#: templates/event-page.html:192 templates/event-page.html:273
+msgid "O'qituvchi haqida"
+msgstr "O'qituvchi haqida"
+
+#: templates/event-page.html:69 templates/event-page.html:150
+#: templates/event-page.html:231 templates/event-page.html:312
+msgid "Other&nbsp;Events"
+msgstr "Boshqa&nbsp;Tadbirlar"
+
+#: templates/events.html:16
+#, fuzzy
+#| msgid "E'lonlar"
+msgid "E'lonlar taxtasi"
+msgstr "E'lonlar"
+
+#: templates/events.html:19
+msgid "Asosiy saxifa"
+msgstr "Asosiy saxifa"
+
+#: templates/events.html:44
+msgid "Learn More"
+msgstr "Batafsil ma'lumot"
+
+#: templates/footer.html:57 templates/index.html:365 templates/nav.html:62
+#: templates/nav.html:65
+msgid "So'ngi yangiliklar"
+msgstr "So'ngi yangiliklar"
+
+#: templates/footer.html:60
+msgid ""
+"Universitetning soʻnggi yangiliklari, maxsus tadbirlar va talabalar "
+"faoliyati haqidagi xabarlarni pochta qutingizga yetkazish uchun elektron "
+"pochta manzilingizni kiriting..."
+msgstr ""
+"Universitetning soʻnggi yangiliklari, maxsus tadbirlar va talabalar "
+"faoliyati haqidagi xabarlarni pochta qutingizga yetkazish uchun elektron "
+"pochta manzilingizni kiriting..."
+
+#: templates/footer.html:69
+msgid "OBUNA BO'LISH"
+msgstr "OBUNA BO'LISH"
+
+#: templates/footer.html:80
+msgid "Barcha huquqlar himoyalangan."
+msgstr "Barcha huquqlar himoyalangan."
+
+#: templates/footer.html:80
+msgid "Maxfiylik siyosati."
+msgstr "Maxfiylik siyosati."
+
+#: templates/gallery.html:26
+msgid "Grid Gallery"
+msgstr "Grid galereya"
+
+#: templates/grid-news.html:14
+msgid "Grid News"
+msgstr "Grid Yangiliklar"
+
+#: templates/grid-news.html:18
+#, fuzzy
+#| msgid "So'ngi yangiliklar"
+msgid "Yangiliklar"
+msgstr "So'ngi yangiliklar"
+
+#: templates/history.html:13 templates/history.html:17
+msgid "History"
+msgstr "Tarix"
+
+#: templates/history.html:29
+msgid "Christopher Smith"
+msgstr "Kristofer Smit"
+
+#: templates/history.html:31
+msgid ""
+"First president of the James Whitaker University, served from 1876 to 1897."
+msgstr ""
+"Jeyms Uitaker universitetining birinchi prezidenti, 1876 yildan 1897 "
+"yilgacha ishlagan."
+
+#: templates/index.html:27 templates/index.html:61
+msgid "Oliy ta'limni ta'minlash"
+msgstr "Oliy ta'limni ta'minlash"
+
+#: templates/index.html:42 templates/index.html:77
+#, fuzzy
+#| msgid "Biz haqimizda"
+msgid "Biz haqimizda"
+msgstr "Biz haqimizda"
+
+#: templates/index.html:107
+msgid "MAMASADIKOV NURILLO SHUKRULLAEVICH"
+msgstr "MAMASADIKOV NURILLO SHUKRULLAEVICH"
+
+#: templates/index.html:109
+msgid "Universitet raxbari"
+msgstr "Universitet raxbari"
+
+#: templates/index.html:124
+msgid "Ko'proq bilish"
+msgstr "Ko'proq bilish"
+
+#: templates/index.html:135
+msgid "Statistika"
+msgstr "Statistika"
+
+#: templates/index.html:151
+msgid "Bitiruvchilar"
+msgstr "Bitiruvchilar"
+
+#: templates/index.html:166
+msgid "Professor o`qituvchilar"
+msgstr "Professor o`qituvchilar"
+
+#: templates/index.html:181
+msgid "Talabalar shaharchalari"
+msgstr "Talabalar shaharchalari"
+
+#: templates/index.html:196
+msgid "number_of_students"
+msgstr "Talabalar soni"
+
+#: templates/index.html:207
+msgid "E'lonlar"
+msgstr "E'lonlar"
+
+#: templates/index.html:293
+msgid "Voqealar taqvimini ko'rish"
+msgstr "Voqealar taqvimini ko'rish"
+
+#: templates/index.html:435
+msgid "Barcha yangiliklarni ko'rish"
+msgstr "Barcha yangiliklarni ko'rish"
+
+#: templates/nav.html:52
+msgid "Rahbariyat"
+msgstr "Rahbariyat"
+
+#: templates/nav.html:53
+msgid "Our_team_members"
+msgstr "Jamoamiz a'zolari"
+
+#: templates/nav.html:56 templates/yonalishlar.html:81
+msgid "Yo'nalishlar"
+msgstr "Yo'nalishlar"
+
+#: templates/nav.html:58
+msgid "Bakalavriat"
+msgstr "Bakalavriat"
+
+#: templates/nav.html:66
+msgid "Hodisalar"
+msgstr "Hodisalar"
+
+#: templates/nav.html:69
+msgid "Fotografiyalar"
+msgstr "Fotografiyalar"
+
+#: templates/nav.html:70
+msgid "Aloqa"
+msgstr "Aloqa"
+
+#: templates/nav.html:72
+msgid "Tillar"
+msgstr "Tillar"
+
+#: templates/nav.html:93
+#, fuzzy
+#| msgid "Search"
+msgid "Search..."
+msgstr "Qidirish"
+
+#: templates/search-results.html:15
+msgid "Search Results"
+msgstr "Qidiruv natijalari"
+
+#: templates/success.html:47
+msgid ""
+"Sizni so'rovingiz muvaffaqqiyatli qabul qilindi, sizga elektron pochta "
+"orqali javob beramiz!"
+msgstr ""
+"Sizni so'rovingiz muvaffaqqiyatli qabul qilindi, sizga elektron pochta "
+"orqali javob beramiz!"
+
+#: templates/team-member-profile.html:14
+msgid "Team Member Profile"
+msgstr "Jamoa a'zosi profili"
+
+#: templates/team-member-profile.html:18
+msgid "Member Profile"
+msgstr "A'zo profili"
+
+#: templates/team-member-profile.html:29
+msgid "Get in Touch"
+msgstr "Aloqa qiling"
+
+#: templates/team-member-profile.html:41
+msgid "About"
+msgstr "Haqida"
+
+#: templates/team-member-profile.html:55
+msgid "Certificates and Awards"
+msgstr "Sertifikatlar va mukofotlar"
+
+#: templates/team.html:13 templates/team.html:25
+msgid "Our Lecturer"
+msgstr "Bizning o'qituvchimiz"
+
+#: templates/team.html:17
+msgid "Team"
+msgstr "Jamoa"
+
+#: templates/yonalishlar.html:16
+msgid "Admission"
+msgstr "Qabul"
+
+#: templates/yonalishlar.html:20
+msgid "Contact Page"
+msgstr "Aloqa sahifasi"
+
+#: templates/yonalishlar.html:30
+msgid ""
+"Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili "
+"uchun qabul boshlanganligini ma'lum qiladi."
+msgstr ""
+"Central Asian Medical University tibbiyot universiteti 2023/2024 o‘quv yili "
+"uchun qabul boshlanganligini ma'lum qiladi."
+
+#: templates/yonalishlar.html:33
+#, fuzzy
+#| msgid "Universitet raxbari"
+msgid "Universitetimizning afzalliklari:"
+msgstr "Universitet raxbari"
+
+#: templates/yonalishlar.html:35
+msgid "Dual ta'lim tizimida tahsil olish"
+msgstr "Dual ta'lim tizimida tahsil olish"
+
+#: templates/yonalishlar.html:36
+msgid "5 kunlik o‘qish tizimi"
+msgstr "5 kunlik o‘qish tizimi"
+
+#: templates/yonalishlar.html:37
+msgid "Nazariya va amaliyotning hamohang olib borilishi"
+msgstr "Nazariya va amaliyotning hamohang olib borilishi"
+
+#: templates/yonalishlar.html:38
+msgid "Work&Travel dasturi bo‘yicha sayohatlar"
+msgstr "Work&Travel dasturi bo‘yicha sayohatlar"
+
+#: templates/yonalishlar.html:39
+msgid "Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi"
+msgstr "Zamonaviy klinikalarda dars mashg‘ulotlarining olib borilishi"
+
+#: templates/yonalishlar.html:40
+msgid "Zamonaviy kampus va simulyasiya markazi"
+msgstr "Zamonaviy kampus va simulyasiya markazi"
+
+#: templates/yonalishlar.html:41
+msgid ""
+"Butun dunyo kutubxonalari tarmog‘iga to‘g‘ridan-to‘g‘ri chiqish imkoniyati"
+msgstr ""
+"Butun dunyo kutubxonalari tarmog‘iga to‘g‘ridan-to‘g‘ri chiqish imkoniyati"
+
+#: templates/yonalishlar.html:45
+msgid ""
+"2023/2024 o‘quv yilida universitetga quyidagi yo‘nalishlarga talabalar qabul "
+"qilinadi:"
+msgstr ""
+"2023/2024 o‘quv yilida universitetga quyidagi yo‘nalishlarga talabalar qabul "
+"qilinadi:"
+
+#: templates/yonalishlar.html:47
+msgid "Davolash ishi – o‘qish muddati 6 yil (200 nafar)"
+msgstr "Davolash ishi – o‘qish muddati 6 yil (200 nafar)"
+
+#: templates/yonalishlar.html:48
+msgid "Pediatriya ishi -  o‘qish muddati 6 yil (100 nafar)"
+msgstr "Pediatriya ishi -  o‘qish muddati 6 yil (100 nafar)"
+
+#: templates/yonalishlar.html:49
+msgid "Stomatologiya - o‘qish muddati 5 yil (200 nafar)"
+msgstr "Stomatologiya - o‘qish muddati 5 yil (200 nafar)"
+
+#: templates/yonalishlar.html:53
+msgid "Qanday hujjatlar talab qilinadi?"
+msgstr "Qanday hujjatlar talab qilinadi?"
+
+#: templates/yonalishlar.html:56
+msgid "Attestat yoki diplom"
+msgstr "Attestat yoki diplom"
+
+#: templates/yonalishlar.html:57
+msgid "Rasm (3.5X4.5) – 6 dona"
+msgstr "Rasm (3.5X4.5) – 6 dona"
+
+#: templates/yonalishlar.html:61
+msgid "Qanday hujjat topshiriladi?"
+msgstr "Qanday hujjat topshiriladi?"
+
+#: templates/yonalishlar.html:63
+msgid "Bizni web sahifamiz orqali"
+msgstr "Bizni web sahifamiz orqali"
+
+#: templates/yonalishlar.html:64
+msgid "Telegram bot orqali -"
+msgstr "Telegram bot orqali -"
+
+#: templates/yonalishlar.html:65
+msgid "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"
+msgstr "Farg‘ona shahar Sanoat ko‘chasi 24 uyda (offlayn)"
+
+#: templates/yonalishlar.html:92
+#, fuzzy
+#| msgid "Ko'proq bilish"
+msgid "Ko'proq o'rganish"
+msgstr "Ko'proq bilish"
+
+#: templates/yonalishlar.html:111
+#, fuzzy
+#| msgid "Universitet raxbari"
+msgid "Universitet Rasmlari"
+msgstr "Universitet raxbari"
+
+#, fuzzy
+#~| msgid "Universitet raxbari"
+#~ msgid "Universitetni umumiy ma'lumotlari"
+#~ msgstr "Universitet raxbari"
+
+#, fuzzy
+#~| msgid "Bog'lanish"
+#~ msgid "Biz bilan bog'lanish"
+#~ msgstr "Bog'lanish"
+
+#, fuzzy
+#~| msgid "Elektron pochta"
+#~ msgid "Elektron pochta manzilingiz"
+#~ msgstr "Elektron pochta"
+
+#, fuzzy
+#~| msgid "Applied Students"
+#~ msgid "students_number"
+#~ msgstr "Universitetga Topshirgan Talabalar"
+
+#~ msgid "admin/"
+#~ msgstr "admin/"
+
+#, fuzzy
+#~| msgid "Talabalar"
+#~ msgid "Talabalar"
+#~ msgstr "Talabalar"
+
+#~ msgid "Bizni jamoamiz"
+#~ msgstr "Bizni jamoamiz"
+
+#, fuzzy
+#~| msgid "So'ngi yangiliklar"
+#~ msgid "Yangiliklari"
+#~ msgstr "So'ngi yangiliklar"
+
+#, fuzzy
+#~| msgid "Member Profile"
+#~ msgid "Member since"
+#~ msgstr "A'zo profili"
+
+#, fuzzy
+#~| msgid "Statues"
+#~ msgid "Static Files"
+#~ msgstr "Statuslar"
+
+#, fuzzy
+#~| msgid "Jan"
+#~ msgid "and"
+#~ msgstr "Yan"
+
+#, fuzzy
+#~| msgid "Nov"
+#~ msgid "No"
+#~ msgstr "Noyabr"
+
+#, fuzzy
+#~| msgid "Statistika"
+#~ msgid "Sat"
+#~ msgstr "Statistika"
+
+#, fuzzy
+#~| msgid "Jan"
+#~ msgid "jan"
+#~ msgstr "Yan"
+
+#, fuzzy
+#~| msgid "Feb"
+#~ msgid "feb"
+#~ msgstr "Fev"
+
+#, fuzzy
+#~| msgid "May"
+#~ msgid "may"
+#~ msgstr "May"
+
+#, fuzzy
+#~| msgid "Aug"
+#~ msgid "aug"
+#~ msgstr "Avgust"
+
+#, fuzzy
+#~| msgid "Sep"
+#~ msgid "sep"
+#~ msgstr "Sentabr"
+
+#, fuzzy
+#~| msgid "Oct"
+#~ msgid "oct"
+#~ msgstr "Oktyabr"
+
+#, fuzzy
+#~| msgid "Nov"
+#~ msgid "nov"
+#~ msgstr "Noyabr"
+
+#, fuzzy
+#~| msgid "Dec"
+#~ msgid "dec"
+#~ msgstr "Dekabr"
+
+#, fuzzy
+#~| msgid "March"
+#~ msgctxt "abbrev. month"
+#~ msgid "March"
+#~ msgstr "Mart"
+
+#, fuzzy
+#~| msgid "April"
+#~ msgctxt "abbrev. month"
+#~ msgid "April"
+#~ msgstr "Aprel"
+
+#, fuzzy
+#~| msgid "May"
+#~ msgctxt "abbrev. month"
+#~ msgid "May"
+#~ msgstr "May"
+
+#, fuzzy
+#~| msgid "June"
+#~ msgctxt "abbrev. month"
+#~ msgid "June"
+#~ msgstr "Iyun"
+
+#, fuzzy
+#~| msgid "July"
+#~ msgctxt "abbrev. month"
+#~ msgid "July"
+#~ msgstr "Iyul"
+
+#, fuzzy
+#~| msgid "March"
+#~ msgctxt "alt. month"
+#~ msgid "March"
+#~ msgstr "Mart"
+
+#, fuzzy
+#~| msgid "April"
+#~ msgctxt "alt. month"
+#~ msgid "April"
+#~ msgstr "Aprel"
+
+#, fuzzy
+#~| msgid "May"
+#~ msgctxt "alt. month"
+#~ msgid "May"
+#~ msgstr "May"
+
+#, fuzzy
+#~| msgid "June"
+#~ msgctxt "alt. month"
+#~ msgid "June"
+#~ msgstr "Iyun"
+
+#, fuzzy
+#~| msgid "July"
+#~ msgctxt "alt. month"
+#~ msgid "July"
+#~ msgstr "Iyul"
+
+#, fuzzy
+#~| msgid "So'ngi yangiliklar"
+#~ msgid "yangiliklar"
+#~ msgstr "So'ngi yangiliklar"
+
+#, fuzzy
+#~| msgid "Universitet raxbari"
+#~ msgid "Universitet yangiliklari"
+#~ msgstr "Universitet raxbari"

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+{% load i18n %}
+
+{% block title  %}Central Asian Medical University{% endblock %}
 
 {% block link  %}{% endblock %}
 
@@ -8,11 +10,11 @@
 <section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bg_of_uni.jpg' %}">
     <div class="parallax-content section-30 section-sm-70">
         <div class="shell">
-            <h2 class="veil reveal-sm-block">History</h2>
+            <h2 class="veil reveal-sm-block">{% trans "History"%}</h2>
             <div class="offset-sm-top-35">
                 <ul class="list-inline list-inline-lg list-inline-dashed p">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li>History</li>
+                    <li><a href="{% url 'home' %}">{% trans "Home"%}</a></li>
+                    <li>{% trans "History"%}</li>
                 </ul>
             </div>
         </div>
@@ -24,9 +26,9 @@
             <div class="cell-sm-4 cell-sm-push-2 text-sm-left">
                 <div class="inset-sm-left-30"><img class="img-responsive reveal-inline-block img-rounded" src="{% static '' %}images/users/user-christopher-smith-340x300.jpg" width="340" height="300" alt="">
                     <div class="offset-top-20">
-                        <h6 class="text-primary text-bold">Christopher Smith</h6>
+                        <h6 class="text-primary text-bold">{% trans "Christopher Smith"%}</h6>
                     </div>
-                    <p>First president of the James Whitaker University, served from 1876 to 1897.</p>
+                    <p>{% trans "First president of the James Whitaker University, served from 1876 to 1897."%}</p>
                 </div>
             </div>
             <div class="cell-sm-8 cell-sm-push-1 text-sm-left">

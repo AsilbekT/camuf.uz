@@ -1,7 +1,8 @@
 {% extends 'base.html' %} 
 {% load static %} 
-{% block title %}Markaziy Osiyo
-tibbiyot universiteti
+{% load i18n %}
+
+{% block title %}Central Asian Medical University
 {% endblock %} 
 {% block link %}{% endblock %} 
 {% block content %}
@@ -12,11 +13,11 @@ tibbiyot universiteti
 >
   <div class="parallax-content section-30 section-sm-70">
     <div class="shell">
-      <h2 class="veil reveal-sm-block">E'lonlar taxtasi</h2>
+      <h2 class="veil reveal-sm-block">{% trans "E'lonlar taxtasi"%}</h2>
       <div class="offset-sm-top-35">
         <ul class="list-inline list-inline-lg list-inline-dashed p">
-          <li><a href="{% url 'home' %}">Asosiy saxifa</a></li>
-          <li>Bog'lanish</li>
+          <li><a href="{% url 'home' %}">{% trans "Asosiy saxifa"%}</a></li>
+          <li>{% trans "Bog'lanish"%}</li>
         </ul>
       </div>
     </div>
@@ -40,7 +41,7 @@ tibbiyot universiteti
               />
               <div class="post-event-overlay context-dark">
                 <div class="offset-top-20">
-                  <a class="btn btn-default" href="{% url 'event_details' slug=event.slug %}">Learn More</a>
+                  <a class="btn btn-default" href="{% url 'event_details' slug=event.slug %}">{% trans "Learn More"%}</a>
                 </div>
               </div>
               <div class="post-event-meta text-center">
@@ -53,7 +54,8 @@ tibbiyot universiteti
             <div class="unit unit-lg unit-lg-horizontal">
               <div class="unit-body">
                 <div class="post-event-body text-lg-left">
-                  <h6><a href="{% url 'event_details' slug=event.slug %}">{{ event.title }}</a></h6>
+                  {% if request.LANGUAGE_CODE == "uz" %}
+                  <h6><a href="{% url 'event_details' slug=event.slug %}">{{ event.title_uz }}</a></h6>
                   <ul class="list-inline list-inline-xs">
                     <li>
                       <a href="{% url 'member_details' catagory=event.in_charge.catagory slug=event.in_charge.slug %}"
@@ -66,6 +68,49 @@ tibbiyot universiteti
                       >
                     </li>
                   </ul>
+                  {% elif request.LANGUAGE_CODE == "ru" %}
+                  <h6><a href="{% url 'event_details' slug=event.slug %}">{{ event.title_ru }}</a></h6>
+                  <ul class="list-inline list-inline-xs">
+                    <li>
+                      <a href="{% url 'member_details' catagory=event.in_charge.catagory slug=event.in_charge.slug %}"
+                        ><span
+                          class="icon novi-icon icon-xxs mdi mdi-account-outline text-middle"
+                        ></span
+                        ><span class="inset-left-10 text-dark text-middle"
+                          >{{ event.in_charge.fullname_ru }}</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                  {% elif request.LANGUAGE_CODE == "en" %}
+                  <h6><a href="{% url 'event_details' slug=event.slug %}">{{ event.title_en }}</a></h6>
+                  <ul class="list-inline list-inline-xs">
+                    <li>
+                      <a href="{% url 'member_details' catagory=event.in_charge.catagory slug=event.in_charge.slug %}"
+                        ><span
+                          class="icon novi-icon icon-xxs mdi mdi-account-outline text-middle"
+                        ></span
+                        ><span class="inset-left-10 text-dark text-middle"
+                          >{{ event.in_charge.fullname_en }}</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                  {% else %}
+                  <h6><a href="{% url 'event_details' slug=event.slug %}">{{ event.title_tr }}</a></h6>
+                  <ul class="list-inline list-inline-xs">
+                    <li>
+                      <a href="{% url 'member_details' catagory=event.in_charge.catagory slug=event.in_charge.slug %}"
+                        ><span
+                          class="icon novi-icon icon-xxs mdi mdi-account-outline text-middle"
+                        ></span
+                        ><span class="inset-left-10 text-dark text-middle"
+                          >{{ event.in_charge.fullname_tr }}</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                  {% endif %}
                 </div>
               </div>
             </div>

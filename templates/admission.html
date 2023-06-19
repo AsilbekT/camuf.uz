@@ -1,5 +1,8 @@
 {% extends 'base.html' %} 
 {% load static %} 
+
+{% load i18n %}
+
 {% block title %}Central Asian Medical University
 {% endblock %} 
 {% block link  %}
@@ -13,11 +16,10 @@
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <div class="p-6 text-center">
                     <span class="mdi mdi-check text-3xl text-white mb-6"></span>
-                    <h3 class="mb-5 text-2xl font-normal text-gray-500 dark:text-gray-400 mb-6">Muvaffaqqiyatli
-                        Yuborildi</h3>
+                    <h3 class="mb-5 text-2xl font-normal text-gray-500 dark:text-gray-400 mb-6">{% trans "Muvaffaqqiyatli Yuborildi"%}</h3>
                     <button data-modal-hide="popup-modal" type="button"
                         class="toggle-btn text-white bg-blue-600 hover:bg-blue-800 text-2xl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg inline-flex items-center px-5 py-2.5 text-center mr-2">
-                        ok
+                        {% trans "ok"%}
                     </button>
                 </div>
             </div>
@@ -27,11 +29,11 @@
     <section class="section breadcrumb-modern context-dark parallax-container bg-[url('/images/Contact.jpg')]">
         <div class="parallax-content section-30 section-sm-70">
             <div class="shell text-center">
-                <h2 class="veil reveal-sm-block mb-3">Ariza topshirish</h2>
+                <h2 class="veil reveal-sm-block mb-3">{% trans "Ariza topshirish"%}</h2>
                 <div class="offset-sm-top-35">
                     <ul class="list-inline list-inline-lg list-inline-dashed p">
-                        <li><a href="{% url 'home' %}">Bosh Sahifa</a></li>
-                        <li>Qabul</li>
+                        <li><a href="{% url 'home' %}">{% trans "Bosh Sahifa"%}</a></li>
+                        <li>{% trans "Qabul"%}</li>
                     </ul>
                 </div>
             </div>
@@ -68,7 +70,7 @@
                                 <div class="w-full px-3 mb-6 md:mb-2">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                         for="file">
-                                        Pasport ni yuklang
+                                        {% trans "Pasport ni yuklang"%}
                                     </label>
                                     {{ form.passport_pdf }}
                                 </div>
@@ -87,7 +89,7 @@
                                 <div class="w-full px-3 mb-6 md:mb-2">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                         for="file">
-                                        Diplomizni yuklang
+                                        {% trans "Diplomizni yuklang"%}
                                     </label>
                                     {{ form.diploma }}
                                 </div>
@@ -100,7 +102,7 @@
                                 <div class="w-full px-3 mb-6 md:mb-2" id="file-upload-section">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                         for="file">
-                                        Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa
+                                        {% trans "Ijtimoiy xolatni tastiqlovchi xujjat bor bo'lsa"%}
                                     </label>
                                     {{ form.social_status_file }}
                                 </div>
@@ -116,7 +118,7 @@
                                 <div class="w-full md:w-1/2 px-3 mb-6 mt-6 md:mb-2">
                                     <button
                                         class="toggle-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded">
-                                        Yuborish
+                                        {% trans "Yuborish"%}
                                     </button>
                                 </div>
                             </div>

@@ -3,6 +3,8 @@ from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
 from .models import AppliedStudents, UndergraduateCourse
 from .choices import COUNTRY_CHOICES, SCHOOL_CHOICES, SOCIAL_STATUS, STUDY_LANGUAGES
+from django.utils.translation import gettext as _
+
 
 
 class ContactForm(forms.Form):
@@ -61,33 +63,33 @@ class AppliedStudentsForm(forms.ModelForm):
                               (attrs={
                                   'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
                                   'id': 'grid-last-name',
-                                  'placeholder': 'Familiya'
+                                  'placeholder': _('Familiya')
                                   }))
     name = forms.CharField(widget=forms.TextInput
                               (attrs={
                                   'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
                                   'id': 'grid-first-name',
-                                  'placeholder': 'Ism'
+                                  'placeholder': _('Ism')
                                   }))
     
     fathers_name = forms.CharField(widget=forms.TextInput
                               (attrs={
                                   'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
                                   'id': 'father-name',
-                                  'placeholder': 'Otasini ismi'
+                                  'placeholder': _('Otasini ismi')
                                   }))
     passport_number = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
             'id': 'passport','placeholder': 
-            'Pasport Seriya raqami'
+            _('Pasport Seriya raqami')
             })
         )
     passport_pdf = forms.FileField(
         widget=forms.FileInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
             'id': 'passport',
-            'placeholder': 'Pasport nusxasi',
+            'placeholder': _('Pasport nusxasi'),
         })
     )
     country = forms.ChoiceField(
@@ -100,13 +102,13 @@ class AppliedStudentsForm(forms.ModelForm):
     region = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
-            'placeholder': 'Viloyat'
+            'placeholder': _('Viloyat')
             })
         )
     district = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
-            'placeholder': 'Tuman'
+            'placeholder': _('Tuman')
             })
         )
     schooling = forms.ChoiceField(
@@ -121,7 +123,7 @@ class AppliedStudentsForm(forms.ModelForm):
         widget=forms.FileInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
             'id': 'diploma',
-            'placeholder': 'Diplom nusxasi',
+            'placeholder': _('Diplom nusxasi'),
         })
     )
     social_status = forms.ChoiceField(
@@ -141,13 +143,13 @@ class AppliedStudentsForm(forms.ModelForm):
     phone_number = forms.CharField(
         widget=forms.TextInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
-            'placeholder': 'Telefon raqam'
+            'placeholder': _('Telefon raqam')
             })
         )
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={
             'class': 'appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-50 focus:border-gray-500',
-            'placeholder': 'Elektron manzil',
+            'placeholder': _('Elektron manzil'),
         })
     )
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)

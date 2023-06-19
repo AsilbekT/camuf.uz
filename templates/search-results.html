@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+{% load i18n %}
+
+{% block title  %}Central Asian Medical University{% endblock %}
 
 {% block link  %}{% endblock %}
 
@@ -10,11 +12,11 @@
 <section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bg_of_uni.jpg' %}">
     <div class="parallax-content section-30 section-sm-70">
         <div class="shell">
-            <h2 class="veil reveal-sm-block">Search Results</h2>
+            <h2 class="veil reveal-sm-block">{% trans "Search Results"%}</h2>
             <div class="offset-sm-top-35">
                 <ul class="list-inline list-inline-lg list-inline-dashed p">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li>Search</li>
+                    <li><a href="{% url 'home' %}">{% trans "Home"%}</a></li>
+                    <li>{% trans "Search"%}</li>
                 </ul>
             </div>
         </div>

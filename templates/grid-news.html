@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title  %}Markaziy Osiyo tibbiyot universiteti{% endblock %}
+{% load i18n %}
+
+{% block title  %}Central Asian Medical University{% endblock %}
 
 {% block link  %}{% endblock %}
 
@@ -9,11 +11,11 @@
 <section class="section breadcrumb-modern context-dark parallax-container" data-parallax-img="{% static 'images/bac_news.jpeg' %}">
     <div class="parallax-content section-30 section-sm-70">
         <div class="shell">
-            <h2 class="veil reveal-sm-block">Grid News</h2>
+            <h2 class="veil reveal-sm-block">{% trans "Grid News"%}</h2>
             <div class="offset-sm-top-35">
                 <ul class="list-inline list-inline-lg list-inline-dashed p">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li>Yangiliklar</li>
+                    <li><a href="{% url 'home' %}">{% trans "Home"%}</a></li>
+                    <li>{% trans "Yangiliklar"%}</li>
                 </ul>
             </div>
         </div>
@@ -31,13 +33,40 @@
                                 <div class="post-news__img">
                                 <img class="img-responsive" src="/{{i.image}}" width="500" height="600" alt=""></a>
                                 </div>
+                                {% if request.LANGUAGE_CODE == "uz" %}
                                 <div class="post-news-body">
-                                    <h6><a href="{% url 'news_details' slug=i.slug %}">{{ i.title }}</a></h6>
+                                    <h6><a href="{% url 'news_details' slug=i.slug %}">{{ i.title_uz }}</a></h6>
                                     <div class="offset-top-20">
-                                        <p>{{ i.subtitle }}</p>
+                                        <p>{{ i.subtitle_uz }}</p>
                                     </div>
                                     <div class="post-news-meta offset-top-20"><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ i.date_created }}</span></div>
                                 </div>
+                                {% elif request.LANGUAGE_CODE == "ru" %}
+                                    <div class="post-news-body">
+                                        <h6><a href="{% url 'news_details' slug=i.slug %}">{{ i.title_ru }}</a></h6>
+                                        <div class="offset-top-20">
+                                            <p>{{ i.subtitle_ru }}</p>
+                                        </div>
+                                        <div class="post-news-meta offset-top-20"><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ i.date_created }}</span></div>
+                                    </div>
+                                {% elif request.LANGUAGE_CODE == "en" %}
+                                    <div class="post-news-body">
+                                        <h6><a href="{% url 'news_details' slug=i.slug %}">{{ i.title_en }}</a></h6>
+                                        <div class="offset-top-20">
+                                            <p>{{ i.subtitle_en }}</p>
+                                        </div>
+                                        <div class="post-news-meta offset-top-20"><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ i.date_created }}</span></div>
+                                    </div>
+                                {% else %}
+                                    <div class="post-news-body">
+                                        <h6><a href="{% url 'news_details' slug=i.slug %}">{{ i.title_tr }}</a></h6>
+                                        <div class="offset-top-20">
+                                            <p>{{ i.subtitle_tr }}</p>
+                                        </div>
+                                        <div class="post-news-meta offset-top-20"><span class="icon novi-icon icon-xs mdi mdi-calendar-clock text-middle text-madison"></span><span class="text-middle inset-left-10 text-italic text-black">{{ i.date_created }}</span></div>
+                                    </div>
+                                {% endif %}
+                                
                             </article>
                         </div>
                     {% endfor %}
@@ -46,7 +75,7 @@
             <div class="cell-xs-8 cell-md-4 text-left">
                 <aside class="aside inset-md-left-30">
                     <div class="aside-item">
-                        <h6 class="text-bold">Search</h6>
+                        <h6 class="text-bold">{% trans "Search"%}</h6>
                         <div class="text-subline"></div>
                         <div class="offset-top-30">
                             <form class="form-search rd-search form-search-widget" action="{% url 'news' %}" method="post">
@@ -65,33 +94,33 @@
                         </div>
                     </div>
                     <div class="aside-item">
-                        <h6 class="text-bold">Archive</h6>
+                        <h6 class="text-bold">{% trans "Archive"%}</h6>
                         <div class="text-subline"></div>
                         <div class="row offset-top-20">
                             <div class="col-xs-6">
                                 <ul class="list list-marked list-marked-primary">
-                                    <li><a href="{% url 'data_search' search='jan' model='news'%}">Jan</a></li>
-                                    <li><a href="{% url 'data_search' search='feb' model='news'%}">Feb</a></li>
-                                    <li><a href="{% url 'data_search' search='march' model='news'%}">March</a></li>
-                                    <li><a href="{% url 'data_search' search='april' model='news'%}">April</a></li>
-                                    <li><a href="{% url 'data_search' search='may' model='news'%}">May</a></li>
-                                    <li><a href="{% url 'data_search' search='june' model='news'%}">June</a></li>
+                                    <li><a href="{% url 'data_search' search='jan' model='news'%}">{% trans "Jan"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='feb' model='news'%}">{% trans "Feb"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='march' model='news'%}">{% trans "March"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='april' model='news'%}">{% trans "April"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='may' model='news'%}">{% trans "May"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='june' model='news'%}">{% trans "June"%}</a></li>
                                 </ul>
                             </div>
                             <div class="col-xs-6">
                                 <ul class="list list-marked list-marked-primary">
-                                    <li><a href="{% url 'data_search' search='july' model='news'%}">July</a></li>
-                                    <li><a href="{% url 'data_search' search='aug' model='news'%}">Aug</a></li>
-                                    <li><a href="{% url 'data_search' search='sep' model='news'%}">Sep</a></li>
-                                    <li><a href="{% url 'data_search' search='oct' model='news'%}">Oct</a></li>
-                                    <li><a href="{% url 'data_search' search='nov' model='news'%}">Nov</a></li>
-                                    <li><a href="{% url 'data_search' search='dec' model='news'%}">Dec</a></li>
+                                    <li><a href="{% url 'data_search' search='july' model='news'%}">{% trans "July"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='aug' model='news'%}">{% trans "Aug"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='sep' model='news'%}">{% trans "Sep"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='oct' model='news'%}">{% trans "Oct"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='nov' model='news'%}">{% trans "Nov"%}</a></li>
+                                    <li><a href="{% url 'data_search' search='dec' model='news'%}">{% trans "Dec"%}</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="aside-item">
-                        <h6 class="text-bold">Gallery</h6>
+                        <h6 class="text-bold">{% trans "Gallery"%}</h6>
                         <div class="text-subline"></div>
                         <div class="range range-condensed range-custom offset-top-20 remove-position" data-lightgallery="group">
                             {% for image in gallery %}
@@ -104,7 +133,7 @@
                         </div>
                     </div>
                     <div class="aside-item">
-                        <h6 class="text-bold">Categories</h6>
+                        <h6 class="text-bold">{% trans "Categories"%}</h6>
                         <div class="text-subline"></div>
                         <div class="offset-top-20">
                             <ul class="list list-marked list-marked-primary">
