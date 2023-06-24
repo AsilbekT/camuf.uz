@@ -43,13 +43,18 @@
                             <div class="rd-navbar-mobile-header-wrap">
                                 <div class="rd-navbar-mobile-brand"><a href="{% url 'home' %}"><img src="{% static '' %}images/logo.png" alt="" srcset="images/logo.png 2x"></a></div>
                             </div>
+                            
                             <ul class="rd-navbar-nav">
                                 <li><a href="{% url 'home' %}">{% trans "Home"%}</a></li>
                                 <li><a href="{% url 'about' %}">{% trans "Universitet haqida"%}</a>
                                     <ul class="rd-navbar-dropdown">
                                          {% comment %} <li><a href="{% url 'history' %}">Universitet tarixi</a></li> {% endcomment %}
                                         <li><a href="{% url 'leaders' %}">{% trans "Rahbariyat"%}</a></li>
-                                        <li><a href="{% url 'team' %}">{% trans "Our_team_members"%}</a></li>
+                                        <li><a href="{% url 'team' %}">{% trans "xalqaro_bolim"%}</a></li>
+                                        <li><a href="{% url 'team' %}">{% trans "manaviyat_bolimi"%}</a></li>
+                                        <li><a href="{% url 'team' %}">{% trans "ilmiy_bolim"%}</a>
+                                        
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="rd-navbar--has-dropdown rd-navbar-submenu"><a href="{% url 'courses' %}">{% trans "Yo'nalishlar"%}</a>

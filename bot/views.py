@@ -224,7 +224,7 @@ def messageHandler(message, user, admin=False):
             'text': translate(message=message, text="Iltimos quyidagilardan tanlang"),
             "reply_markup": json.dumps({
                 "keyboard": [
-                    [translate(message=message, text=i.title) for i in UndergraduateCourse.objects.all()],
+                    [translate(message=message, text=i.title_uz) for i in UndergraduateCourse.objects.all()],
                     ],
                 'resize_keyboard': True
             })
@@ -391,7 +391,7 @@ def setHandler(message, user):
                 'text': translate(user=user, text="qabul qilindi")
                 })
             text = f"<b>Yangi arizachi</b>\n"
-            text += f"<b>Yo'nalish:</b> {applied_student.program.title}\n"
+            text += f"<b>Yo'nalish:</b> {applied_student.program.title_uz}\n"
             text += f"<b>Familiyasi:</b> {applied_student.surname}\n"
             text += f"<b>Ismi:</b> {applied_student.name}\n"
             text += f"<b>Otasining ismi:</b> {applied_student.fathers_name}\n"
@@ -729,7 +729,7 @@ def admissionHandler(message):
     user_id = message['from']['id']
     courses = UndergraduateCourse.objects.all()
 
-    keyboards = [{'text': translate(text=f"{i.title}", message=message), 'callback_data': f"admission_{i.id}"} for i in courses]
+    keyboards = [{'text': translate(text=f"{i.title_uz}", message=message), 'callback_data': f"admission_{i.id}"} for i in courses]
     bot_request('sendPhoto', {
         'chat_id': user_id,
         'parse_mode': 'html',
@@ -802,7 +802,7 @@ def export_and_send_application_info(message, option, program, all_in_one=False)
     delete_message(user_id, message_id)
     
     try:
-        course = UndergraduateCourse.objects.get(title=program)
+        course = UndergraduateCourse.objects.get(title_uz=program)
     except ObjectDoesNotExist:
         course = None
 

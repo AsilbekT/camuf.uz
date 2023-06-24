@@ -519,7 +519,7 @@ def apply_form(request):
 
 
             text = f"<b>Yangi arizachi</b>\n"
-            text += f"<b>Yo'nalish:</b> {instance.program.title}\n"
+            text += f"<b>Yo'nalish:</b> {instance.program.title_uz}\n"
             text += f"<b>O'qish tili:</b> {form.cleaned_data['language']}\n"
             text += f"<b>Familiyasi:</b> {form.cleaned_data['surname']}\n"
             text += f"<b>Ismi:</b> {form.cleaned_data['name']}\n"
