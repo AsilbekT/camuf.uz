@@ -44,6 +44,7 @@ def translate(message=None, user=None, text=None):
             "statistika": "📊 Statistika",
             "iltimos pasport nusxasini joylang": "Skanerlangan pasport yoki identifikatorni yuklang.",
             "file_error": "⚠️ Faqat skanner qilingan PDF-fayllarga ruxsat beriladi.",
+            "photo_error": "⚠️ Rasm qabul qilinmaydi!",
             "iltimos username izni kiriting": "Iltimos, username izni kiriting",
             'setting': '⚙️ Sozlash',
             "contactni kiriting": "Quyidagi tugma orqali telefon raqamingizni kiriting",
@@ -93,6 +94,7 @@ def translate(message=None, user=None, text=None):
             "iltimos username izni kiriting": "Please enter your username",
             "iltimos pasport nusxasini joylang": "Please send us a scanned version of your passport.",
             "file_error": "Only scanned PDF files are allowed",
+            "photo_error": "⚠️ Image types are not allowed!",
             "statistika": "📊 Statistics",
             "Iltimos quyidagilardan tanlang": "Please choose one of the following",
             "tarjima tilini kiritish":"enter translating languages",
@@ -167,14 +169,30 @@ def getpost(request):
             try:
                 user = BotUsers.objects.get(user_id=message['from']['id'])
                 if is_bot_admin(user):
-                    if "document" in message.keys():
+                    if "photo" in message.keys():
+                        bot_request("sendMessage", {
+                            "chat_id": user.user_id,
+                            "text": translate(user=user, text="photo_error")
+                        })
                         setHandler(message=message, user=user)
+
+                    elif "document" in message.keys():
+                        setHandler(message=message, user=user)
+                        
                     elif 'text' in message.keys():
                         messageHandler(message, user, admin=True)
                     elif 'contact' in message.keys():
                         contactHandler(message)
                 else:
-                    if "document" in message.keys():
+
+                    if "photo" in message.keys():
+                        bot_request("sendMessage", {
+                            "chat_id": user.user_id,
+                            "text": translate(user=user, text="photo_error")
+                        })
+                        setHandler(message=message, user=user)
+
+                    elif "document" in message.keys():
                         setHandler(message=message, user=user)
                     elif 'text' in message.keys():
                         messageHandler(message, user)
