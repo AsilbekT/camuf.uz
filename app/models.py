@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 from django.template.defaultfilters import slugify
 from tinymce.models import HTMLField
 from django.db.models.signals import post_save
@@ -391,6 +392,38 @@ class AppliedStudents(models.Model):
             queryset = queryset.filter(date_created__date__lte=end_date)
 
         return queryset.count()
+    
+    def clean(self):
+        # Check if the user has already submitted an application
+        if self.pk:
+            raise ValidationError("Siz allaqachon ariza topshirgansiz.")
+
+        # Check if the passport PDF field is provided
+        if not self.passport_pdf:
+            raise ValidationError("Skanerlangan pasport yoki identifikatorni yuklang.")
+
+        # Check if the uploaded file is a PDF
+        if self.passport_pdf and not self.passport_pdf.name.endswith('.pdf'):
+            raise ValidationError("Pasport uchun faqat PDF-fayllarga ruxsat beriladi.")
+
+        # Check if the diploma field is provided
+        if not self.diploma:
+            raise ValidationError("Diplom yoki taʼlim sertifikatingizni yuklang.")
+
+        # Check if the uploaded file is a PDF
+        if self.diploma and not self.diploma.name.endswith('.pdf'):
+            raise ValidationError("Diplom uchun faqat PDF fayllarga ruxsat beriladi.")
+
+        # Check if there are no other existing applications for the user
+        existing_applications = AppliedStudents.objects.filter(
+            email=self.email, 
+            passport_number=self.passport_number
+            )
+        
+        if existing_applications.exists():
+            raise ValidationError("Siz allaqachon ariza topshirgansiz.")
+    
+
     class Meta:
         verbose_name = _("Applied Student")
         verbose_name_plural = _("Applied Students")

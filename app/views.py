@@ -540,7 +540,15 @@ def apply_form(request):
                 "text": text
             })
             return redirect("success")
-
+        
+        context = {
+            "status": status, 
+            'phones': phones,
+            'emails': emails,
+            'form': form,
+            }
+        
+        return render(request, 'admission.html', context)
 
     else:
         form = AppliedStudentsForm()

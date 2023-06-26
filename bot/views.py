@@ -42,7 +42,8 @@ def translate(message=None, user=None, text=None):
     if lang == 'uz':
         words = {
             "statistika": "📊 Statistika",
-            "iltimos pasport nusxasini joylang": "Iltimos pasport nusxasini elektron shaklda jo'nating",
+            "iltimos pasport nusxasini joylang": "Skanerlangan pasport yoki identifikatorni yuklang.",
+            "file_error": "⚠️ Faqat skanner qilingan PDF-fayllarga ruxsat beriladi.",
             "iltimos username izni kiriting": "Iltimos, username izni kiriting",
             'setting': '⚙️ Sozlash',
             "contactni kiriting": "Quyidagi tugma orqali telefon raqamingizni kiriting",
@@ -63,6 +64,7 @@ def translate(message=None, user=None, text=None):
             "Stomatologiya": "🦷 Stomatologiya",
             "Davolash ishi": "💊 Davolash ishi",
             "Pediatriya": "💉️️ Pediatriya",
+            "Pediatriya ishi": "💉️️ Pediatriya ishi",
             "Iltimos quyidagilardan tanlang": "Itimos quyidagilardan birini tanlang",
             "all": "Hammasi",
             "today": "Bugungilik",
@@ -89,7 +91,8 @@ def translate(message=None, user=None, text=None):
     elif lang == 'en':
         words = {
             "iltimos username izni kiriting": "Please enter your username",
-            "iltimos pasport nusxasini joylang": "Please send us an e-version of your passport copy.",
+            "iltimos pasport nusxasini joylang": "Please send us a scanned version of your passport.",
+            "file_error": "Only scanned PDF files are allowed",
             "statistika": "📊 Statistics",
             "Iltimos quyidagilardan tanlang": "Please choose one of the following",
             "tarjima tilini kiritish":"enter translating languages",
@@ -114,6 +117,7 @@ def translate(message=None, user=None, text=None):
             "admission_text": "Welcome to Central Asian University!\nWe are delighted to invite you to join our esteemed institution for the upcoming academic year. At Central Asian University, we offer a diverse range of programs designed to provide you with a world-class education and equip you with the knowledge and skills necessary for success in your chosen field.",
             "Stomatologiya": "🦷 Dentistry",
             "Davolash ishi": "💊 General Medicine",
+            "Pediatriya ishi": "💉️️ Pediatrics",
             "Pediatriya": "💉️️ Pediatrics",
             "iltimos ismizni kiriting": "Please enter your name",
             "iltimos famliyezni kiriting": "Please enter your surname",
@@ -303,7 +307,11 @@ def setHandler(message, user):
             stepHandler(user, message)
 
         elif user.user_step == "get_admission_passport_number":
-            applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+            try:
+                applied_student = AppliedStudents.objects.get(bot_id=user.user_id, passport_number=message['text'])
+            except ObjectDoesNotExist:
+                applied_student = AppliedStudents.objects.get(bot_id=user.user_id)
+
             applied_student.passport_number = message['text']
             user.user_step = 'get_admission_passport_pdf'
             applied_student.save()
@@ -312,9 +320,10 @@ def setHandler(message, user):
         
         elif user.user_step == "get_admission_passport_pdf":
             if "document" in message.keys():
-                handlePdffiles(message, "passport_pdf")
-                user.user_step = 'get_admission_country'
-                user.save()
+                is_fine = handlePdffiles(message, "passport_pdf", user=user)
+                if is_fine:
+                    user.user_step = 'get_admission_country'
+                    user.save()
             stepHandler(user, message)
 
         elif user.user_step == "get_admission_country":
@@ -351,9 +360,10 @@ def setHandler(message, user):
 
         elif user.user_step == "get_admission_schooling_file":
             if "document" in message.keys():
-                handlePdffiles(message, "schooling_file")
-                user.user_step = 'get_admission_social_status'
-                user.save()
+                is_fine = handlePdffiles(message, "schooling_file", user=user)
+                if is_fine:
+                    user.user_step = 'get_admission_social_status'
+                    user.save()
             stepHandler(user, message)
 
         elif user.user_step == "get_admission_social_status":
@@ -372,9 +382,11 @@ def setHandler(message, user):
 
         elif user.user_step == "get_admission_social_status_file":
             if "document" in message.keys():
-                handlePdffiles(message, "social_status_file")
-                user.user_step = 'get_admission_phone_number'
-                user.save()
+                is_fine = handlePdffiles(message, "social_status_file", user=user)
+                if is_fine:
+                    user.user_step = 'get_admission_phone_number'
+                    user.save()
+
             stepHandler(user, message)
 
 
@@ -768,20 +780,25 @@ def apply_to_uni(message):
 
 
 
-def handlePdffiles(message, file_type):
+def handlePdffiles(message, file_type, user=None):
     file_id = message['document']['file_id']
-    user_id = message['from']['id']
-    applied_students = AppliedStudents.objects.get(bot_id=user_id)
+    applied_students = AppliedStudents.objects.get(bot_id=user.user_id)
+    if message['document']['mime_type'] == 'application/pdf':
+        if file_type == "passport_pdf":
+            get_file_path_save(file_id=file_id, file_type=applied_students.passport_pdf)
+        elif file_type == "schooling_file":
+            get_file_path_save(file_id=file_id, file_type=applied_students.diploma)
+        elif file_type == "social_status_file":
+            get_file_path_save(file_id=file_id, file_type=applied_students.social_status_file)
+        applied_students.save()
+        return True
 
-    if file_type == "get_admission_country":
-        get_file_path_save(file_id=file_id, file_type=applied_students.passport_pdf)
-    elif file_type == "schooling_file":
-        get_file_path_save(file_id=file_id, file_type=applied_students.diploma)
-    elif file_type == "social_status_file":
-        get_file_path_save(file_id=file_id, file_type=applied_students.social_status_file)
-    applied_students.save()
-
-
+    bot_request("sendMessage",{
+        "chat_id": user.user_id,
+        "text": translate(message=message, user=user, text='file_error')
+    })
+    return False
+    
 
 def get_file_path_save(file_id, file_type):
     res = requests.get(f"https://api.telegram.org/bot{TOKEN}/getFile?file_id={file_id}").json()
