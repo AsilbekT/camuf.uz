@@ -51,6 +51,28 @@ class Gallery(models.Model):
         verbose_name_plural = _("Galleries")
 
 
+class Journal(models.Model):
+    name = models.CharField(max_length=200, default="")
+    arxiv = models.FileField(upload_to="static/db/journals/")
+
+
+    def __str__(self) -> str:
+        return self.name
+    
+    class Meta:
+        verbose_name = _("Journal")
+        verbose_name_plural = _("Journals")
+
+
+class JournalPicture(models.Model):
+    image = models.ImageField(upload_to="static/db/journals_images/")
+
+
+    class Meta:
+        verbose_name = _("Journal Image")
+        verbose_name_plural = _("Journal Images")
+
+
 class NewsCatagory(models.Model):
     catagory_name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True, null=True)

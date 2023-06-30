@@ -323,6 +323,25 @@ def article_details(request, slug):
     return render(request, "article_details.html", context)
 
 
+def journals(request):
+    try:
+        status = Status.objects.get(id=1)
+        phones = status.phone_number.all()
+        emails = status.university_email.all()
+    except:
+        status = None
+
+    gallery = JournalPicture.objects.all()
+    journals = Journal.objects.all()
+    context = {
+        "gallery": gallery,
+        "journals": journals,
+         "status": status, 
+        'phones': phones,
+        'emails': emails
+        }
+    return render(request, "journals.html", context)
+
 def history(request):
     try:
         status = Status.objects.get(id=1)
@@ -567,6 +586,7 @@ def success(request):
 def bot_request(method, data):
     requests.post(BOT_API + method, data)
     # https://api.telegram.org/bot5838898419:AAETJYe3S96ZeMRFNv6MzkfsTDdrNu-3Qts/sendMessage?chat_id=-1001566478762&text=salom
+
 
 
 
