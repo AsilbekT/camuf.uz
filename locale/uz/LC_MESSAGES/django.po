@@ -646,7 +646,7 @@ msgstr "MAMASADIKOV NURILLO SHUKRULLAEVICH"
 
 #: templates/index.html:109
 msgid "rector_name"
-msgstr "Universitet rekroti"
+msgstr "Universitet rektori"
 
 #: templates/index.html:124
 msgid "Ko'proq bilish"
