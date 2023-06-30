@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-30 23:30+0500\n"
+"POT-Creation-Date: 2023-06-30 23:50+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -645,8 +645,8 @@ msgid "MAMASADIKOV NURILLO SHUKRULLAEVICH"
 msgstr "MAMASADIKOV NURILLO SHUKRULLAEVICH"
 
 #: templates/index.html:109
-msgid "Universitet raxbari"
-msgstr "Universitet raxbari"
+msgid "rector_name"
+msgstr "Universitet rekroti"
 
 #: templates/index.html:124
 msgid "Ko'proq bilish"
@@ -2263,6 +2263,9 @@ msgstr ""
 #: venv/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:249
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Universitet raxbari"
+#~ msgstr "Universitet raxbari"
 
 #~ msgid "Our_team_members"
 #~ msgstr "Jamoamiz a'zolari"
